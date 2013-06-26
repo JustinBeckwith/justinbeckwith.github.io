@@ -1,0 +1,235 @@
+---
+layout: post
+title: Bootstrapping image based bookmarklets
+tags:
+- featured
+- JavaScript
+- jQuery
+- jQuery UI
+- Programming
+status: publish
+type: post
+published: true
+meta:
+  other-menu-title: ''
+  _edit_last: '1'
+  _edit_lock: '1318377192'
+  _aioseop_description: This article reviews a method for bootstrapping a bookmarklet
+    for images using jQuery and jQueryUI.
+  _aioseop_title: Bootstrapping image based bookmarklets using jQuery
+  _thumbnail_id: '153'
+  _syntaxhighlighter_encoded: '1'
+  st_tiny_url: "http://bit.ly/fzy1kZ\r\n"
+  st_tweetmeme: s:42:"a:2:{s:7:"tm_link";N;s:9:"url_count";i:0;}";
+  st_reddit: s:69:"a:3:{s:9:"permalink";s:0:"";s:5:"score";i:0;s:12:"num_comments";i:0;}";
+  st_social_score: '0'
+  st_last_socialized: '1372173384'
+  _wp_old_slug: ''
+  _aioseop_keywords: jQuery, jQueryUI, jQuery UI, bookmarklet, bootstrapping, bootstrap
+  st_cached: <ul class="socialize-this"><li><a href="http://www.reddit.com/submit?url=http%3A%2F%2Fjbeckwith.com%2F2010%2F12%2F28%2Fbootstrapping-image-based-bookmarklets%2F&title=Bootstrapping+image+based+bookmarklets"
+    target="_blank"><img src="http://jbeckwith.com/wp-content/plugins/socialize-this/widgets/alteredicons/reddit.png"
+    width="48px" height="48px" alt="Reddit" title="Reddit" /></a></li><li><a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fjbeckwith.com%2F2010%2F12%2F28%2Fbootstrapping-image-based-bookmarklets%2F&t=Bootstrapping+image+based+bookmarklets"
+    target="_blank"><img src="http://jbeckwith.com/wp-content/plugins/socialize-this/widgets/alteredicons/facebook.png"
+    width="48px" height="48px" alt="Facebook" title="Facebook" /></a></li><li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fjbeckwith.com%2F2010%2F12%2F28%2Fbootstrapping-image-based-bookmarklets%2F&title=Bootstrapping+image+based+bookmarklets&summary=Bootstrapping+image+based+bookmarklets&source=Blog"><img
+    src="http://jbeckwith.com/wp-content/plugins/socialize-this/widgets/alteredicons/linkedin.png"
+    width="48px" height="48px" alt="LinkedIn" title="LinkedIn" /></a></li><li><a href="http://del.icio.us/submit?url=http%3A%2F%2Fjbeckwith.com%2F2010%2F12%2F28%2Fbootstrapping-image-based-bookmarklets%2F&title=Bootstrapping+image+based+bookmarklets"
+    target="_blank"><img src="http://jbeckwith.com/wp-content/plugins/socialize-this/widgets/alteredicons/del.png"
+    width="48px" height="48px" alt="Delicious" title="Delicious" /></a></li><li><a
+    href="http://digg.com/submit?phase=2&url=http%3A%2F%2Fjbeckwith.com%2F2010%2F12%2F28%2Fbootstrapping-image-based-bookmarklets%2F"
+    target="_blank"><img src="http://jbeckwith.com/wp-content/plugins/socialize-this/widgets/alteredicons/digg.png"
+    width="48px" height="48px" alt="Digg" title="Digg" /></a></li><li><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fjbeckwith.com%2F2010%2F12%2F28%2Fbootstrapping-image-based-bookmarklets%2F&title=Bootstrapping+image+based+bookmarklets"
+    target="_blank"><img src="http://jbeckwith.com/wp-content/plugins/socialize-this/widgets/alteredicons/stumble.png"
+    width="48px" height="48px" alt="StumbleUpon" title="StumbleUpon" /></a></li><li><a
+    href="http://twitter.com/home?status=Currently Reading http%3A%2F%2Fbit.ly%2Ffzy1kZ%0D%0A"  target="_blank"><img
+    src="http://jbeckwith.com/wp-content/plugins/socialize-this/widgets/alteredicons/twitter.png"
+    width="48px" height="48px" alt="Twitter" title="Twitter" /></a></li></ul>
+  st_cached_time: '1293589028'
+---
+<img src="http://jbeckwith.com/wp-content/uploads/2010/12/featured.png" alt="" title="featured" width="430" height="290" class="alignnone size-full wp-image-153" />
+
+Over this holiday break I had the interesting opportunity to write a bookmarklet for a friend who runs a comic based website.   Instead of just manipulating the currently loaded page, the bookmarklet needed to send a list of images to another site.  Often when writing <a title="Wikipedia - Bookmarklets" href="http://en.wikipedia.org/wiki/Bookmarklet" target="_blank">bookmarklets</a>, we tend to only think of loading our code in the context of a HTML content page.  How often do you test your bookmarklets when the browser is viewing an image?  In this article I am going to go through the code I used to bootstrap my bookmarklet script, and discuss some of the interesting challenges I experienced along the way.
+
+To get started with this code, I used a fantastic <a href="http://www.smashingmagazine.com/2010/05/23/make-your-own-bookmarklets-with-jquery/" target="_blank">article</a> by <a href="http://www.smashingmagazine.com/author/tommy-iamnotagoodartist/" target="_blank">Tommy Saylor</a> of <a href="http://www.smashingmagazine.com/" target="_blank">Smashing Magazine</a>.  It gave me a good start, but certainly left a lot of details out, and in my case, caused a lot of bugs.
+<h3><span style="text-decoration: underline;">Bookmarklet Architecture</span></h3>
+That's right:  we should talk about architecture before diving right into our JavaScript.  When writing a bookmarklet, it's generally a good idea to keep as much code out of the actual bookmark as possible.  This is where 'bootstrapping' comes into play:  we will simply use our bookmark as a piece of code that actually loads the core bits of our JavaScript.  There are actually two reasons why this is a good idea:
+<ul>
+	<li>Different browsers have various max-lengths of bookmarks.  Keep in mind that a bookmarklet is kind of an accidental feature.  I think the average max length works out to around 2000 characters, but some browsers (like Internet Explorer 6) have limits as low as 508 characters.</li>
+	<li>Users are unlikely to be bothered into refreshing your bookmarklet.  Once somebody bookmarks your code, how are they going to get updates?  It's much easier if your bookmarklet simply loads a JavaScript file from a static URL.  This way we can update the code in the back whenever we want.</li>
+</ul>
+After our bootstrapper loads the script we created, any external libraries will be loaded.  For example, I used jQuery and jQuery UI for my most recent project.  After the dependencies are loaded, we will then execute our main code.
+
+Another thing to keep in mind when you're building your bookmarklet is how the site behaves after the function is disabled.  For example, if your bookmarklet gives all images on the site a red border, what happens when the user no longer wishes to use the bookmarklet?  For this reason, I tend to create a cleanup method that allows our bookmarklet changes to be undone, and leaves the script in a state that can later be used again.
+<h3><span style="text-decoration: underline;">The bootstrap code</span></h3>
+For the purposes of this bookmarklet, I needed to write a piece of code that would interact with a standard HTML page and it's images, or interact with a page that was a single loaded image. For that reason, the first thing we need to do is determine what type of page we're dealing with.  If the page is HTML, we can insert a script.  If the page is an image, we need to behave differently.  While I found that Firefox and WebKit both generated a HTML container to render image pages, their behavior surrounding script events of these pages were too inconsistent to be depended upon.
+
+<img src="http://jbeckwith.com/wp-content/uploads/2010/12/firebug.png" alt="" title="Image url firebug output" width="501" height="635" class="alignnone size-full wp-image-155" />
+
+Here is a formatted example of what my a href tag JavaScript looks like:
+
+[code lang="javascript"]
+//
+// &lt;a&gt; tag href javascript
+//
+javascript:(function() {
+	if( (document.contentType &amp;&amp; document.contentType.indexOf('image/')&gt;-1)
+		||/.png$/.test(location.href)
+		||/.jpg$/.test(location.href)
+		||/.jpeg$/.test(location.href)
+		||/.gif$/.test(location.href))
+		{
+			location.href='http://jbeckwith.com/bookmarklet/';
+		}
+		else if (!window.main) {
+			document.body.appendChild(document.createElement('script'))
+				.src='http://jbeckwith.com/my-bookmarklet.js';
+		}
+		else {
+			main();
+		}
+	})();
+[/code]
+
+After tidying up our script, and adding the surrounding tag, here is a final rendered output of our code, I came up with the following:
+
+[code lang="html"]
+&lt;!--
+    &lt;a&gt; tag example
+--&gt;
+&lt;a href=&quot;javascript:(function(){if((document.contentType&amp;&amp;document.contentType.indexOf('image/')&gt;-1)||/.png$/.test(location.href)||/.jpg$/.test(location.href)||/.jpeg$/.test(location.href)||/.gif$/.test(location.href)){location.href='http://jbeckwith.com/bookmarklet/';}else if(!window.main){document.body.appendChild(document.createElement('script')).src='http://jbeckwith.com/my-bookmarklet.js';}else{main();}})();&quot;&gt;It's a bookmarklet!&lt;/a&gt;
+[/code]
+
+<h3><span style="text-decoration: underline;">Loading jQuery and jQueryUI</span></h3>
+Now that the bootstrapper is created, I am going to focus the rest of the article on the external JavaScript file that contains the meat of the code.  With the script I wrote, I needed to use a good deal of visual effects.  I am already comfortable with <a href="http://jquery.com/" target="_blank">JQuery</a>, so I chose to use it as my JavaScript framework:
+
+[code language="javascript"]
+//
+// create javascript libraries required for main
+//
+if (typeof jQuery == 'undefined') {
+	// include jquery
+	var jQ = document.createElement('script');
+	jQ.type = 'text/javascript';
+	jQ.onload=getDependencies;
+	jQ.onreadystatechange=function() { 
+		if(this.readyState=='loaded' || this.readyState=='complete') { 
+			getDependencies(); 
+		} // end if
+	};
+	jQ.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
+	document.body.appendChild(jQ);
+} // end if 
+else {
+	getDependencies();
+} // end else
+
+[/code]
+
+If you look at the example in the Smashing Magazine article, you will notice a couple of differences.  We need to add an event for onreadystatechange to handle Internet Explorer.  I found that IE inconsistently set the readyState of the script object to 'loaded' or 'complete' in various parts of the DOM, so as a rule I check for both.  If you don't make this change, IE will never notify the script that jQuery is finished loading.  
+
+Secondly, I have added the getDependencies() method to manage loading required scripts (in addition to jQuery).  Since I am depending heavily on a few jQuery UI components, I needed to load both an external JavaScript file and an external CSS file:
+
+[code language="javascript"]
+//
+// getDependencies
+//
+function getDependencies() {
+	
+	// make sure jqueryUI is loaded
+	if (!jQuery.ui) {
+	
+		// get the link css tag
+		var jQCSS = document.createElement('link');
+		jQCSS.type = 'text/css';
+		jQCSS.rel= 'stylesheet';
+		jQCSS.href = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css';
+		document.body.appendChild(jQCSS);
+		
+		// grab jquery ui
+		var jQUI = document.createElement('script');
+		jQUI.type = 'text/javascript';
+		jQUI.src = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js';
+		jQUI.onload=getDependencies;
+		jQUI.onreadystatechange=function() {
+			if(this.readyState=='loaded' || this.readyState=='complete') { 
+				getDependencies(); 
+			} // end if
+		};
+		document.body.appendChild(jQUI);
+	} // end if
+	else {
+		main();
+	} // end else
+} // end getDependencies function
+
+[/code]
+
+In this case, I'm really only waiting on jQuery and jQuery UI to load.  If there were more dependent scripts, I would likely create an array of scripts that need to be loaded, and check all of their completion every turn through the getDepenencies method.  
+
+<h3><span style="text-decoration: underline;">Embedding Styles</span></h3>
+With the supporting code written, we're now ready to work on our main method.  This is where bookmarklets really are different based on your task.  In my case, I'm creating a visual element on the page, complete with styles to match the target site.  This works pretty much as expected, with a single caveat:  any style definitions you create must be at the very bottom of your appended script.  Internet Explorer has a nasty habit of inconsistently handling styles and scripts when appended to the DOM.  For some reason beyond my understanding, appended style definitions, whether via script or ajax calls, only work if they are at the very bottom of the appended code.  This is fantastically fun to figure out on your own, so hopefully I've saved you some trouble.
+
+[code language="javascript"]
+//
+// main
+//
+function main() {
+	// only do this the first time the bar is loaded on the page
+	if ($(&quot;#myBar&quot;).length == 0) {
+		// append the styles and bar
+		
+		var barHtml =	&quot;&lt;div id='myBar'&gt;\
+							&lt;div id='myBar-main' class='dragOff'&gt;\
+								&lt;span id='myBar-thumbs'&gt;&lt;/span&gt;\
+								&lt;span id='myBar-text'&gt;drag images to the mainbar&lt;/span&gt;\
+								&lt;span id='myBar-buttons'&gt;\
+									&lt;a href='#' id='doneLink'&gt;done&lt;/a&gt;\
+									&lt;a href='#' id='cancelLink'&gt;cancel&lt;/a&gt;\
+								&lt;/span&gt;\
+							&lt;/div&gt;\
+						&lt;/div&gt;\
+						&lt;style type='text/css'&gt;\
+								#myBar {color: #FFFFFF; font-size: 130%; font-weight: bold; left: 0; position: fixed; text-align: center; top: 0; width: 100%; z-index: 99998; display: none; }\
+								#myBar-main {border-bottom: 3px solid #000000; padding: 7px 0;}\
+								#myBar-buttons { display: block; float: right; margin-right: 20px; }\
+								#myBar-buttons a,\
+								#myBar-buttons a:visited,\
+								#myBar-buttons a:link,\
+								#myBar-buttons a:active,\
+								#myBar-buttons a:hover\
+									{ padding: 4px; font-size: 0.7em; border: 2px solid #008600; background-color: #00cb00; color: #FFFFFF; text-decoration: none; }\
+								#myBar-thumbs img { padding-left: 2px; padding-right: 2px; cursor: hand; }\
+								.my-hover { border: 3px solid #4476b8 }\
+								.dragOff { background-color: #4476b8; }\
+								.dropHover{background-color: #FF0000; border: 1px dashed #e5a8a8;}\
+								.dragActive {background-color: #759fd6}\
+								.dropHighlight{border: 1px solid #000000;}\
+								.dragHelper {z-index: 99999; border: 1px solid #000000;}\
+							&lt;/style&gt;&quot;;
+		$(&quot;body&quot;).append(barHtml);
+[/code]
+
+This code simply creates a formatted div and adds it to the top of the page.  
+
+<h3><span style="text-decoration: underline;">Cleaning up the mess</span></h3>
+If you look at the generated HTML above, you'll notice that I include a cancel link.  I like to give the user the option to cancel out of using the current bookmarklet, and even relaunch the bookmarklet without issue.  So when you're done, make sure to test closing and re-launching the code.  I suggest keeping all of your elements on the page, and simply hiding them from the user:
+
+[code language="javascript"]
+		//
+		// myBar close evnet
+		//
+		$(&quot;#cancelLink&quot;).click(function(e) {
+			// hide the bar
+			$(&quot;#myBar&quot;).fadeOut(750);
+
+			// remove any img classes or handlers
+			$(&quot;img&quot;).removeClass('my-hover').unbind().draggable(&quot;destroy&quot;);
+
+			// reset the thumbnail span
+			$(&quot;#myBar-thumbs&quot;).html('');
+
+			// reset the text
+			$(&quot;#myBar-text&quot;).html(&quot;drag images to the mybar&quot;);
+		});
+[/code]
+
+And for now, that's it.  For the source to this project, visit my <a href="https://github.com/JustinBeckwith/Chogger-Bookmarklet" target="_blank">GitHub</a>.
