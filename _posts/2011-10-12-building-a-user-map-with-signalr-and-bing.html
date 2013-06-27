@@ -42,7 +42,7 @@ meta:
   st_last_socialized: '1372202278'
   _wp_old_slug: ''
 ---
-<a href="http://signalrmap.apphb.com"  target="_blank"><img src="http://jbeckwith.com/wp-content/uploads/2011/10/signalrheader.png" alt="" title="Building a user map with SignalR and Bing" width="430" height="290" class="alignnone size-full wp-image-326" /></a>
+<a href="http://signalrmap.apphb.com"  target="_blank"><img src="/images/2011/10/signalrheader.png" alt="" title="Building a user map with SignalR and Bing" width="430" height="290" class="alignnone size-full wp-image-326" /></a>
 
 Building asynchronous real time apps with bidirectional communication has traditionally been a very difficult thing to do.  HTTP was originally designed to speak in terms of requests and responses, long before concepts of rich media, social integration, and real time communication were considered staples of modern web development.  Over the years, various solutions have been hacked together to solve this problem.  You can use plugins like flash or silverlight to make a true socket connection on your behalf - but not all clients support plugins.  You can use long polling to manage multiple connections via HTTP - but this can be tricky to implement, and can eat up system resources.  The <a href="http://dev.w3.org/html5/websockets/" target="_blank">Web Socket standard</a> promises to give web developers a first class socket connection, but browser support is spotty and inconsistent.  
 
@@ -52,7 +52,7 @@ Various tools across multiple stacks have been release to solve this problem, bu
 <h2>This sounds familiar: socket.io with node.js</h2>
 Over the last year or so, <a href="http://nodejs.org/" target="_blank">node.js</a> has burst onto the scene as a popular stack for building highly asynchronous applications.  The event driven model of JavaScript, paired with a community of inventive developers, led to a platform well suited for these needs.  The package <a href="http://socket.io/" target="_blank">socket.io</a> provides what I have found to be the missing piece in the comet puzzle:  a front and back end framework that just makes sockets over the web work.  No more building flash applications to attempt opening connections over various ports.  No more poorly implemented long polling solutions.  Most importantly, socket.io made web sockets just plain easy to use:
 
-[code language="html"]
+<pre><code class="language-html">
 &lt;script src=&quot;/socket.io/socket.io.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;
   var socket = io.connect('http://localhost');
@@ -61,7 +61,7 @@ Over the last year or so, <a href="http://nodejs.org/" target="_blank">node.js</
     socket.emit('my other event', { my: 'data' });
   });
 &lt;/script&gt;
-[/code]
+</code></pre>
 
 Node.js and socket.io paved the way for a series of new tools and frameworks across multiple stacks that enable developers to have a first class client/server messaging experience.  Node.js and socket.io are wonderful tools - but let's get back to focusing on SignalR.
 
@@ -69,7 +69,7 @@ Node.js and socket.io paved the way for a series of new tools and frameworks acr
 
 There are two ways you can go about setting up the server for SignalR.  If you want a low level experience, you can add a 'PersistentConnection' class along with a custom route.  This will give you basic messaging capabilities, suitable for many apps.  Straight from the <a href="https://github.com/SignalR/SignalR" target="_blank">SignalR github</a>, here is an example:
 
-[code language="csharp"]
+<pre><code class="language-csharp">
 using SignalR;
 
 public class MyConnection : PersistentConnection {
@@ -78,22 +78,22 @@ public class MyConnection : PersistentConnection {
         return Connection.Broadcast(data);
     }
 }
-[/code]
+</code></pre>
 
 This works well if you're dealing with simple messaging - the other model SignalR supports is the 'hub' model.  This is where things start to get interesting.  Using hubs, you can invoke client side functions from the server, and server side functions from the client.  Here's another example from the documentation:
 
 Here is the server:
-[code language="csharp"]
+<pre><code class="language-csharp">
 public class Chat : Hub {
     public void Send(string message) {
         // Call the addMessage method on all clients
         Clients.addMessage(message);
     }
 }
-[/code]
+</code></pre>
 
 And the client:
-[code language="html"]
+<pre><code class="language-html">
 &lt;script type=&quot;text/javascript&quot;&gt;
 $(function () {
     // Proxy created on the fly
@@ -120,7 +120,7 @@ $(function () {
 
 &lt;ul id=&quot;messages&quot;&gt;
 &lt;/ul&gt;
-[/code]
+</code></pre>
 
 I chose the high level API, because well... it's just cool.  For a wonderful break down of the differences between these two methods, check out <a href="http://www.hanselman.com/blog/AsynchronousScalableWebApplicationsWithRealtimePersistentLongrunningConnectionsWithSignalR.aspx" target="_blank">Scott Hanselman's post on the topic</a>.   
 
@@ -131,18 +131,18 @@ One of the common examples of using these frameworks is a chat room:  it has all
 <h2>Building the client</h2>
 The client of SignalRMap includes a Bing map, and some JavaScript to interact with the back end.  I used <a href="http://www.asp.net/mvc/mvc3" target="_blank">ASP.NET MVC 3</a> for this example, but this will work just fine with a web form.  To start, we need to include a few script files:
 
-[code language="html"]
+<pre><code class="language-html">
 &lt;script charset=&quot;UTF-8&quot; type=&quot;text/javascript&quot; src=&quot;http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;@Url.Content(&quot;~/Scripts/jquery-1.6.4.min.js&quot;)&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;@Url.Content(&quot;~/Scripts/jquery.signalR.min.js&quot;)&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;@Url.Content(&quot;~/signalr/hubs&quot;)&quot;&gt;&lt;/script&gt;
-[/code]
+</code></pre>
 
 The first thing we are including here is the Bing Maps JavaScript SDK - this will do all of the heavy lifting for our maps.  The SignalR client is dependent upon JavaScript, so we need to include it along with our SignalR reference.  Finally, we include the 'hubs' functionality into our application, linking our client and server side methods.
 
 After including our scripts, connecting to a hub is crazy awesome easy:
 
-[code language="javascript"]
+<pre><code class="language-javascript">
 // create the connection to our hub
 var mapHub = $.connection.mapHub;
 
@@ -170,14 +170,14 @@ $.connection.hub.start(function () {
 		mapHub.join(message);
 	});
 });
-[/code]
+</code></pre>
 
 There are a few things going on here.  First, we reference our connection to the hub created on the server (note: the connection has not been established yet).  Notice the mapHub.addClient method - this method will be exposed in a way such that it can be invoked from the server.  *scratches head* - this is a neat concept.  After defining methods which can be invoked from the server, we start the connection to the hub.  Once the connection is established, we get the browser's current location, and send that location back to the server. That's about it.  Remember how simple it was to use socket.io?  Here we have the same experience.    There's a little more client script here to handle managing the map component.  For the full client source for the application, check out my <a href="https://github.com/JustinBeckwith/SignalRMap" target="_blank">github</a>.
 
 <h2>Server side code</h2>
 As mentioned above, I chose to take the 'hubs' route for my application.  One of the nice things about using a hub is that it doesn't require any custom routing - just create a class that extends 'Hub', and you're set.  In this example, I'm storing a persistent list of the clients connected to the application (obviously, this method will only work with a single web server).  As users show up at the site, they send their current position to the server.  The new MapClient is broadcasted to all of the connected clients, and the new client is given the master list of clients:
 
-[code language="csharp"]
+<pre><code class="language-csharp">
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -220,7 +220,7 @@ namespace SignalRMap
 		}
 	}
 }
-[/code]
+</code></pre>
 
 And that's it!  SignalR figured out what types of communication my browser supports, managed the tunnel, and just made the connection work.  Enjoy!
 

@@ -45,7 +45,7 @@ meta:
     width="48px" height="48px" alt="Twitter" title="Twitter" /></a></li></ul>
   st_cached_time: '1293589028'
 ---
-<img src="http://jbeckwith.com/wp-content/uploads/2010/12/featured.png" alt="" title="featured" width="430" height="290" class="alignnone size-full wp-image-153" />
+<img src="/images/2010/12/featured.png" alt="" title="featured" width="430" height="290" class="alignnone size-full wp-image-153" />
 
 Over this holiday break I had the interesting opportunity to write a bookmarklet for a friend who runs a comic based website.   Instead of just manipulating the currently loaded page, the bookmarklet needed to send a list of images to another site.  Often when writing <a title="Wikipedia - Bookmarklets" href="http://en.wikipedia.org/wiki/Bookmarklet" target="_blank">bookmarklets</a>, we tend to only think of loading our code in the context of a HTML content page.  How often do you test your bookmarklets when the browser is viewing an image?  In this article I am going to go through the code I used to bootstrap my bookmarklet script, and discuss some of the interesting challenges I experienced along the way.
 
@@ -62,7 +62,7 @@ Another thing to keep in mind when you're building your bookmarklet is how the s
 <h3><span style="text-decoration: underline;">The bootstrap code</span></h3>
 For the purposes of this bookmarklet, I needed to write a piece of code that would interact with a standard HTML page and it's images, or interact with a page that was a single loaded image. For that reason, the first thing we need to do is determine what type of page we're dealing with.  If the page is HTML, we can insert a script.  If the page is an image, we need to behave differently.  While I found that Firefox and WebKit both generated a HTML container to render image pages, their behavior surrounding script events of these pages were too inconsistent to be depended upon.
 
-<img src="http://jbeckwith.com/wp-content/uploads/2010/12/firebug.png" alt="" title="Image url firebug output" width="501" height="635" class="alignnone size-full wp-image-155" />
+<img src="/images/2010/12/firebug.png" alt="" title="Image url firebug output" width="501" height="635" class="alignnone size-full wp-image-155" />
 
 Here is a formatted example of what my a href tag JavaScript looks like:
 
@@ -87,7 +87,7 @@ javascript:(function() {
 			main();
 		}
 	})();
-[/code]
+</code></pre>
 
 After tidying up our script, and adding the surrounding tag, here is a final rendered output of our code, I came up with the following:
 
@@ -96,12 +96,12 @@ After tidying up our script, and adding the surrounding tag, here is a final ren
     &lt;a&gt; tag example
 --&gt;
 &lt;a href=&quot;javascript:(function(){if((document.contentType&amp;&amp;document.contentType.indexOf('image/')&gt;-1)||/.png$/.test(location.href)||/.jpg$/.test(location.href)||/.jpeg$/.test(location.href)||/.gif$/.test(location.href)){location.href='http://jbeckwith.com/bookmarklet/';}else if(!window.main){document.body.appendChild(document.createElement('script')).src='http://jbeckwith.com/my-bookmarklet.js';}else{main();}})();&quot;&gt;It's a bookmarklet!&lt;/a&gt;
-[/code]
+</code></pre>
 
 <h3><span style="text-decoration: underline;">Loading jQuery and jQueryUI</span></h3>
 Now that the bootstrapper is created, I am going to focus the rest of the article on the external JavaScript file that contains the meat of the code.  With the script I wrote, I needed to use a good deal of visual effects.  I am already comfortable with <a href="http://jquery.com/" target="_blank">JQuery</a>, so I chose to use it as my JavaScript framework:
 
-[code language="javascript"]
+<pre><code class="language-javascript">
 //
 // create javascript libraries required for main
 //
@@ -122,13 +122,13 @@ else {
 	getDependencies();
 } // end else
 
-[/code]
+</code></pre>
 
 If you look at the example in the Smashing Magazine article, you will notice a couple of differences.  We need to add an event for onreadystatechange to handle Internet Explorer.  I found that IE inconsistently set the readyState of the script object to 'loaded' or 'complete' in various parts of the DOM, so as a rule I check for both.  If you don't make this change, IE will never notify the script that jQuery is finished loading.  
 
 Secondly, I have added the getDependencies() method to manage loading required scripts (in addition to jQuery).  Since I am depending heavily on a few jQuery UI components, I needed to load both an external JavaScript file and an external CSS file:
 
-[code language="javascript"]
+<pre><code class="language-javascript">
 //
 // getDependencies
 //
@@ -161,14 +161,14 @@ function getDependencies() {
 	} // end else
 } // end getDependencies function
 
-[/code]
+</code></pre>
 
 In this case, I'm really only waiting on jQuery and jQuery UI to load.  If there were more dependent scripts, I would likely create an array of scripts that need to be loaded, and check all of their completion every turn through the getDepenencies method.  
 
 <h3><span style="text-decoration: underline;">Embedding Styles</span></h3>
 With the supporting code written, we're now ready to work on our main method.  This is where bookmarklets really are different based on your task.  In my case, I'm creating a visual element on the page, complete with styles to match the target site.  This works pretty much as expected, with a single caveat:  any style definitions you create must be at the very bottom of your appended script.  Internet Explorer has a nasty habit of inconsistently handling styles and scripts when appended to the DOM.  For some reason beyond my understanding, appended style definitions, whether via script or ajax calls, only work if they are at the very bottom of the appended code.  This is fantastically fun to figure out on your own, so hopefully I've saved you some trouble.
 
-[code language="javascript"]
+<pre><code class="language-javascript">
 //
 // main
 //
@@ -206,14 +206,14 @@ function main() {
 								.dragHelper {z-index: 99999; border: 1px solid #000000;}\
 							&lt;/style&gt;&quot;;
 		$(&quot;body&quot;).append(barHtml);
-[/code]
+</code></pre>
 
 This code simply creates a formatted div and adds it to the top of the page.  
 
 <h3><span style="text-decoration: underline;">Cleaning up the mess</span></h3>
 If you look at the generated HTML above, you'll notice that I include a cancel link.  I like to give the user the option to cancel out of using the current bookmarklet, and even relaunch the bookmarklet without issue.  So when you're done, make sure to test closing and re-launching the code.  I suggest keeping all of your elements on the page, and simply hiding them from the user:
 
-[code language="javascript"]
+<pre><code class="language-javascript">
 		//
 		// myBar close evnet
 		//
@@ -230,6 +230,6 @@ If you look at the generated HTML above, you'll notice that I include a cancel l
 			// reset the text
 			$(&quot;#myBar-text&quot;).html(&quot;drag images to the mybar&quot;);
 		});
-[/code]
+</code></pre>
 
 And for now, that's it.  For the source to this project, visit my <a href="https://github.com/JustinBeckwith/Chogger-Bookmarklet" target="_blank">GitHub</a>.
