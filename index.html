@@ -1,14 +1,18 @@
 ---
 layout: default
-title: I like toast a lot
+title: 53 Bytes
 ---
 
-<div id="home">
-	yeah is this gonna work?
-  <h1>Blog Posts</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
-</div>
+{% for post in site.posts limit 5 %}
+	<div>
+		<h2><a href="{{ post.url }}">{{post.title}}</a></h2>
+		{% include post-details.html %}
+
+		<div>
+		{{ post.excerpt }}
+		</div>
+
+		{% include post-comments.html %}
+	</div>
+	<div class="hrbar">&nbsp;</div>
+{% endfor %}

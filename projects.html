@@ -5,7 +5,17 @@ tags: []
 status: publish
 type: page
 published: true
+permalink: /projects/
 ---
+
+<h2>Stuff I made</h2>
 These are projects that I am currently working on, or have worked on in the past.
+
+<ul class="posts">
+	{% for post in site.categories.projects %}
+		<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+	{% endfor %}
+</ul>
+
 
 

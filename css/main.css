@@ -4,34 +4,146 @@
 /*
 /*****************************************************************************/
 
-/* Global Reset */
 * {
-  margin: 0;
-  padding: 0;
+	margin: 0px;
+	padding: 0px;
 }
-
-html, body { height: 100%; }
 
 body {
-  background-color: #FFF;
-  font: 13.34px Helvetica, Arial, sans-serif;
-  font-size: small;
-  text-align: center;
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background: url('/images/bk_body.jpg');
+	overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-size: 100%; }
 
-h1 { margin-bottom: 1em; }
-p { margin: 1em 0; }
+h1 {
+	text-transform: uppercase;
+}
 
-a         { color: #00a; }
-a:hover   { color: #000; }
-a:visited { color: #a0a; }
+h2 a {
+	color: #333;
+}
 
-table {
-  font-size: inherit;
-  font: 100%;
+h2 a:hover {
+	text-decoration: none;
+}
+
+h2 {
+	text-transform: uppercase;
+}
+
+h3 {
+	margin-top: 40px;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+}
+
+h4 {
+	text-transform: uppercase;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+h5 {
+	text-transform: uppercase;
+}
+
+
+.hrbar {
+	background: url('/images/bk_dotted_big.png') repeat-x center;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+
+
+
+.navbar {
+	box-shadow: 0px 10px 5px -6px #333;
+	margin-left: -10px;
+	margin-right: -10px;
+	background-color: #1b1b1b;
+}
+
+.nav :hover {
+	color: #CCC;
+	background-color: #3FAEA5;
+	box-shadow: 0px 4px 2px 0px #3FAEA5;
+}
+
+.navbar-inverse .nav>li>a {
+	text-transform: uppercase;
+	color: #3FAEA5;
+}
+
+.navbar-inner {
+	border-radius: 0px;
+	border: none;
+	max-width: 1080px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.logo {
+	background: url('/images/bk_dotted_big.png') 0 100% repeat-x;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+.logo-inner {
+	max-width: 1060px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.logo img {
+	float: left;
+}
+
+.logo ul {
+	float: right;
+	list-style-type: none;
+	padding-right: 20px;
+	padding-top: 20px;
+}
+
+.logo ul li {
+	float:right;
+}
+
+.logo ul li a {
+	display: block;
+	width: 50px;
+	height: 50px;
+}
+
+.logo ul li a.twitter {
+	background: url('/images/ico_social_twitter.png') 0 0 no-repeat;
+	padding-right: 10px;
+}
+
+.logo ul li a.rss {
+	background: url('/images/ico_social_rss.png') 0 0 no-repeat;
+}
+
+.logo ul li a.rss:hover, .logo ul li a.twitter:hover {
+	background-position: 0 -49px;
+}
+
+
+/*****************************************************************************/
+/*
+/* archive
+/*
+/*****************************************************************************/
+
+.dot {
+	background: url('/images/bk_dotted_big.png') no-repeat center center;
+}
+
+.categories span:last-child {
+	display: none;
+	border: 1px solid lime;
 }
 
 /*****************************************************************************/
@@ -39,19 +151,34 @@ table {
 /* Home
 /*
 /*****************************************************************************/
+
+#content {
+	clear: both;
+	background-color: #F7F9F9;
+	border: 8px solid #EEF2F2;
+	padding: 20px;
+	max-width: 1000px;
+}
+
+#content img {
+	display: block;
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+
 ul.posts {
-  list-style-type: none;
-  margin-bottom: 2em;
+	list-style-type: none;
+	margin-bottom: 2em;
 }
 
 ul.posts li {
-  line-height: 1.75em;
+	line-height: 1.75em;
 }
 
 ul.posts span {
-  color: #aaa;
-  font-family: Monaco, "Courier New", monospace;
-  font-size: 80%;
+	color: #aaa;
+	font-family: Monaco, "Courier New", monospace;
+	font-size: 80%;
 }
 
 /*****************************************************************************/
@@ -61,69 +188,69 @@ ul.posts span {
 /*****************************************************************************/
 
 .site {
-  font-size: 115%;
-  text-align: justify;
-  width: 42em;
-  margin: 3em auto 2em;
-  line-height: 1.5em;
+	font-size: 115%;
+	text-align: justify;
+	width: 42em;
+	margin: 3em auto 2em;
+	line-height: 1.5em;
 }
 
 .site .header a {
-  font-weight: bold;
-  text-decoration: none;
+	font-weight: bold;
+	text-decoration: none;
 }
 
 .site .header h1.title {
-  display: inline-block;
-  margin-bottom: 2em;
+	display: inline-block;
+	margin-bottom: 2em;
 }
 
 .site .header h1.title a {
-  color: #a00;
+	color: #a00;
 }
 
 .site .header h1.title a:hover {
-  color: #000;
+	color: #000;
 }
 
 .site .header a.extra {
-  color: #aaa;
-  margin-left: 1em;
+	color: #aaa;
+	margin-left: 1em;
 }
 
 .site .header a.extra:hover {
-  color: #000;
+	color: #000;
 }
 
 .site .meta {
-  color: #aaa;
+	color: #aaa;
 }
 
 .site .footer {
-  font-size: 80%;
-  color: #666;
-  border-top: 4px solid #eee;
-  margin-top: 2em;
-  overflow: hidden;
+	font-size: 80%;
+	color: #666;
+	border-top: 4px solid #eee;
+	margin-top: 2em;
+	overflow: hidden;
 }
 
 .site .footer .contact {
-  float: left;
-  margin-right: 3em;
+	float: left;
+	margin-right: 3em;
 }
 
 .site .footer .contact a {
-  color: #8085C1;
+	color: #8085C1;
 }
 
 .site .footer .rss {
-  margin-top: 1.1em;
-  margin-right: -.2em;
-  float: right;
+	margin-top: 1.1em;
+	margin-right: -.2em;
+	float: right;
 }
 
 .site .footer .rss img {
-  border: 0;
+	border: 0;
 }
 
 /*****************************************************************************/
@@ -132,34 +259,32 @@ ul.posts span {
 /*
 /*****************************************************************************/
 
-/* standard */
-/*.post pre {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .4em;
-}*/
+
+
+
+.meta {
+	text-transform: uppercase;
+	color: #666;
+	background: url('/images/bk_dotted_big.png') repeat-x;
+	padding-bottom: 10px;
+}
+
+.posted-under ul {
+	list-style-type: none;
+}
+
+.posted-under ul li {
+	float: left;
+}
+
+.post-details span:after {
+	content: ' • ';
+}
+
+.post-details span:last-child:after {
+	content: '';
+}
 
 .post ul, .post ol {
-  margin-left: 1.35em;
-}
-
-/*.post code {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .2em;
-}
-
-.post pre code {
-  border: none;
-}*/
-
-/* terminal */
-.post pre.terminal {
-  border: 1px solid #000;
-  background-color: #333;
-  color: #FFF;
-}
-
-.post pre.terminal code {
-  background-color: #333;
+	margin-left: 1.35em;
 }

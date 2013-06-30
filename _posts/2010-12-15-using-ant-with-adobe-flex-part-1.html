@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Using Ant with Adobe Flex - Part 1
+category: flex
 tags:
 - Adobe Flex
 - Ant
@@ -12,46 +13,12 @@ tags:
 status: publish
 type: post
 published: true
-meta:
-  other-menu-title: ''
-  _edit_last: '1'
-  _edit_lock: '1295374868'
-  image: ''
-  seo_follow: 'false'
-  _thumbnail_id: '102'
-  st_tiny_url: "http://bit.ly/gLwHbM\r\n"
-  st_tweetmeme: s:42:"a:2:{s:7:"tm_link";N;s:9:"url_count";i:0;}";
-  st_reddit: s:69:"a:3:{s:9:"permalink";s:0:"";s:5:"score";i:0;s:12:"num_comments";i:0;}";
-  st_social_score: '0'
-  st_last_socialized: '1372194999'
-  _wp_old_slug: ''
-  st_cached: <ul class="socialize-this"><li><a href="http://www.reddit.com/submit?url=http%3A%2F%2Fjbeckwith.com%2F2010%2F12%2F15%2Fusing-ant-with-adobe-flex-part-1%2F&title=Using+Ant+with+Adobe+Flex+-+Part+1"
-    target="_blank"><img src="http://jbeckwith.com/wp-content/plugins/socialize-this/widgets/alteredicons/reddit.png"
-    width="48px" height="48px" alt="Reddit" title="Reddit" /></a></li><li><a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fjbeckwith.com%2F2010%2F12%2F15%2Fusing-ant-with-adobe-flex-part-1%2F&t=Using+Ant+with+Adobe+Flex+-+Part+1"
-    target="_blank"><img src="http://jbeckwith.com/wp-content/plugins/socialize-this/widgets/alteredicons/facebook.png"
-    width="48px" height="48px" alt="Facebook" title="Facebook" /></a></li><li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fjbeckwith.com%2F2010%2F12%2F15%2Fusing-ant-with-adobe-flex-part-1%2F&title=Using+Ant+with+Adobe+Flex+-+Part+1&summary=Using+Ant+with+Adobe+Flex+-+Part+1&source=Blog"><img
-    src="http://jbeckwith.com/wp-content/plugins/socialize-this/widgets/alteredicons/linkedin.png"
-    width="48px" height="48px" alt="LinkedIn" title="LinkedIn" /></a></li><li><a href="http://del.icio.us/submit?url=http%3A%2F%2Fjbeckwith.com%2F2010%2F12%2F15%2Fusing-ant-with-adobe-flex-part-1%2F&title=Using+Ant+with+Adobe+Flex+-+Part+1"
-    target="_blank"><img src="http://jbeckwith.com/wp-content/plugins/socialize-this/widgets/alteredicons/del.png"
-    width="48px" height="48px" alt="Delicious" title="Delicious" /></a></li><li><a
-    href="http://digg.com/submit?phase=2&url=http%3A%2F%2Fjbeckwith.com%2F2010%2F12%2F15%2Fusing-ant-with-adobe-flex-part-1%2F"
-    target="_blank"><img src="http://jbeckwith.com/wp-content/plugins/socialize-this/widgets/alteredicons/digg.png"
-    width="48px" height="48px" alt="Digg" title="Digg" /></a></li><li><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fjbeckwith.com%2F2010%2F12%2F15%2Fusing-ant-with-adobe-flex-part-1%2F&title=Using+Ant+with+Adobe+Flex+-+Part+1"
-    target="_blank"><img src="http://jbeckwith.com/wp-content/plugins/socialize-this/widgets/alteredicons/stumble.png"
-    width="48px" height="48px" alt="StumbleUpon" title="StumbleUpon" /></a></li><li><a
-    href="http://twitter.com/home?status=Currently Reading http%3A%2F%2Fbit.ly%2FgLwHbM%0D%0A"  target="_blank"><img
-    src="http://jbeckwith.com/wp-content/plugins/socialize-this/widgets/alteredicons/twitter.png"
-    width="48px" height="48px" alt="Twitter" title="Twitter" /></a></li></ul>
-  st_cached_time: '1293624412'
-  _aioseop_title: Using Ant with Adobe Flex - Part 1
-  _aioseop_description: This article reviews the steps needed to build Adobe Flex
-    projects using The Apache Ant Project.  The first part in this series revews system
-    configuration.
-  _aioseop_keywords: Adobe Flex, Adobe, Flex, Ant, Automated Builds
 ---
-<a href="/images/2010/12/build-screenshot1.png"><img class="alignnone size-full wp-image-102" title="build-screenshot" src="/images/2010/12/build-screenshot1.png" alt="" width="430" height="290" /></a>
+<a href="/images/2010/12/build-screenshot1.png"><img title="build-screenshot" src="/images/2010/12/build-screenshot1.png" alt="" width="430" height="290" /></a>
 
 Welcome to the first part in a multi-part series on building <a title="Adobe Flex" href="http://www.adobe.com/devnet/flex.html" target="_blank">Adobe Flex</a> projects using <a title="The Apache Ant Project" href="http://ant.apache.org/" target="_blank">The Apache Ant Project</a>.
+
+
 
 So why would we want to use ant to build our flex projects?  Flash Builder does a great job of building our actionscript and mxml.  But it does not do a great job of integrating into our existing automated build frameworks.  For those of us who have been writing Java in an enterprise environment, Ant is common knowledge.  If you've spent any time working with the Microsoft .NET platform, you may have been exposed to <a title="NAnt" href="http://nant.sourceforge.net/" target="_blank">NAnt</a> or <a title="MSBuild" href="http://msdn.microsoft.com/en-us/library/0k6kkbsd.aspx" target="_blank">MSBuild</a>.  The idea is that we need to have a reliable, repeatable build process that can execute outside of the context of our development environment.  For my team, this means an independent build server (in my case, a virtual machine).  An independent build server means nightly builds, and software that can run without the user at the keys.
 
