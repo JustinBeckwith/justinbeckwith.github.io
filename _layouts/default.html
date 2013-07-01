@@ -23,8 +23,8 @@
 							<div class="nav-collapse collapse">
 								<ul class="nav">
 									<li><a href="/">Blog</a></li>
-									<li><a href="/projects/">Projects</a></li>
 									<li><a href="/about/">About</a></li>
+									<li><a href="http://github.com/JustinBeckwith/">Code</a></li>
 									<li><a href="http://twitter.com/JustinBeckwith">Twitter</a></li>
 									<li><a href="hhttp://www.linkedin.com/in/beckwith">LinkedIn</a></li>
 								</ul>
@@ -35,7 +35,9 @@
 				
 				<div class="logo">
 					<div class="logo-inner">
-						<img src="/images/header.png" alt="Justin Beckwith // 53 Bytes">
+						<a href="/">
+							<img src="/images/header.png" alt="Justin Beckwith // 53 Bytes">
+						</a>
 						<ul>
 							<li><a href="/feed/" title="RSS" class="rss"></a></li>
 							<li><a href="http://www.twitter.com/justinbeckwith" class="twitter" title="Follow Us on Twitter!"></a></li>
@@ -43,11 +45,7 @@
 						<div style="clear:both"></div>
 					</div>	
 				</div>
-
-				
-				<div id="content" class="container">
-					{{ content }}
-				</div>
+				{{ content }}
 				<script src="/libs/jquery/jquery-2.0.2.min.js"></script>  
 				<script src="/libs/prism/prism.js"></script>
 				<script src="/libs/prism/prism.cs.js"></script>

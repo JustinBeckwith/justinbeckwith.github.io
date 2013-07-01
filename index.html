@@ -3,16 +3,37 @@ layout: default
 title: 53 Bytes
 ---
 
-{% for post in site.posts limit 5 %}
-	<div>
-		<h2><a href="{{ post.url }}">{{post.title}}</a></h2>
-		{% include post-details.html %}
-
-		<div>
-		{{ post.excerpt }}
-		</div>
-
-		{% include post-comments.html %}
+<div class="container" id="main-content">
+	<div id="featured-posts">
+		{% for post in site.tags.featured limit:2 %}
+			<div class="item ">
+				<h4><a href="{{post.url}}" title="{{post.title}}">{{post.title}}</a></h4>
+				<div class="featured-content">
+					<a href="{{post.url}}" title="{{post.title}}">
+						<img src="{{post.featuredImage}}" alt="{{post.title}}">
+					</a>
+					<p>{{post.excerpt}}</p>
+					<a href="{{post.url}}" class="read-more">Read More</a>
+				</div>
+			</div>
+		{% endfor %}
 	</div>
+
+	<div style="clear:both"></div>
 	<div class="hrbar">&nbsp;</div>
-{% endfor %}
+
+	{% assign fps=0 %}
+	{% for post in site.posts %}
+		{% if post.tags contains "featured" and fps < 2 %}
+			{% assign fps=fps|plus:1 %}
+		{% else %}
+			<div class="excerpt">
+				<h4><a href="{{ post.url }}">{{post.title}}</a></h4>
+				{% include post-details.html %}
+				<div class="hrbar">&nbsp;</div>
+				{{ post.excerpt }}
+				<a href="{{post.url}}" class="read-more">Read More</a>
+			</div>
+		{% endif %}
+	{% endfor %}
+</div>
