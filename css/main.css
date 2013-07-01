@@ -48,6 +48,24 @@ h5 {
 	text-transform: uppercase;
 }
 
+footer {
+	background-color: #333;
+	color: #F7F9F9;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-bottom: 50px;
+}
+
+footer a {
+	text-decoration: none;
+	color: #F7F9F9;
+}
+
+footer a:hover {
+	color: #3FAEA5;
+}
+
 
 .hrbar {
 	background: url('/images/bk_dotted_big.png') repeat-x center;
@@ -402,3 +420,4 @@ ul.posts span {
 .post ul, .post ol {
 	margin-left: 1.35em;
 }
+
