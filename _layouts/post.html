@@ -1,18 +1,24 @@
 ---
-layout: page
+layout: default
 ---
 
-<h2>
-	{{ page.title }}
-</h2>
+<div id="content" class="container">
 
-{% assign post=page %}
-<div class="hrbar">&nbsp;</div>
-{% include post-details.html %}
-<div class="hrbar">&nbsp;</div>
+	<h2>
+		{{ page.title }}
+	</h2>
 
-<div class="post">
-	{{ content }}
+	{% assign post=page %}
+	<div class="hrbar">&nbsp;</div>
+	{% include post-details.html %}
+	<div class="hrbar">&nbsp;</div>
+
+	<div class="post">
+		{{ content }}
+	</div>
+
 </div>
 
-{% include post-comments.html %}
+<div class="container" id="main-content">
+	{% include post-comments.html %}
+</div>
