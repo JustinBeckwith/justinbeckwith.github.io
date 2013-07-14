@@ -491,3 +491,17 @@ ul.posts span {
 	margin-left: 1.35em;
 }
 
+.social {
+	margin-bottom: 10px;
+}
+
+.social > div {
+	float:left;
+	vertical-align: middle;
+	width: 100px;	
+}
+
+#content .social img {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
