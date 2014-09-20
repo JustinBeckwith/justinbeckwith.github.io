@@ -1,6 +1,6 @@
-name: Justin Beckwith's 53 Bytes 
+name: Justin Beckwith's 53 Bytes
 description: Just another technology blog.
 url: http://jbeckwith.com
-pygments: true
+highlighter: null
 permalink: /:year/:month/:day/:title/
 excerpt_separator: "\r\n\r\n\r\n"
