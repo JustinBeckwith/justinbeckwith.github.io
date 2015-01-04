@@ -219,7 +219,7 @@ C# supports both static and dynamic typing, but generally trends towards a stati
 
 There's more great stuff coming in [C# 6.0](http://msdn.microsoft.com/en-us/magazine/dn802602.aspx). 
 
-With Go - I found most language features to be... well... missing. It's a really basic language - you get interfaces (not the way we know them), maps, slices, arrays, and some primitives. It's very minimal - and this is by designed. I was surprised when I started using go and found a few things missing (in no order):
+With Go - I found most language features to be... well... missing. It's a really basic language - you get interfaces (not the way we know them), maps, slices, arrays, and some primitives. It's very minimal - and this is by design. I was surprised when I started using go and found a few things missing (in no order):
 
 - Generics
 - Exception handling
@@ -229,7 +229,7 @@ With Go - I found most language features to be... well... missing. It's a really
 - Implementing an interface explicitly
 - foreach, while, yield, etc
 
-To understand why Go doesn't have these features - you have to understand the roots of the language. Rob Pike (the designer of Go) really explains the problems they were trying to solve, and the design decisions of the language well in his post ["Less is exponentially more"](http://commandcenter.blogspot.com/2012/06/less-is-exponentially-more.html). The idea is to provide a set of base primitive constructs: only the ones that are absolutely required. 
+To understand why Go doesn't have these features - you have to understand the roots of the language. Rob Pike (one of the designers of Go) really explains the problems they were trying to solve, and the design decisions of the language well in his post ["Less is exponentially more"](http://commandcenter.blogspot.com/2012/06/less-is-exponentially-more.html). The idea is to provide a set of base primitive constructs: only the ones that are absolutely required. 
 
 #### Interfaces, methods, and not-classes
 
