@@ -75,7 +75,7 @@ In .NET, we have a `packages.config` that contains a list of dependencies. This 
 
 Go takes a bit of a different approach. The general philosophy of Go seems to trend towards avoiding external dependencies. I've found Blake Mizerany's talk to be pretty standard for sentiment from the community:
 
-<iframe width="560" height="315" src="//www.youtube.com/embed/yi5A3cK1LNA" frameborder="0" allowfullscreen></iframe>
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='http://www.youtube.com/embed/yi5A3cK1LNA' frameborder='0' allowfullscreen></iframe></div>
 
 In Go - there's no equivalent of `packages.config`. It just doesn't exist. Instead - dependency installation is driven from Git/Hg repositories or local paths. The dependency is installed into your go path with the `go get` command:
 
