@@ -19,6 +19,7 @@ webkit-viewport {width:device-width}
 body {
 	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background: url('/images/bk_body.jpg');
+	overflow:hidden;
 }
 
 h1 {
