@@ -1,0 +1,12 @@
+<article>
+	<h1><a href="{{post.url}}">{{ post.title }}</a></h1>
+	{% include post-details.html %}
+	<div class="hrbar">&nbsp;</div>
+	<div class="post">{{ post.content }}</div>
+	<div class="hrbar">&nbsp;</div>
+	<div>
+		<div class="addthis_sharing_toolbox" data-url="{{post.url}}" data-title="{{post.title}}"></div>
+		<div class="comment-count"><a href="{{post.url}}#disqus_thread">[0] comments</a></div>
+	</div>
+	<div class="hrbar">&nbsp;</div>
+</article>

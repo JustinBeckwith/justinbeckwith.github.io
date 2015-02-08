@@ -8,35 +8,31 @@ published: true
 permalink: /archive/
 ---
 
-<div class="container" id="content">
+<div id="home">
+	<h1>The Archive</h1>
+	<div class="hrbar">&nbsp;</div>
 
-	<div id="home">
-		<h1>The Archive</h1>
-		<div class="hrbar">&nbsp;</div>
-
-		<div class="categories">
-			{% for category in site.categories %}
-				<span><a href="#{{ category[0] }}">{{ category[0] }} ({{ category[1].size }})</a></span>
-				<span class="dot">&nbsp;</span>
-			{% endfor %}
-		</div>
-
-		<div class="hrbar">&nbsp;</div>
-
-		<div class="all-posts">
-			{% for category in site.categories %}
-				<div>
-					<a name="{{category[0]}}"></a>
-					<h3>{{ category[0] }}</h3>
-					<ul class="posts">
-						{% for post in category[1] %}
-							<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-						{% endfor %}
-					</ul>
-				</div>
-			{% endfor %}
-		</div>
-		
+	<div class="categories">
+		{% for category in site.categories %}
+			<span><a href="#{{ category[0] }}">{{ category[0] }} ({{ category[1].size }})</a></span>
+			<span class="dot">&nbsp;</span>
+		{% endfor %}
 	</div>
 
+	<div class="hrbar">&nbsp;</div>
+
+	<div class="all-posts">
+		{% for category in site.categories %}
+			<div>
+				<a name="{{category[0]}}"></a>
+				<h3>{{ category[0] }}</h3>
+				<ul class="posts">
+					{% for post in category[1] %}
+						<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endfor %}
+	</div>
+	
 </div>

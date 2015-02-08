@@ -110,7 +110,7 @@ With the new design, we were really going for a 'live tile' feel.  As new websit
 
 I'm sure there are 100 other reasons our dev team could come up with on why we love Knockout.  Especially the ineffable <a href="http://blog.stevensanderson.com/" target="_blank">Steve Sanderson</a>, who joined our dev team to work on the project.  He even gave an awesome talk on the subject at NDC:
 
-<div style="text-align: center">
+<div class='embed-container'>
 <iframe style="margin-left: auto; margin-right: auto" src="//player.vimeo.com/video/97519516" width="100%" height="400" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/97519516">Steve Sanderson - Architecting large Single Page Applications with Knockout.js</a> from <a href="http://vimeo.com/ndcoslo">NDC Conferences</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 </div>
 

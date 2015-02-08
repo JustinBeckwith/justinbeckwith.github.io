@@ -41,6 +41,7 @@ Last week I had the amazing opportunity to give a talk on <a href="http://asp.ne
 
 ### Watch the video
 
-<iframe src="//player.vimeo.com/video/111004374?portrait=0&amp;color=c9ff23" width="750" height="450" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/111004374">Building web applications with ASP.NET</a> from <a href="http://vimeo.com/user4280938">&Oslash;redev Conference</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+<div class='embed-container'><iframe src="//player.vimeo.com/video/111004374?portrait=0&amp;color=c9ff23" width="750" height="450" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
+<p><a href="http://vimeo.com/111004374">Building web applications with ASP.NET</a> from <a href="http://vimeo.com/user4280938">&Oslash;redev Conference</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
 Thanks!
