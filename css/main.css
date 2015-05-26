@@ -109,13 +109,13 @@ nav ul {
 }
 
 nav ul li {
-	display: inline-block;	
+	display: inline-block;
 }
 
 nav ul li a {
-	text-transform: uppercase;	
+	text-transform: uppercase;
 	color: #9C9A05;
-	padding: 10px 17px 10px 17px;		
+	padding: 10px 17px 10px 17px;
 	display: inline-block;
 }
 
@@ -127,7 +127,7 @@ nav ul li a:hover {
 }
 
 .topbar {
-	background-color: rgb(156, 154, 5); 
+	background-color: rgb(156, 154, 5);
 	height: 10px;
 }
 
@@ -151,7 +151,7 @@ nav ul li a:hover {
 	margin-top: 25px;
 	margin-left: 20px;
 	width: 700px;
-	font-family: 'Open Sans', 
+	font-family: 'Open Sans',
 }
 
 .logo-name {
@@ -421,6 +421,10 @@ ul.posts span {
 	margin-left: 1.35em;
 }
 
+.post ol li {
+	margin-left: 20px;
+}
+
 .social {
 	margin-bottom: 10px;
 }
@@ -428,7 +432,7 @@ ul.posts span {
 .social > div {
 	float:left;
 	vertical-align: middle;
-	width: 100px;	
+	width: 100px;
 }
 
 #content .social img {
@@ -437,24 +441,24 @@ ul.posts span {
 }
 
 
-.embed-container { 
-	position: relative; 
-	padding-bottom: 56.25%; 
-	height: 0; 
-	overflow: hidden; 
-	max-width: 650px; 
-	height: auto; 
+.embed-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	height: 0;
+	overflow: hidden;
+	max-width: 650px;
+	height: auto;
 	margin-bottom: 30px;
 	margin-top: 30px;
 	text-align: center;
-} 
+}
 
-.embed-container iframe, .embed-container object, .embed-container embed { 
-	position: absolute; 
-	top: 0; 
-	left: 0; 
-	width: 100%; 
-	height: 100%; 
+.embed-container iframe, .embed-container object, .embed-container embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 
 .addthis_sharing_toolbox {
@@ -473,4 +477,3 @@ pre {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
-

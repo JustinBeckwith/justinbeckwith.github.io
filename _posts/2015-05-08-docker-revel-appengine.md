@@ -12,7 +12,7 @@ category: Google Cloud
 type: post
 published: true
 excerpt: >
-    Revel is an easy to use web application framework for Go.  Recently I wrapped up a Revel app inside of a docker container, and published it to Google AppEngine. 
+    Revel is an easy to use web application framework for Go.  Recently I wrapped up a Revel app inside of a docker container, and published it to Google AppEngine.
 ---
 
 !["Revel running on Google AppEngine with Docker"](/images/2015/docker-revel-appengine/revel.png)
