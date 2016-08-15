@@ -11,6 +11,7 @@ webkit-viewport {width:device-width}
 @viewport {width:device-width}
 
 
+
 * {
 	margin: 0px;
 	padding: 0px;
@@ -477,3 +478,41 @@ pre {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
+article ul {
+  margin-bottom: 40px;
+  
+}
+
+article ul li {
+  margin-left: 20px;
+}
+
+table {
+  background-color: #FFF;
+  border: 1px solid #000;
+  margin-bottom: 20px;
+}
+
+table th, table td {
+  padding: 8px;
+  line-height: 20px;
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid #dddddd;
+}
+
+table th {
+  font-weight: bold;
+  background-color: #CCC;
+}
+
+table thead th {
+  vertical-align: bottom;
+}
+
+table tbody tr:hover > td {
+  background-color: #EEE;
+}
+
+
