@@ -18,8 +18,9 @@ webkit-viewport {width:device-width}
 }
 
 body {
-	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	background-color: #F0F0F0;
+	font-family: Tahoma, Helvetica, Arial, sans-serif;
+	background-color: #F8F8F8;
+  font-size: 12pt;
 }
 
 h1 {
@@ -314,7 +315,7 @@ ul.posts li {
 ul.posts span {
 	color: #aaa;
 	font-family: Monaco, "Courier New", monospace;
-	font-size: 80%;
+	// font-size: 80%;
 }
 
 /*****************************************************************************/
@@ -431,7 +432,7 @@ ul.posts span {
 }
 
 .social > div {
-	float:left;
+	float: left;
 	vertical-align: middle;
 	width: 100px;
 }
