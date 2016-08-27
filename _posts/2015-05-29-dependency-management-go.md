@@ -41,13 +41,11 @@ Having a package management story is awesome.  What's even better is making sure
 
 Similar to the `go get` command, there is an `npm install` command.  It looks like this:
 
-<pre><code class="language-bash">
-npm install --save yelp
+<pre><code class="language-bash">npm install --save yelp
 </code></pre>
 
 The big difference you'll see is `--save`.  This tells NPM to save the dependency, and the version I'm using into the `package.json` for my project:
-<pre><code class="language-javascript">
-{
+<pre><code class="language-javascript">{
   "name": "pollster",
   "version": "2.0.0",
   "private": true,
@@ -165,20 +163,17 @@ Given my big 3 requirements above, I checked out the most popular of the repos a
 
 Run `go get` to install a dependency (nothing new here):
 
-<pre><code class="language-bash">
-go get github.com/JustinBeckwith/go-yelp/yelp
+<pre><code class="language-bash">go get github.com/JustinBeckwith/go-yelp/yelp
 </code></pre>
 
 When you're done installing dependencies, use the `godep save` command.  This will copy all of the referenced code imported into the project from the current $GOPATH into the ./Godeps directory in your project.  Make sure to check this into source control.  
 
-<pre><code class="language-bash">
-godep save
+<pre><code class="language-bash">godep save
 </code></pre>
 
 It also will walk the graph of dependencies and create a ./Godeps/Godeps.json file:
 
-<pre><code class="language-javascript">
-{
+<pre><code class="language-javascript">{
 	"ImportPath": "github.com/JustinBeckwith/coffee",
 	"GoVersion": "go1.4.2",
 	"Deps": [
@@ -195,8 +190,7 @@ It also will walk the graph of dependencies and create a ./Godeps/Godeps.json fi
 
 When it's time to build, use the godep tool instead of the standard go toolchain:
 
-<pre><code class="language-bash">
-godep go build
+<pre><code class="language-bash">godep go build
 </code></pre>
 
 The `$GOPATH` is automatically rewritten to use the local copy of dependencies, ensuring you have isolation for your project.  This approach is great for a few reasons:
