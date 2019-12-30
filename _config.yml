@@ -5,4 +5,4 @@ paginate: 5
 highlighter: null
 permalink: /:year/:month/:day/:title/
 excerpt_separator: "\r\n\r\n\r\n"
-gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
