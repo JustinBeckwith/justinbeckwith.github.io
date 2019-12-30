@@ -15,7 +15,7 @@ type: post
 published: true
 featuredImage: "/images/2013/01/waz-blog3.png"
 excerpt: >
-    <a href="http://wazstagram.azurewebsites.net/">Wazstagram</a> is a fun experiment with node.js on <a href="http://www.windowsazure.com/en-us/develop/nodejs/">Windows Azure</a> and the <a href="http://instagram.com/developer/realtime/">Instagram Realtime API</a>.  The project uses various services in Windows Azure to create a scalable window into Instagram traffic across multiple cities.  The application is written in node.js, using cloud services in Windows Azure.  A scalable set of backend nodes receive messages from the Instagram Realtime API.  Those messages are sent to the front end nodes using <a href="http://msdn.microsoft.com/en-us/library/hh690929.aspx">Windows Azure Service Bus</a>.  The front end nodes are running node.js with <a href="http://expressjs.com/">express</a> and <a href="http://socket.io/">socket.io</a>. 
+    <a href="http://wazstagram.azurewebsites.net/">Wazstagram</a> is a fun experiment with node.js on <a href="http://www.windowsazure.com/en-us/develop/nodejs/">Windows Azure</a> and the <a href="http://instagram.com/developer/realtime/">Instagram Realtime API</a>.  The project uses various services in Windows Azure to create a scalable window into Instagram traffic across multiple cities.  The application is written in node.js, using cloud services in Windows Azure.  A scalable set of backend nodes receive messages from the Instagram Realtime API.  Those messages are sent to the front end nodes using <a href="http://msdn.microsoft.com/en-us/library/hh690929.aspx">Windows Azure Service Bus</a>.  The front end nodes are running node.js with <a href="http://expressjs.com/">express</a> and <a href="http://socket.io/">socket.io</a>.
 ---
 
 
@@ -35,7 +35,7 @@ The code I used to build <a href="https://github.com/JustinBeckwith/wazstagram/"
 
 <h3>How does it work</h3>
 
-<p>The application is written in node.js, using cloud services in Windows Azure.  A scalable set of backend nodes receive messages from the Instagram Realtime API.  Those messages are sent to the front end nodes using <a href="http://msdn.microsoft.com/en-us/library/hh690929.aspx">Windows Azure Service Bus</a>.  The front end nodes are running node.js with <a href="http://expressjs.com/">express</a> and <a href="http://socket.io/">socket.io</a>. 
+<p>The application is written in node.js, using cloud services in Windows Azure.  A scalable set of backend nodes receive messages from the Instagram Realtime API.  Those messages are sent to the front end nodes using <a href="http://msdn.microsoft.com/en-us/library/hh690929.aspx">Windows Azure Service Bus</a>.  The front end nodes are running node.js with <a href="http://expressjs.com/">express</a> and <a href="http://socket.io/">socket.io</a>.
 </p>
 
 <p>
@@ -56,7 +56,7 @@ The code I used to build <a href="https://github.com/JustinBeckwith/wazstagram/"
 
 <h5>Virtual Machines</h5>
 
-<p>The <a href="http://www.windowsazure.com/en-us/home/scenarios/virtual-machines/">Virtual Machine</a> story in Windows Azure is pretty consistent with IaaS offerings in other clouds.  You stand up a VM, you install an OS you like (yes, <a href="http://www.windowsazure.com/en-us/manage/linux/">we support linux</a>), and you take on the management of the host.  This didn&#39;t sound like a lot of fun to me because I can&#39;t be trusted to install patches on my OS, and do other maintainency things.  
+<p>The <a href="http://www.windowsazure.com/en-us/home/scenarios/virtual-machines/">Virtual Machine</a> story in Windows Azure is pretty consistent with IaaS offerings in other clouds.  You stand up a VM, you install an OS you like (yes, <a href="http://www.windowsazure.com/en-us/manage/linux/">we support linux</a>), and you take on the management of the host.  This didn&#39;t sound like a lot of fun to me because I can&#39;t be trusted to install patches on my OS, and do other maintainency things.
 </p>
 
 <h5>Cloud Services</h5>
@@ -70,7 +70,7 @@ The code I used to build <a href="https://github.com/JustinBeckwith/wazstagram/"
 </p>
 
 <ul><li><a href="http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/powershell-cmdlets/">PowerShell Cmdlets</a>: these are great if you&#39;re on Windows and dig the PowerShell thing.
-</li><li><a href="http://www.windowsazure.com/en-us/manage/linux/other-resources/command-line-tools/">X-Platform CLI</a>:  this tool is interesting because it&#39;s written in node, and is available as a node module.  You can actually just <code>npm install -g azure-cli</code> and start using this right away.  It looks awesome, though I wish they had kept the flames that were in the first version. 
+</li><li><a href="http://www.windowsazure.com/en-us/manage/linux/other-resources/command-line-tools/">X-Platform CLI</a>:  this tool is interesting because it&#39;s written in node, and is available as a node module.  You can actually just <code>npm install -g azure-cli</code> and start using this right away.  It looks awesome, though I wish they had kept the flames that were in the first version.
 </li></ul>
 
 <p>
@@ -116,25 +116,25 @@ The code I used to build <a href="https://github.com/JustinBeckwith/wazstagram/"
 
 If you&#39;re going to build a site like this, you are going to need to store a few secrets.  The backend includes things like the Instagram API key, my Windows Azure Storage account key, and my Service Bus keys.  I create a keys.json file to store this, though you could add it to the environment.  I include an example of this file with the project.  **DO NOT CHECK THIS FILE INTO GITHUB!**  Seriously, <a href="https://github.com/blog/1390-secrets-in-the-code" target="_blank">don&#39;t do that</a>.  Also, pay **close attention** to my <a href="https://github.com/JustinBeckwith/wazstagram/blob/master/.gitignore" target="_blank">.gitignore file</a>.  You don&#39;t want to check in any *.cspkg or *.csx files, as they contain archived versions of your site that are generated while running the emulator and deploying.  Those archives contain your keys.json file.  That having been said - nconf does makes it really easy to read stuff from your config:
 
-<pre><code class="language-javascript">
+{% highlight javascript %}
 // read in keys and secrets
 nconf.argv().env().file('keys.json');
 var sbNamespace = nconf.get('AZURE_SERVICEBUS_NAMESPACE');
 var sbKey = nconf.get('AZURE_SERVICEBUS_ACCESS_KEY');
 var stName = nconf.get('AZURE_STORAGE_NAME');
 var stKey = nconf.get('AZURE_STORAGE_KEY');
-</code></pre>
+{% endhighlight %}
 </li>
 
 <li><h5>Use <a href="https://github.com/flatiron/winston">winston</a> and <a href="https://github.com/pofallon/winston-skywriter">winston-skywriter</a> for logging.</h5>
 The cloud presents some challenges at times.  Like *how do I get console output* when something goes wrong.  Every node.js project I start these days, I just use winston from the get go.  It&#39;s awesome because it lets you pick where your console output and logging gets stored.  I like to just pipe the output to console at dev time, and write to <a href="http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/table-services/" target="_blank">Table Storage</a> in production.  Here&#39;s how you set it up:
 
-<pre><code class="language-javascript">
+{% highlight javascript %}
 // set up a single instance of a winston logger, writing to azure table storage
 var logger = new (winston.Logger)({
     transports: [
         new (winston.transports.Console)(),
-        new (winston.transports.Skywriter)({ 
+        new (winston.transports.Skywriter)({
             account: stName,
             key: stKey,
             partition: require('os').hostname() + ':' + process.pid
@@ -143,7 +143,7 @@ var logger = new (winston.Logger)({
 });
 
 logger.info('Started wazstagram backend');
-</code></pre>
+{% endhighlight %}
 </li>
 
 <li><h5>Use <a href="http://msdn.microsoft.com/en-us/library/ee732537.aspx">Service Bus</a> - it&#39;s pub/sub (+) a basket of kittens.</h5>
@@ -156,14 +156,14 @@ logger.info('Started wazstagram backend');
 To get the basic implementation set up, just follow the <a href="http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/service-bus-topics/" target="_blank">Service Bus Node.js guide</a>. The interesting part of my use of Service Bus is the subscription clean up.  Each new front end node that connects to the topic creates it&#39;s own subscription.  As we scale out and add a new front end node, it creates another subscription.  This is a durable object in Service bus that hangs around after the connection from one end goes away (this is a feature).  To make sure sure you don&#39;t leave random subscriptions lying around, you need to do a little cleanup:
 </p>
 
-<pre><code class="language-javascript">
+{% highlight javascript %}
 function cleanUpSubscriptions() {
     logger.info('cleaning up subscriptions...');
     serviceBusService.listSubscriptions(topicName, function (error, subs, response) {
         if (!error) {
             logger.info('found ' + subs.length + ' subscriptions');
             for (var i = 0; i &lt; subs.length; i++) {
-                // if there are more than 100 messages on the subscription, assume the edge node is down 
+                // if there are more than 100 messages on the subscription, assume the edge node is down
                 if (subs[i].MessageCount &gt; 100) {
                     logger.info('deleting subscription ' + subs[i].SubscriptionName);
                     serviceBusService.deleteSubscription(topicName, subs[i].SubscriptionName, function (error, response) {
@@ -171,7 +171,7 @@ function cleanUpSubscriptions() {
                             logger.error('error deleting subscription', error);
                         }
                     });
-                }                
+                }
             }
         } else {
             logger.error('error getting topic subscriptions', error);
@@ -179,12 +179,12 @@ function cleanUpSubscriptions() {
         setTimeout(cleanUpSubscriptions, 60000);
     });
 }
-</code></pre>
+{% endhighlight %}
 </li>
 <li><h5>The <a href="https://github.com/JustinBeckwith/wazstagram/blob/master/backend/routes/home.js">NewImage endpoint</a></h5>
 All of the stuff above is great, but it doesn't cover what happens when the Instagram API actually hits our endpoint.  The route that accepts this request gets metadata for each image, and pushes it through the Service Bus topic:
 
-<pre><code class="language-javascript">
+{% highlight javascript %}
 serviceBusService.sendTopicMessage('wazages', message, function (error) {
 	if (error) {
         logger.error('error sending message to topic!', error);
@@ -192,7 +192,7 @@ serviceBusService.sendTopicMessage('wazages', message, function (error) {
         logger.info('message sent!');
     }
 })
-</code></pre>
+{% endhighlight %}
 </li>
 </ol>
 
@@ -205,7 +205,7 @@ serviceBusService.sendTopicMessage('wazages', message, function (error) {
 <li><h5>Setting up socket.io</h5>
 Socket.io provides the web socket (or xhr) interface that we&#39;re going to use to stream images to the client.  When a user initially visits the page, they are going to send a `setCity` call, that lets us know the city to which they want to subscribe (by default all <a href="https://github.com/JustinBeckwith/wazstagram/blob/master/backend/cities.json" target="_blank">cities in the system</a> are returned).  From there, the user will be sent an initial blast of images that are cached on the server.  Otherwise, you wouldn&#39;t see images right away:
 
-<pre><code class="language-javascript">
+{% highlight javascript %}
 // set up socket.io to establish a new connection with each client
 var io = require('socket.io').listen(server);
 io.sockets.on('connection', function (socket) {
@@ -219,15 +219,15 @@ io.sockets.on('connection', function (socket) {
         socket.join(data.city);
     });
 });
-</code></pre>
+{% endhighlight %}
 
 </li>
 <li><h5>Creating a Service Bus Subscription</h5>
 To receive messages from the worker nodes, we need to create a single subscription for each front end node process.  This is going to create subscription, and start listening for messages:
 
-<pre><code class="language-javascript">
+{% highlight javascript %}
 // create the initial subscription to get events from service bus
-serviceBusService.createSubscription(topicName, subscriptionId, 
+serviceBusService.createSubscription(topicName, subscriptionId,
     function (error) {
         if (error) {
             logger.error('error creating subscription', error);
@@ -236,14 +236,13 @@ serviceBusService.createSubscription(topicName, subscriptionId,
             getFromTheBus();
         }
 });
-</code></pre>
+{% endhighlight %}
 
 </li><li><h5>Moving data between Service Bus and Socket.IO</h5>
 
-As data comes in through the service bus subscription, you need to pipe it up to the appropriate connected clients.  Pay special attention to `io.sockets.in(body.city)` - when the user joined the page, they selected a city.  This call grabs all users subscribed to that city.  The other **important thing to notice** here is the way `getFromTheBus` calls itself in a loop.  There&#39;s currently no way to say &quot;just raise an event when there&#39;s data&quot; with the Service Bus Node.js implementation, so you need to use this model.  
+As data comes in through the service bus subscription, you need to pipe it up to the appropriate connected clients.  Pay special attention to `io.sockets.in(body.city)` - when the user joined the page, they selected a city.  This call grabs all users subscribed to that city.  The other **important thing to notice** here is the way `getFromTheBus` calls itself in a loop.  There&#39;s currently no way to say &quot;just raise an event when there&#39;s data&quot; with the Service Bus Node.js implementation, so you need to use this model.
 
-
-<pre><code class="language-javascript">
+{% highlight javascript %}
 function getFromTheBus() {
     try {
         serviceBusService.receiveSubscriptionMessage(topicName, subscriptionId, { timeoutIntervalInS: 5 }, function (error, message) {
@@ -268,7 +267,7 @@ function getFromTheBus() {
         setTimeout(getFromTheBus, 1000);
     }
 }
-</code></pre>
+{% endhighlight %}
 </li></ol>
 
 <h3>Learning</h3>

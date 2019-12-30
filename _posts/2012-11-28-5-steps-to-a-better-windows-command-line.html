@@ -26,13 +26,13 @@ I spend a lot of time at the command line.  As someone who likes to code on OSX 
 
 
 <h3>1. Use Console2 or ConEmu</h3>
-The first place to start is the actual console application.  Scott Hanselman wrote an <a href="http://www.hanselman.com/blog/Console2ABetterWindowsCommandPrompt.aspx" target="_blank">excellent blog post</a> on setting up <a href="http://sourceforge.net/projects/console/" target="_blank">Console2</a>, and I've been using it ever since.  It adds tabs, a resizable window, transparency, and the ability to run multiple shells.  I choose to run PowerShell (you should too, keep listening).  There are <a href="http://www.hanselman.com/blog/ConEmuTheWindowsTerminalConsolePromptWeveBeenWaitingFor.aspx" target="_blank">other options</a> out there, but I've really grown to love Console2.    
+The first place to start is the actual console application.  Scott Hanselman wrote an <a href="http://www.hanselman.com/blog/Console2ABetterWindowsCommandPrompt.aspx" target="_blank">excellent blog post</a> on setting up <a href="http://sourceforge.net/projects/console/" target="_blank">Console2</a>, and I've been using it ever since.  It adds tabs, a resizable window, transparency, and the ability to run multiple shells.  I choose to run PowerShell (you should too, keep listening).  There are <a href="http://www.hanselman.com/blog/ConEmuTheWindowsTerminalConsolePromptWeveBeenWaitingFor.aspx" target="_blank">other options</a> out there, but I've really grown to love Console2.
 <a href="/images/2012/11/console2.png">
 <img src="/images/2012/11/console2.png" alt="Console2">
 </a>
 
 
-<h3>2. Use PowerShell</h3> 
+<h3>2. Use PowerShell</h3>
 I won't spend a ton of time evangelizing PowerShell.  There are a few good reasons to dump cmd.exe and move over:
 <ul>
 <li><b>Most of the things you do in cmd will just work.</b>  There are obviously some exceptions, but for the better part all of the things I want to do in cmd are easily done in PowerShell. </li>
@@ -48,10 +48,10 @@ Now that I've sold you, there are a few things you'll find through here that mak
 <img src="/images/2012/11/console2-as-administrator.png">
 </a>
 
-Next, use the Set-ExecutionPolicy command.  Note, this means any un-signed script can be run on your system, if you run it, and many people choose to use RemoteSigned.  Here is the <a href="" target="_blank">official doc on Set-ExecutionPolicy</a>.  
-<pre><code class="language-clike">
+Next, use the Set-ExecutionPolicy command.  Note, this means any un-signed script can be run on your system, if you run it, and many people choose to use RemoteSigned.  Here is the <a href="" target="_blank">official doc on Set-ExecutionPolicy</a>.
+{% highlight powershell %}
 Set-ExecutionPolicy Unrestricted
-</code></pre>
+{% endhighlight %}
 
 <a href="/images/2012/11/set-executionpolicy.png">
 <img src="/images/2012/11/set-executionpolicy.png">
@@ -68,14 +68,14 @@ Spending a lot of time in Ubuntu and OSX, I got really used to `sudo apt-get ins
 </a>
 
 To install Chocolatey, just run cmd.exe and run the following command (minus the c:\> part):
-<pre><code class="language-clike">
-C:\&gt; @powershell -NoProfile -ExecutionPolicy unrestricted -Command &quot;iex ((new-object net.webclient).DownloadString('http://bit.ly/psChocInstall'))&quot; &amp;&amp; SET PATH=%PATH%;%systemdrive%\chocolatey\bin
-</code></pre>
+{% highlight powershell %}
+C:\> @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('http://bit.ly/psChocInstall'))" && SET PATH=%PATH%;%systemdrive%\chocolatey\bin
+{% endhighlight %}
 
 And you're ready to rock.  If you want to install something like 7zip, you can use the cinst command:
-<pre><code class="language-clike">
+{% highlight console %}
 cinst 7zip
-</code></pre>
+{% endhighlight %}
 
 <a href="/images/2012/11/7zip-install.png">
 <img src="/images/2012/11/7zip-install.png" alt="install 7zip">
@@ -83,7 +83,7 @@ cinst 7zip
 
 
 <h3>4. Use an alias for SublimeText</h3>
-This seems kind of trivial, but one of the things I've really missed on Windows is the default shortcut to launch <a href="http://www.sublimetext.com/" target="_blank">SublimeText</a>, <a href="http://www.sublimetext.com/docs/2/osx_command_line.html" target="_blank">subl</a>.  I use my PowerShell profile to create an alias to SublimeText.exe, which allows me to `subl file.txt` or `subl .` just like I would from OSX.  <a href="http://www.howtogeek.com/50236/customizing-your-powershell-profile/" target="_blank">This article</a> gives a basic overview on how to customize your PowerShell Profile; it's really easy to follow, so I won't go into re-creating the steps.  
+This seems kind of trivial, but one of the things I've really missed on Windows is the default shortcut to launch <a href="http://www.sublimetext.com/" target="_blank">SublimeText</a>, <a href="http://www.sublimetext.com/docs/2/osx_command_line.html" target="_blank">subl</a>.  I use my PowerShell profile to create an alias to SublimeText.exe, which allows me to `subl file.txt` or `subl .` just like I would from OSX.  <a href="http://www.howtogeek.com/50236/customizing-your-powershell-profile/" target="_blank">This article</a> gives a basic overview on how to customize your PowerShell Profile; it's really easy to follow, so I won't go into re-creating the steps.
 
 <a href="/images/2012/11/create-profile.png">
 <img src="/images/2012/11/create-profile.png">
@@ -91,14 +91,14 @@ This seems kind of trivial, but one of the things I've really missed on Windows 
 
 After you've got your PowerShell profile created, edit the script, and add this line:
 
-<pre><code class="language-clike">
+{% highlight powershell %}
 Set-Alias subl 'C:\Program Files\Sublime Text 2\sublime_text.exe'
-</code></pre>
+{% endhighlight %}
 
 Save your profile, and spin up a new PowerShell tab in Console2 to reload the session.  Go to a directory that contains some code, and try to open it:
-<pre><code class="language-clike">
+{% highlight powershell %}
 subl .
-</code></pre>
+{% endhighlight %}
 
 This will load the current directory as a project in SublimeText from the command line.  Small thing, but a nice thing.
 
@@ -106,11 +106,11 @@ This will load the current directory as a project in SublimeText from the comman
 <h3>5. Use PsGet and Posh-Git</h3>
 One of the nice things about using PowerShell over cmd is the community that's starting to emerge.  There are a ton of really useful tools and cmdlets that others have already written, and the easiest way to get at most of these is to use <a href="http://psget.net/" target="_blank">PsGet</a>.  PsGet provides a super easy way to install PowerShell modules that extend the basic functionality of the shell, and provide other useful libraries.  To install PsGet, run the following command from a PowerShell console:
 
-<pre><code class="language-clike">
+{% highlight powershell %}
 (new-object Net.WebClient).DownloadString(&quot;http://psget.net/GetPsGet.ps1&quot;) | iex
-</code></pre>
+{% endhighlight %}
 
-If you get an error complaining about executing scripts, you need to go back to #2.   Immediately, we can start using the `Install-Module` command to start adding functionality to our console.  
+If you get an error complaining about executing scripts, you need to go back to #2.   Immediately, we can start using the `Install-Module` command to start adding functionality to our console.
 
 <a href="/images/2012/11/psget.png">
 <img src="/images/2012/11/psget.png" alt="Install PsGet">
@@ -130,5 +130,5 @@ The first nice thing here is that I now have command completion.  As I type `git
 
 
 
-<h4>Wrapping up</h4> 
+<h4>Wrapping up</h4>
 These are just the ways I know how to make the command line experience better.  If any one else has some tips, I'd love to hear them!

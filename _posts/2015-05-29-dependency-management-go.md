@@ -14,7 +14,7 @@ excerpt: >
 
 I find dependency management and package managers interesting. Each language has its own package manager, and each one has characteristics that are specific to that community.  NuGet for .NET has great tooling and Visual Studio support, since that's important to the .NET developer audience.  NPM has a super flexible model, and great command line tools.
 
-In a lot of ways, golang is a little [quirky](https://golang.org/doc/faq#Why_doesnt_Go_have_feature_X).  And that's awesome. However - I've really struggled to wrap my head around dependency management in Go.  
+In a lot of ways, golang is a little [quirky](https://golang.org/doc/faq#Why_doesnt_Go_have_feature_X).  And that's awesome. However - I've really struggled to wrap my head around dependency management in Go.
 
 !["Dependency management and golang"](/images/2015/dependency-management-go/package.png)
 
@@ -28,24 +28,26 @@ Given the same source code, I expect to be able to reproduce the same set of bin
 
 #### 2. Isolated environments
 
-I am likely to be working on multiple projects at a time.  Each project may have a requirement on different compilers, and different versions of the same dependency.  At no point should changing a dependency in one project have an effect on the dependencies on a completely separate project.  
+I am likely to be working on multiple projects at a time.  Each project may have a requirement on different compilers, and different versions of the same dependency.  At no point should changing a dependency in one project have an effect on the dependencies on a completely separate project.
 
 #### 3. Consensus
 
-Having a package management story is awesome.  What's even better is making sure everyone uses the same one :)  As long as developers are inventive and curious, there will always be alternatives.  But there needs to be consensus on the community accepted standard on how a package manager will work.  If 5 projects use 5 different models of dependency management, we're all out of luck.  
+Having a package management story is awesome.  What's even better is making sure everyone uses the same one :)  As long as developers are inventive and curious, there will always be alternatives.  But there needs to be consensus on the community accepted standard on how a package manager will work.  If 5 projects use 5 different models of dependency management, we're all out of luck.
 
 
 ## How node.js does it
 
-[As I've talked about before](http://jbeckwith.com/2015/01/04/comparing-go-and-dotnet/), I like to use my experience with other languages as a way to learn about a new language (just like most people I'd assume).  Let's take a look at how NPM for node.js solves these problems.  
+[As I've talked about before](http://jbeckwith.com/2015/01/04/comparing-go-and-dotnet/), I like to use my experience with other languages as a way to learn about a new language (just like most people I'd assume).  Let's take a look at how NPM for node.js solves these problems.
 
 Similar to the `go get` command, there is an `npm install` command.  It looks like this:
 
-<pre><code class="language-bash">npm install --save yelp
-</code></pre>
+{% highlight console %}
+npm install --save yelp
+{% endhighlight %}
 
 The big difference you'll see is `--save`.  This tells NPM to save the dependency, and the version I'm using into the `package.json` for my project:
-<pre><code class="language-javascript">{
+{% highlight json %}
+{
   "name": "pollster",
   "version": "2.0.0",
   "private": true,
@@ -59,15 +61,15 @@ The big difference you'll see is `--save`.  This tells NPM to save the dependenc
     "socket.io": "~0.9.13"
   }
 }
-</code></pre>
+{% endhighlight %}
 
-`package.json` is stored in the top level directory of my app.  It provides my `isolation`.  If I start another project - that means another project.json, another set of dependencies.  The environments are entirely isolated.  The list of dependencies and their versions provides my `repeatability`.  Every time someone clones my repository and runs `npm install`, they will get the same list of dependencies from a centralized source.  The fact that most people use NPM provides my `consensus`.  
+`package.json` is stored in the top level directory of my app.  It provides my `isolation`.  If I start another project - that means another project.json, another set of dependencies.  The environments are entirely isolated.  The list of dependencies and their versions provides my `repeatability`.  Every time someone clones my repository and runs `npm install`, they will get the same list of dependencies from a centralized source.  The fact that most people use NPM provides my `consensus`.
 
-Version pinning is accomplished using [semver](http://semver.org/).  The `~` relaxes the rules on version matching, meaning I'm ok with bringing down a different version of my dependency, as long as it is only a `PATCH` - which means no API breaking changes, only bug fixes.  If you're being super picky (on production stuff I am), you can specify a specific version minus the `~`.  For downstream dependencies (dependencies of your dependencies) you can lock those in as well using [npm-shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap).  On one of my [projects](http://azure.microsoft.com/en-us/marketplace/partners/microsoft/nodejsstartersite/), I got bit by the lack of shrink-wrapping when a misbehaved package author used a wildcard import for a downstream dependency that actually broke us in production.  
+Version pinning is accomplished using [semver](http://semver.org/).  The `~` relaxes the rules on version matching, meaning I'm ok with bringing down a different version of my dependency, as long as it is only a `PATCH` - which means no API breaking changes, only bug fixes.  If you're being super picky (on production stuff I am), you can specify a specific version minus the `~`.  For downstream dependencies (dependencies of your dependencies) you can lock those in as well using [npm-shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap).  On one of my [projects](http://azure.microsoft.com/en-us/marketplace/partners/microsoft/nodejsstartersite/), I got bit by the lack of shrink-wrapping when a misbehaved package author used a wildcard import for a downstream dependency that actually broke us in production.
 
 The typical workflow is to check in your `package.json`, and then .gitignore your `node_modules` directory that contains the actual source code of 3rd party packages.
 
-It's all pretty awesome.  
+It's all pretty awesome.
 
 
 
@@ -75,16 +77,18 @@ It's all pretty awesome.
 
 With the out of the box behavior, Go is less than ideal in repeatability, isolation, and consensus. If you follow the setup guide for golang, you'll find yourself with a single directory where you're supposed to keep all of your code.  Inside of there, you create a /src directory, and a new directory for each project you're going to work on.  When you install a dependency using `go get`, it will essentially drop the source code from that repository into  `$GOPATH/src'.  In your source code, you just tell the compiler where it needs to go to grab the latest sources:
 
-<pre><code class="language-go">import "github.com/JustinBeckwith/go-yelp/yelp"
+{% highlight go %}
+import "github.com/JustinBeckwith/go-yelp/yelp"
 ...
 client := yelp.New(options)
-result, err := client.DoSimpleSearch("coffee", "seattle")</code></pre>
+result, err := client.DoSimpleSearch("coffee", "seattle")
+{% endhighlight %}
 
 So this is *really* bad.  The [go-yelp](https://github.com/JustinBeckwith/go-yelp) library I'm importing from github is pulled down at compile time (if not already available from a `go get` command), and built into my project.  That is pointing to the *master* branch of my github repository.  Who's to say I won't change my API tomorrow, breaking everyone who has imported the library in this way?  As a library author, I'm left with 3 options:
 
   1. Never make breaking changes.
   2. Make a completely new repository on GitHub for a new version of my API that has breaking changes.
-  3. Make breaking changes, and assume / hope developers are using a dependency management tool.  
+  3. Make breaking changes, and assume / hope developers are using a dependency management tool.
 
 Without using an external tool (or one of the methods I'll talk about below), there is no concept of version pinning in go.  You point towards a namespace, and that path is used to find your code during the build.  For most open source projects - the out of the box behavior is broken.
 
@@ -98,7 +102,7 @@ There is currently no agreed upon package manager for Go.  Recently the Go team 
 
 #### Vendoring
 
-At Google, the source code for a dependency is copied into the source tree, and checked into source control.  This provides `repeatability`.  There is never a question on where the source is downloaded from, because it is always available in the source tree. Copying the source from a dependency into your own source is referred to as "vendoring".  
+At Google, the source code for a dependency is copied into the source tree, and checked into source control.  This provides `repeatability`.  There is never a question on where the source is downloaded from, because it is always available in the source tree. Copying the source from a dependency into your own source is referred to as "vendoring".
 
 #### Import rewriting
 
@@ -106,20 +110,24 @@ After you copy the code into your source tree, you need to change your import pa
 
 After copying a library into your tree, instead of this:
 
-<pre><code class="language-go">import "github.com/JustinBeckwith/go-yelp/yelp"
+{% highlight go %}
+import "github.com/JustinBeckwith/go-yelp/yelp"
 ...
-client := yelp.New(options)</code></pre>
+client := yelp.New(options)
+{% endhighlight %}
 
 you would do this:
 
-<pre><code class="language-go">import "yourtree/third_party/github.com/JustinBeckwith/go-yelp/yelp"
+{% highlight go %}
+import "yourtree/third_party/github.com/JustinBeckwith/go-yelp/yelp"
 ...
-client := yelp.New(options)</code></pre>.
+client := yelp.New(options)
+{% endhighlight %}
 
 
 #### GOPATH rewriting
 
-Vendoring and import rewriting provide our repeatable builds.  But what about isolation?  If project (x) relies on go-yelp#v1.0, project (y) should be able to rely on go-yelp#v2.0.  They should be isolated.  If you follow [How to write go code](https://golang.org/doc/code.html), you're led down a path of a single workspace, which is driven by `$GOPATH`. `$GOPATH` is where libraries installed via `go get` will be installed.  It controls where your own binaries are generated.  It's generally the defining variable for the root of your workspace.  If you try to run multiple projects out of the same directory - it completely blows up `isolation`.  If you want to be able to reference different versions of the same dependency, you need to change the $GOPATH variable for each current project.  The act of changing the $GOPATH environment variable when switching projects is "GOPATH rewriting".  
+Vendoring and import rewriting provide our repeatable builds.  But what about isolation?  If project (x) relies on go-yelp#v1.0, project (y) should be able to rely on go-yelp#v2.0.  They should be isolated.  If you follow [How to write go code](https://golang.org/doc/code.html), you're led down a path of a single workspace, which is driven by `$GOPATH`. `$GOPATH` is where libraries installed via `go get` will be installed.  It controls where your own binaries are generated.  It's generally the defining variable for the root of your workspace.  If you try to run multiple projects out of the same directory - it completely blows up `isolation`.  If you want to be able to reference different versions of the same dependency, you need to change the $GOPATH variable for each current project.  The act of changing the $GOPATH environment variable when switching projects is "GOPATH rewriting".
 
 
 ## Package managers & tools
@@ -163,17 +171,20 @@ Given my big 3 requirements above, I checked out the most popular of the repos a
 
 Run `go get` to install a dependency (nothing new here):
 
-<pre><code class="language-bash">go get github.com/JustinBeckwith/go-yelp/yelp
-</code></pre>
+{% highlight console %}
+go get github.com/JustinBeckwith/go-yelp/yelp
+{% endhighlight %}
 
-When you're done installing dependencies, use the `godep save` command.  This will copy all of the referenced code imported into the project from the current $GOPATH into the ./Godeps directory in your project.  Make sure to check this into source control.  
+When you're done installing dependencies, use the `godep save` command.  This will copy all of the referenced code imported into the project from the current $GOPATH into the ./Godeps directory in your project.  Make sure to check this into source control.
 
-<pre><code class="language-bash">godep save
-</code></pre>
+{% highlight console %}
+godep save
+{% endhighlight %}
 
-It also will walk the graph of dependencies and create a ./Godeps/Godeps.json file:
+It also will walk the graph of dependencies and create a `./Godeps/Godeps.json` file:
 
-<pre><code class="language-javascript">{
+{% highlight json %}
+{
 	"ImportPath": "github.com/JustinBeckwith/coffee",
 	"GoVersion": "go1.4.2",
 	"Deps": [
@@ -186,23 +197,24 @@ It also will walk the graph of dependencies and create a ./Godeps/Godeps.json fi
 			"Rev": "a1577bd3870218dc30725a7cf4655e9917e3751b"
 		},
     ....
-</code></pre>
+{% endhighlight %}
 
 When it's time to build, use the godep tool instead of the standard go toolchain:
 
-<pre><code class="language-bash">godep go build
-</code></pre>
+{% highlight console %}
+godep go build
+{% endhighlight %}
 
 The `$GOPATH` is automatically rewritten to use the local copy of dependencies, ensuring you have isolation for your project.  This approach is great for a few reasons:
 
 1. *Repeatable builds* - When someone clones the repository and runs it, everything you need to build is present.  There are no floating versions.
 2. *No external repository needed for dependencies* - with all dependencies checked into the local repository, there's no need to worry about a centralized service.  [NPM](http://blog.npmjs.org/post/76918947811/registry-downtime-2014-02-16) will occasionally go down, as does [NuGet](http://blog.nuget.org/20140403/nuget-2.8.1-april-2nd-downtime.html).
-3. *Isolated environment* - With $GOPATH being rewritten at build time, you have complete isolation from one project to the next.  
-4. *No import rewriting* - A few other tools operate by changing the import url from the origin repository to a rewritten local repository.  This makes installing dependencies a little painful, and makes the import statement somewhat unsightly.  
+3. *Isolated environment* - With $GOPATH being rewritten at build time, you have complete isolation from one project to the next.
+4. *No import rewriting* - A few other tools operate by changing the import url from the origin repository to a rewritten local repository.  This makes installing dependencies a little painful, and makes the import statement somewhat unsightly.
 
 There are a few negatives though as well:
 
-1. Not checking in your dependencies is convenient.  It's a pain to check in thousands of source files I won't really edit.  Without a centralized repository, this is not likely to be solved.  
+1. Not checking in your dependencies is convenient.  It's a pain to check in thousands of source files I won't really edit.  Without a centralized repository, this is not likely to be solved.
 2. You need to use a wrapped toolchain with the `godep` commands.  There is still no real consensus.
 
 For an example of a project that uses godep, check out [coffee](https://github.com/JustinBeckwith/coffee).

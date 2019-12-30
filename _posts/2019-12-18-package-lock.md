@@ -13,8 +13,9 @@ published: true
 
 A few years ago, [npm](https://npmjs.org) introduced the notion of a [`package-lock.json`](https://docs.npmjs.com/files/package-lock.json). The purpose of the file is to provide a manifest that calls out the exact version of every package in your tree, the last time `npm install` was run.  After running `npm install`, you're going to see a message like this:
 
-<pre><code>npm notice created a lockfile as package-lock.json. You should commit this file.
-</code></pre>
+{% highlight console %}
+npm notice created a lockfile as package-lock.json. You should commit this file.
+{% endhighlight %}
 
 While this advice is well intentioned...  it's not always true :) Let's talk about when you want to check this into source control, and when not to.
 
@@ -28,7 +29,7 @@ The mechanics of `package-lock.json` are simple enough:
 
 If you peek inside one of these files, you're going to get a bunch of gobbledygook like this:
 
-<pre><code class="language-js">
+{% highlight json %}
 {
   "name": "@google-cloud/bigtable",
   "version": "2.3.0",
@@ -44,8 +45,7 @@ If you peek inside one of these files, you're going to get a bunch of gobbledygo
         "@babel/highlight": "^7.0.0"
       }
     },
-  ...
-</code></pre>
+{% endhighlight %}
 
 The next time you run `npm install`, you're (likely) going to get the exact copy of dependencies outlined in the `package-lock.json` file.  If you didn't have a lock file, npm would look at every dependency in `package.json`, and find the latest compatible version of every top level and transitive dependency.  Having a lock file saves you from this lookup on every install.
 
@@ -101,8 +101,9 @@ Lock files shine when you're building *user facing applications*. If you're buil
 ## How to ignore the lock file
 The easiest way to opt out of the lock file is to add the following to your `.npmrc` file:
 
-<pre><code>package-lock=false
-</code></pre>
+{% highlight console %}
+package-lock=false
+{% endhighlight %}
 
 There are a few approaches where you can find middle ground. One approach is to keep the lock file for the CI gains, but make sure to delete it as part of your nightly build workflow.  This ensures CI builds are fast and consistent, but also gives you a warning when something goes awry. ([soldair](https://github.com/soldair) likes to call this the "broken every morning" approach).  I personally don't like the concept of nightly builds, but that's a topic for another post.
 

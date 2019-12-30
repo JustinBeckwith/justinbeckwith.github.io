@@ -16,12 +16,12 @@ type: post
 published: true
 featuredImage: "/images/2013/01/waz-blog3.png"
 excerpt: >
-    A few years ago, I put together a fun little app that used node.js, service bus, cloud services, and the Instagram realtime API to build a realtime visualization of images posted to Instagram. In 2 years time, a lot has changed on the Azure platform.  I decided to go back into that code, and retool it to take advantage of some new technology and platform features.  And for fun.   
+    A few years ago, I put together a fun little app that used node.js, service bus, cloud services, and the Instagram realtime API to build a realtime visualization of images posted to Instagram. In 2 years time, a lot has changed on the Azure platform.  I decided to go back into that code, and retool it to take advantage of some new technology and platform features.  And for fun.
 ---
 
 [!["View the demo"](/images/2013/01/waz-screenshot.png)](http://wazstagram.azurewebsites.net)
 
-A few years ago, I put together a [fun little app](http://jbeckwith.com/2013/01/30/building-scalable-realtime-services-with-node-js-socket-io-and-windows-azure/) that used node.js, service bus, cloud services, and the Instagram realtime API to build a realtime visualization of images posted to Instagram. In 2 years time, a lot has changed on the Azure platform.  I decided to go back into that code, and retool it to take advantage of some new technology and platform features.  And for fun.  
+A few years ago, I put together a [fun little app](http://jbeckwith.com/2013/01/30/building-scalable-realtime-services-with-node-js-socket-io-and-windows-azure/) that used node.js, service bus, cloud services, and the Instagram realtime API to build a realtime visualization of images posted to Instagram. In 2 years time, a lot has changed on the Azure platform.  I decided to go back into that code, and retool it to take advantage of some new technology and platform features.  And for fun.
 
 - [Original blog post](http://jbeckwith.com/2013/01/30/building-scalable-realtime-services-with-node-js-socket-io-and-windows-azure/)
 - [View the demo on Azure](http://wazstagram.azurewebsites.net/)
@@ -54,7 +54,9 @@ When you create your site, make sure to turn on websockets:
 
 [io.js](https://iojs.org/) is a fork of [node.js](http://nodejs.org/) that provides a faster release cycle and es6 support.  It's pretty easy to get it running on Azure, thanks to [iojs-azure](https://github.com/felixrieseberg/iojs-azure).  Just to prove I'm running io.js instead of node.js, I added this little bit in my server.js:
 
-<pre><code class="language-javascript">logger.info(`Started wazstagram running on ${process.title} ${process.version}`);</code></pre>
+{% highlight javascript %}
+logger.info(`Started wazstagram running on ${process.title} ${process.version}`);
+{% endhighlight %}
 
 The results:
 
@@ -82,28 +84,31 @@ Note the password I'm using is actually one of the management keys provided in t
 
 I used [node-redis](https://github.com/mranney/node_redis) to talk to the database, both for pub/sub and cache.  First, create a new redis client:
 
-<pre><code class="language-javascript">function createRedisClient() {
+{% highlight javascript %}
+function createRedisClient() {
     return redis.createClient(
         6379,
-        nconf.get('redisHost'), 
+        nconf.get('redisHost'),
         {
-            auth_pass: nconf.get('redisKey'), 
+            auth_pass: nconf.get('redisKey'),
             return_buffers: true
         }
     ).on("error", function (err) {
         logger.error("ERR:REDIS: " + err);
-    });    
+    });
 }
 
 // create redis clients for the publisher and the subscriber
 var redisSubClient = createRedisClient();
-var redisPubClient = createRedisClient();</code></pre>
+var redisPubClient = createRedisClient();
+{% endhighlight %}
 
-**PROTIP**:  Use [nconf](https://github.com/flatiron/nconf) to store secrets in json locally, and read from [app settings](http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/) in Azure. 
+**PROTIP**:  Use [nconf](https://github.com/flatiron/nconf) to store secrets in json locally, and read from [app settings](http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/) in Azure.
 
 When the Instagram API sends a new image, it's published to a channel, and centrally cached:
 
-<pre><code class="language-javascript">logger.verbose('new pic published from: ' + message.city);
+{% highlight javascript %}
+logger.verbose('new pic published from: ' + message.city);
 logger.verbose(message.pic);
 redisPubClient.publish('pics', JSON.stringify(message));
 
@@ -111,17 +116,20 @@ redisPubClient.publish('pics', JSON.stringify(message));
 redisPubClient.lpush(message.city, message.pic);
 redisPubClient.ltrim(message.city, 0, 100);
 redisPubClient.lpush(universe, message.pic);
-redisPubClient.ltrim(universe, 0, 100);</code></pre>
+redisPubClient.ltrim(universe, 0, 100);
+{% endhighlight %}
 
 The centralized cache is great, since I don't need to use up memory in each io.js process used in my site (keep scale out in mind).  Each client also connects to the pub/sub channel, ensuring every instance gets new messages:
 
-<pre><code class="language-javascript">// listen to new images from redis pub/sub
+{% highlight javascript %}
+// listen to new images from redis pub/sub
 redisSubClient.on('message', function(channel, message) {
     logger.verbose('channel: ' + channel + " ; message: " + message);
     var m = JSON.parse(message.toString());
     io.sockets.in (m.city).emit('newPic', m.pic);
     io.sockets.in (universe).emit('newPic', m.pic);
-}).subscribe('pics');</code></pre>
+}).subscribe('pics');
+{% endhighlight %}
 
 After setting up the service, I was using the redis-cli to do a lot of debugging.  There's also some great monitoring/metrics/alerts available in the portal:
 

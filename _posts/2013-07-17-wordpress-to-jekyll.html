@@ -11,7 +11,7 @@ type: post
 published: true
 featuredImage: "/images/posts/wordpress-to-jekyll/jekyll.png"
 excerpt: >
-    Over the last few weeks, I've been slowly moving my blog from Wordpress to <a href="http://jekyllrb.com/" target="_blank">Jekyll.</a>  The change has been a long time coming, and so far I couldn't be happier with the results. I thought it may be interesting to make the ultimate meta post, and write a blog post about my blog. You can take a look at the <a href="https://github.com/JustinBeckwith/justinbeckwith.github.io" target="_blank">source code on GitHub</a>. Jekyll takes a bit of a different approach to serving up a blog. Instead of the traditional model of hosting an active web application with PHP/Ruby/.NET/whatever and a database, you simply post static pages. 
+    Over the last few weeks, I've been slowly moving my blog from Wordpress to <a href="http://jekyllrb.com/" target="_blank">Jekyll.</a>  The change has been a long time coming, and so far I couldn't be happier with the results. I thought it may be interesting to make the ultimate meta post, and write a blog post about my blog. You can take a look at the <a href="https://github.com/JustinBeckwith/justinbeckwith.github.io" target="_blank">source code on GitHub</a>. Jekyll takes a bit of a different approach to serving up a blog. Instead of the traditional model of hosting an active web application with PHP/Ruby/.NET/whatever and a database, you simply post static pages.
 ---
 
 <img src="/images/posts/wordpress-to-jekyll/jekyll.png" alt="jekyll is fun" />
@@ -51,21 +51,22 @@ First, I downloaded my wordpress.xml file from the Wordpress admin:
 
 Next I ran the import tool:
 
-<pre><code class="language-clike">gem install hpricot
+{% highlight console %}
+gem install hpricot
 ruby -rubygems -e 'require "jekyll/jekyll-import/wordpressdotcom";
     JekyllImport::WordpressDotCom.process({ :source => "wordpress.xml" })'
-</code></pre>
+{% endhighlight %}
 
 This downloaded all of my existing posts, and created new posts with metadata in jekyll format (woo!). What it didn't do was download all of my images. To get around that, I just connected with my FTP client and downloaded my images directory into the root of my jekyll site.
 
 <h4>Syntax Highlighting</h4>
 One of the plugins I had installed on my Wordpress site was <a href="http://wordpress.org/plugins/syntaxhighlighter/" target="_blank">SyntaxHighlighter Evolved</a>. Jekyll comes with a built in syntax highlighting sysyntax using Pygments and Liquid:
 
-<pre><code class="language-javascript">{% raw %}{% highlight javascript %}
+{% highlight javascript %}
 var logger = new (winston.Logger)({
     transports: [
         new (winston.transports.Console)(),
-        new (winston.transports.Skywriter)({ 
+        new (winston.transports.Skywriter)({
             account: stName,
             key: stKey,
             partition: require('os').hostname() + ':' + process.pid
@@ -74,14 +75,15 @@ var logger = new (winston.Logger)({
 });
 logger.info('Started wazstagram backend');
 {% endhighlight %}
-{% endraw %}</code></pre>
 
 That's all well and good but - the syntax highlighter wasn't quite as nice as I would like. I also didn't feel the need to lock myself into liquid for something that can be handled on the client. I chose to use <a href="http://prismjs.com/" target="_blank">PrismJS</a>, largely because I've used it in the past with success. Someone even wrote a fancy jekyll plugin to <a href="http://gmurphey.com/2012/08/09/jekyll-plugin-syntax-highlighting-with-prism.html" target="_blank">generate your highlighted markup at compile time</a>, if that's your thing.
 
 <h4>--watch and livereload</h4>
 <p>As I worked on the site, I was making a lot of changes, rebuilding, waiting for the build to finish, and reloading the browser. To make some of this easier, I did a few things. Instead of saving my file, building, and running the server every time, you can just use the built in watch command:</p>
 
-<pre><code class="language-clike">jekyll serve --watch</code></pre>
+{% highlight console %}
+jekyll serve --watch
+{% endhighlight %}
 
 This will run the server, watch for changes, and perform a build anytime something is modified on disk. The other side to this is refreshing the browser automatically. To accomplish that, I used <a href="http://livereload.com/" target="_blank">LiveReload</a> with the Chrome browser plugin:
 
@@ -95,32 +97,34 @@ One of the pieces that isn't baked into jekyll is the construction of an RSS fee
 <h4>Archive by Category</h4>
 One of the pieces I wanted to add was a post archive page.  Building this was relatively straight forward - you create a list of categories used across all of the posts in your site.  Next you render an excerpt for each post:
 
-<pre><code class="language-markup">{% raw %}&lt;div class="container"&gt;
-	&lt;div id="home"&gt;
-		&lt;h1&gt;The Archive&lt;/h1&gt;
-		&lt;div class="hrbar"&gt;&nbsp;&lt;/div&gt;
-		&lt;div class="categories"&gt;
+{% highlight html %}
+<div class="container">
+	<div id="home">
+		<h1>The Archive</h1>
+		<div class="hrbar"> </div>
+		<div class="categories">
 			{% for category in site.categories %}
-				&lt;span&gt;&lt;a href="#{{ category[0] }}"&gt;{{ category[0] }} ({{ category[1].size }})&lt;/a&gt;&lt;/span&gt;
-				&lt;span class="dot"&gt;&nbsp;&lt;/span&gt;
+				<span><a href="#{{ category[0] }}">{{ category[0] }} ({{ category[1].size }})</a></span>
+				<span class="dot"> </span>
 			{% endfor %}
-		&lt;/div&gt;
-		&lt;div class="hrbar"&gt;&nbsp;&lt;/div&gt;
-		&lt;div class="all-posts"&gt;
+		</div>
+		<div class="hrbar"> </div>
+		<div class="all-posts">
 			{% for category in site.categories %}
-				&lt;div&gt;
-					&lt;a name="{{category[0]}}"&gt;&lt;/a&gt;
-					&lt;h3&gt;{{ category[0] }}&lt;/h3&gt;
-					&lt;ul class="posts"&gt;
+				<div>
+					<a name="{{category[0]}}"></a>
+					<h3>{{ category[0] }}</h3>
+					<ul class="posts">
 						{% for post in category[1] %}
-							&lt;li&gt;&lt;span&gt;{{ post.date | date_to_string }}&lt;/span&gt; &raquo; &lt;a href="{{ post.url }}"&gt;{{ post.title }}&lt;/a&gt;&lt;/li&gt;
+							<li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}">{{ post.title }}</a></li>
 						{% endfor %}
-					&lt;/ul&gt;
-				&lt;/div&gt;
+					</ul>
+				</div>
 			{% endfor %}
-		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;{% endraw %}</code></pre>
+		</div>
+	</div>
+</div>
+{% endhighlight %}
 
 For the full example, <a href="https://github.com/JustinBeckwith/justinbeckwith.github.io/blob/master/archive.html" target="_blank">check it out on GitHub</a>.
 

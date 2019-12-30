@@ -4,13 +4,13 @@
 /*
 /*****************************************************************************/
 
+@import "syntax.css";
+
 webkit-viewport {width:device-width}
 @-moz-viewport {width:device-width}
 @-ms-viewport {width:device-width}
 @-o-viewport {width:device-width}
 @viewport {width:device-width}
-
-
 
 * {
 	margin: 0px;
@@ -83,16 +83,12 @@ footer a:hover {
 	color: #3FAEA5;
 }
 
-
 .hrbar {
 	background: url('/images/bk_dotted_big.png') repeat-x center;
 	padding-top:10px;
 	padding-bottom:10px;
 	clear: both;
 }
-
-
-
 
 .nav-wrapper {
 	background-image: linear-gradient(#333 40px, rgba(27,27,27,0));
@@ -315,7 +311,6 @@ ul.posts li {
 ul.posts span {
 	color: #aaa;
 	font-family: Monaco, "Courier New", monospace;
-	// font-size: 80%;
 }
 
 /*****************************************************************************/
@@ -475,14 +470,9 @@ ul.posts span {
 	text-align: right;
 }
 
-pre {
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
 article ul {
   margin-bottom: 40px;
-  
+
 }
 
 article ul li {
