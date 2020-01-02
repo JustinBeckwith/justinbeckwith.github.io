@@ -7,25 +7,35 @@
 @import "syntax.css";
 
 webkit-viewport {width:device-width}
-@-moz-viewport {width:device-width}
 @-ms-viewport {width:device-width}
 @-o-viewport {width:device-width}
 @viewport {width:device-width}
 
-* {
+html, body {
 	margin: 0px;
 	padding: 0px;
 }
 
 body {
-	font-family: Tahoma, Helvetica, Arial, sans-serif;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	background-color: #F8F8F8;
-  font-size: 12pt;
+	font-size: 14px;
+}
+
+a {
+	color: #08c;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #666;
+	text-decoration: underline;
 }
 
 h1 {
 	text-transform: uppercase;
-	margin-top: 20px;
+	margin: 10px 0px 10px 0px;
+	font-size: 38px;
 }
 
 h4, h1 a {
@@ -39,7 +49,15 @@ h4, h1 a:hover {
 
 h2 {
 	text-transform: uppercase;
-	margin-top: 40px;
+	font-size: 31px;
+}
+
+h3 {
+	font-size: 24px;
+}
+
+h4 {
+	font-size: 17px;
 }
 
 /* smaller titles on the post page  in mobile view */
@@ -72,6 +90,7 @@ footer {
 	text-align: center;
 	padding: 10px;
 	margin-bottom: 50px;
+	margin-top: 20px;
 }
 
 footer a {
@@ -104,6 +123,7 @@ nav {
 nav ul {
 	list-style-type: none;
 	margin-left: 0px;
+	margin: 0px;
 }
 
 nav ul li {
@@ -115,6 +135,8 @@ nav ul li a {
 	color: #9C9A05;
 	padding: 10px 17px 10px 17px;
 	display: inline-block;
+	text-decoration: none;
+	font-size: 14px;
 }
 
 nav ul li a:hover {
@@ -154,7 +176,6 @@ nav ul li a:hover {
 
 .logo-name {
 	font-size: 30pt;
-	margin-bottom: 20px;
 }
 
 .logo-sub {
@@ -255,8 +276,6 @@ nav ul li a:hover {
 	background-position: 0 -49px;
 }
 
-
-
 /*****************************************************************************/
 /*
 /* archive
@@ -274,6 +293,8 @@ nav ul li a:hover {
 
 #main-content {
 	max-width: 925px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 #content {
@@ -292,11 +313,13 @@ nav ul li a:hover {
 	}
 }
 
+#main-content img {
+	max-width: 100%;
+}
 
 article img {
 	display: block;
-	padding-bottom: 20px;
-	padding-top: 20px;
+	max-width: 100%;
 }
 
 ul.posts {
@@ -414,10 +437,6 @@ ul.posts span {
 	content: '';
 }
 
-.post ul, .post ol {
-	margin-left: 1.35em;
-}
-
 .post ol li {
 	margin-left: 20px;
 }
@@ -436,7 +455,6 @@ ul.posts span {
 	padding-top: 0px;
 	padding-bottom: 0px;
 }
-
 
 .embed-container {
 	position: relative;
@@ -470,24 +488,13 @@ ul.posts span {
 	text-align: right;
 }
 
-article ul {
-  margin-bottom: 40px;
-
-}
-
-article ul li {
-  margin-left: 20px;
-}
-
 table {
   background-color: #FFF;
-  border: 1px solid #000;
-  margin-bottom: 20px;
+	border-spacing: 0px;
 }
 
 table th, table td {
   padding: 8px;
-  line-height: 20px;
   text-align: left;
   vertical-align: top;
   border: 1px solid #dddddd;
@@ -506,4 +513,25 @@ table tbody tr:hover > td {
   background-color: #EEE;
 }
 
+figure {
+	margin: 0px;
+}
 
+figure pre {
+	padding: 10px;
+	border-radius: 5px;
+	overflow: auto;
+	font-size: 14px;
+}
+
+.highlighter-rouge {
+	padding: 2px 4px;
+	color: #d14;
+	white-space: nowrap;
+	background-color: #f7f7f9;
+	border: 1px solid #e1e1e8;
+}
+
+.post {
+	line-height: 1.4;
+}
