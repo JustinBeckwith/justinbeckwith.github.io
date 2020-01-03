@@ -27,31 +27,31 @@ To understand how the new portal works, you need to know a little about the <a h
 * Web sites
 * Storage
 * Cache
-* CDN  
+* CDN
 
-Out of the gate - this was pretty easy to manage.  Most of those teams were all in the same organization at Microsoft, so coordinating releases was feasible.  The portal team was a single group that was responsible for delivering the majority of the UI.  There was little need to hand off responsibility to the individual experiences to the teams which wrote the services, as it was easier to keep everything in house.  There is a single ASP.NET MVC application, which contains all of the CSS, JavaScript, and shared widgets used throughout the app.  
+Out of the gate - this was pretty easy to manage.  Most of those teams were all in the same organization at Microsoft, so coordinating releases was feasible.  The portal team was a single group that was responsible for delivering the majority of the UI.  There was little need to hand off responsibility to the individual experiences to the teams which wrote the services, as it was easier to keep everything in house.  There is a single ASP.NET MVC application, which contains all of the CSS, JavaScript, and shared widgets used throughout the app.
 
 
 ![The current Azure portal, in all of it's blue glory](/images/2014/how-the-azure-portal-works/vcurrent.png)
 
 
-The team shipped every 3 weeks, tightly coordinating the schedule with each service team.  It works ... pretty much as one would expect a web application to work. 
+The team shipped every 3 weeks, tightly coordinating the schedule with each service team.  It works ... pretty much as one would expect a web application to work.
 
 ***And then everything went crazy.***
 
-As we started ramping up the number of services in Azure, it became infeasible for one team to write all of the UI.  The teams which owned the service were now responsible (mostly) for writing their own UI, inside of the portal source repository. This had the benefit of allowing individual teams to control their own destiny.  However - it now mean that we had hundreds of developers all writing code in the same repository.  A change made to the SQL Server management experience could break the Azure Web Sites experience.  A change to a CSS file by a developer working on virtual machines could break the experience in storage.  Coordinating the 3 week ship schedule became really hard.  The team was tracking dependencies across multiple organizations, the underlying REST APIs that powered the experiences, and the release cadence of ~40 teams across the company that were delivering cloud services.  
+As we started ramping up the number of services in Azure, it became infeasible for one team to write all of the UI.  The teams which owned the service were now responsible (mostly) for writing their own UI, inside of the portal source repository. This had the benefit of allowing individual teams to control their own destiny.  However - it now mean that we had hundreds of developers all writing code in the same repository.  A change made to the SQL Server management experience could break the Azure Web Sites experience.  A change to a CSS file by a developer working on virtual machines could break the experience in storage.  Coordinating the 3 week ship schedule became really hard.  The team was tracking dependencies across multiple organizations, the underlying REST APIs that powered the experiences, and the release cadence of ~40 teams across the company that were delivering cloud services.
 
 
 
-### Scaling to &infin; services	
+### Scaling to &infin; services
 
 Given the difficulties of the engineering and ship processes with the current portal, scaling to 200 different services didn't seem like a great idea with the current infrastructure.  The next time around, we took a different approach.
 
-The new portal is designed like an operating system.  It provides a set of UI widgets, a navigation framework, data management APIs, and other various services one would expect to find with any UI framework.  The portal team is responsible for building the operating system (or the shell, as we like to call it), and for the overall health of the portal.  
+The new portal is designed like an operating system.  It provides a set of UI widgets, a navigation framework, data management APIs, and other various services one would expect to find with any UI framework.  The portal team is responsible for building the operating system (or the shell, as we like to call it), and for the overall health of the portal.
 
 #### Sandboxing in the browser
 
-To claim we're an OS, we had to build a sandboxing model.  One badly behaving application shouldn't have the ability to bring down the whole OS.  In addition to that - an application shouldn't be able to grab data from another, unless by an approved mechanism.  JavaScript by default doesn't really lend itself well to this kind of isolation - most web developers are used to picking up something like jQuery, and directly working against the DOM.  This wasn't going to work if we wanted to protect the OS against badly behaving (or even malicious) code.  
+To claim we're an OS, we had to build a sandboxing model.  One badly behaving application shouldn't have the ability to bring down the whole OS.  In addition to that - an application shouldn't be able to grab data from another, unless by an approved mechanism.  JavaScript by default doesn't really lend itself well to this kind of isolation - most web developers are used to picking up something like jQuery, and directly working against the DOM.  This wasn't going to work if we wanted to protect the OS against badly behaving (or even malicious) code.
 
 To get around this, each new service in Azure builds what we call an 'extension'.  It's pretty much an application to our operating system.  It runs in isolation, inside of an IFRAME.  When the portal loads, we inject some bootstrapping scripts into each IFRAME at runtime.  Those scripts provide the structured API extensions use to communicate with the shell.  This API includes things like:
 
@@ -64,7 +64,7 @@ The most important aspect is that the extension developer doesn't get to run arb
 
 #### Distributed continuous deployment
 
-In this model, each extension is essentially it's own web application.  Each service hosts their own extension, which is pulled into the shell at runtime.  The various UI services of Azure aren't composed until they are loaded in the browser.  This lets us do some really cool stuff.  At any given point, a separate experience in the portal (for example, Azure Websites) can choose to deploy an extension that affects only their UI - completely independent of the rest of the portal.  
+In this model, each extension is essentially it's own web application.  Each service hosts their own extension, which is pulled into the shell at runtime.  The various UI services of Azure aren't composed until they are loaded in the browser.  This lets us do some really cool stuff.  At any given point, a separate experience in the portal (for example, Azure Websites) can choose to deploy an extension that affects only their UI - completely independent of the rest of the portal.
 
 ___IFRAMEs are not used to render the UI - that's all done in the core frame.  The IFRAME is only used to automate the JavaScript APIs that communicate over window.postMessage().___
 
@@ -80,11 +80,11 @@ Once you start poking around, you'll notice the portal is big single page applic
 
 #### TypeScript
 
-Like any single page app, the portal runs a lot of JavaScript.  We have a ton of APIs that run internal to the shell, and APIs that are exposed for extension authors across Microsoft. To support our enormous codebase, and the many teams using our SDK to build portal experiences, we chose to use <a href="http://www.typescriptlang.org/" target="_blank">TypeScript</a>.  
+Like any single page app, the portal runs a lot of JavaScript.  We have a ton of APIs that run internal to the shell, and APIs that are exposed for extension authors across Microsoft. To support our enormous codebase, and the many teams using our SDK to build portal experiences, we chose to use <a href="http://www.typescriptlang.org/" target="_blank">TypeScript</a>.
 
 * **TypeScript compiles into JavaScript.**  There's no runtime VM, or plug-ins required.
 * **The tooling is awesome.**  Visual Studio gives us (and partner teams) IntelliSense and compile time validation.
-* **Generating interfaces for partners is really easy.** We distribute d.ts files which partners use to program against our APIs. 
+* **Generating interfaces for partners is really easy.** We distribute d.ts files which partners use to program against our APIs.
 * **There's great integration for using AMD module loading.**  This is critical to us for productivity and performance reasons. (more on this in another post).
 * **JavaScript is valid TypeScript - so the learning curve isn't so high.**  The syntax is also largely forward looking to ES6, so we're actually getting a jump on some new concepts.
 
@@ -111,13 +111,13 @@ With the new design, we were really going for a 'live tile' feel.  As new websit
 I'm sure there are 100 other reasons our dev team could come up with on why we love Knockout.  Especially the ineffable <a href="http://blog.stevensanderson.com/" target="_blank">Steve Sanderson</a>, who joined our dev team to work on the project.  He even gave an awesome talk on the subject at NDC:
 
 <div class='embed-container'>
-<iframe style="margin-left: auto; margin-right: auto" src="//player.vimeo.com/video/97519516" width="100%" height="400" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/97519516">Steve Sanderson - Architecting large Single Page Applications with Knockout.js</a> from <a href="http://vimeo.com/ndcoslo">NDC Conferences</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+<iframe title="Steve Sanderson - Architecting large Single Page Applications with Knockout.js" style="margin-left: auto; margin-right: auto" src="//player.vimeo.com/video/97519516" width="100%" height="400" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/97519516">Steve Sanderson - Architecting large Single Page Applications with Knockout.js</a> from <a href="http://vimeo.com/ndcoslo">NDC Conferences</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 </div>
 
 
 ### What's next
 
-I'm really excited about the future of the portal.  Since our first release at //build, we've been working on new features, and responding to a lot of the <a href="http://feedback.azure.com/forums/223579-azure-preview-portal" target="_blank">customer feedback</a>.  Either way - we really want to know what you think. 
+I'm really excited about the future of the portal.  Since our first release at //build, we've been working on new features, and responding to a lot of the <a href="http://feedback.azure.com/forums/223579-azure-preview-portal" target="_blank">customer feedback</a>.  Either way - we really want to know what you think.
 
 
 

@@ -5,3 +5,5 @@ paginate: 5
 permalink: /:year/:month/:day/:title/
 excerpt_separator: "\r\n\r\n\r\n"
 plugins: [jekyll-paginate]
+kramdown:
+  auto_ids: false

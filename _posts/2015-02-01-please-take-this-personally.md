@@ -15,15 +15,15 @@ The feedback that comes after that sentence is really important.  We write it do
 
 Any feedback that starts with **"Don't take this personally"** really pisses me off. When you say this to someone, you're making one of two judgments about this person:
 
-1. *They are not personally invested in their work.* They go to their job, they do whatever work is put in front of them, and then they go home.  If what they've made is not good, it doesn't bother them. 
+1. *They are not personally invested in their work.* They go to their job, they do whatever work is put in front of them, and then they go home.  If what they've made is not good, it doesn't bother them.
 
 2. They are personally invested in their work.  They want to create something amazing, and will go to great lengths to do so. Whatever you're about to say - despite your warning - *They're going to take it personally.*
 
 For me, that expression elicits a sort of Marty Mcfly "nobody calls me chicken" response.
 
-<div class='embed-container'><iframe src="https://www.youtube.com/embed/gKosmXx1gkc?start=26" frameborder="0" allowfullscreen></iframe></div>
+<div class='embed-container'><iframe title="Nobody calls me chicken" src="https://www.youtube.com/embed/gKosmXx1gkc?start=26" frameborder="0" allowfullscreen></iframe></div>
 
-What's more personal to me than my product!?  I work at Microsoft because I genuinely believe it's the best place for me to build stuff that has a real tangible impact.  I went through years of school so I could do \***this**\*.  I moved my family moved across the country.  I work 50-60 hours a week (probably more than I should) because I wanted to build \***this**\*. My product is in many ways a reflection of me.  What could possibly be more personal? 
+What's more personal to me than my product!?  I work at Microsoft because I genuinely believe it's the best place for me to build stuff that has a real tangible impact.  I went through years of school so I could do \***this**\*.  I moved my family moved across the country.  I work 50-60 hours a week (probably more than I should) because I wanted to build \***this**\*. My product is in many ways a reflection of me.  What could possibly be more personal?
 
-Does this mean I don't want criticism?  Of course I do!  Objective criticism from an informed customer who has used your product is the greatest gift a product manager can receive. It's how we get better. Just expect me to take it personally. 
+Does this mean I don't want criticism?  Of course I do!  Objective criticism from an informed customer who has used your product is the greatest gift a product manager can receive. It's how we get better. Just expect me to take it personally.
 
