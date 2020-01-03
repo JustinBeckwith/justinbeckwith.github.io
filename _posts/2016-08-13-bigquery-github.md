@@ -29,7 +29,7 @@ For each of these, we're largely left to poke around using anecodtal observation
 
 - [GitHub on BigQuery: Analyze all the open source code](https://cloudplatform.googleblog.com/2016/06/GitHub-on-BigQuery-analyze-all-the-open-source-code.html)
 
-[BigQuery](https://cloud.google.com/bigquery/) is essentially a giant data warehouse that lets you store petabytes of data, originally built for internal use at Google.  Usually querying over this much data requires a ton of infrastructure and an understanding of MapReduce...  but BigQuery lets me [just use SQL](http://venturebeat.com/2016/06/02/google-bigquery-gets-standard-sql-support-in-beta/).
+[BigQuery](https://cloud.google.com/bigquery/) is essentially a giant data warehouse that lets you store petabytes of data, originally built for internal use at Google.  Usually querying over this much data requires a ton of infrastructure and an understanding of MapReduce...  but BigQuery lets me [just use SQL](https://venturebeat.com/2016/06/02/google-bigquery-gets-standard-sql-support-in-beta/).
 
 One of the fun things BigQuery offers is a bunch of [public data sets](https://cloud.google.com/bigquery/public-data/). Some of the fun sets include:
 

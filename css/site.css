@@ -482,6 +482,7 @@ ul.posts span {
 
 .comment-count {
 	float:right;
+	line-height: 25px;
 }
 
 .pagination {
@@ -534,4 +535,20 @@ figure pre {
 
 .post {
 	line-height: 1.4;
+}
+
+#social ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+#social ul li {
+	list-style-type: none;
+	display: inline-block;
+}
+
+#social ul li svg {
+	width: 25px;
+	height: 25px;
+	padding: 6px;
 }
