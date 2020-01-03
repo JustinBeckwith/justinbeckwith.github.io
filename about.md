@@ -5,28 +5,26 @@ tags: []
 permalink: /about/
 ---
 
-<img src="/images/jbatns.jpg" alt="It's a me!">
+![Picture of Justin Beckwith at Node Summit](/images/jbatns.jpg)
 
-<br>
-<br>
-<p>
 Greetings folks!  I'm Justin Beckwith. I work at Google as a Product Manager, where I help make the cloud. I used to work at Microsoft, where I also helped make the cloud.  I like to make things.  I'm trying to make it just a little easier to develop applications for the cloud.
-</p>
 
-<h3>Find me online</h3>
-<h4>Twitter:</h4>
-<a href="https://twitter.com/justinbeckwith" target="_blank">https://twitter.com/justinbeckwith</a>
+### Find me online
 
-<h4>LinkedIn:</h4>
-<a href="https://www.linkedin.com/in/beckwith" target="_blank">https://www.linkedin.com/in/beckwith</a>
+#### Twitter
+[https://twitter.com/justinbeckwith](https://twitter.com/justinbeckwith)
 
-<h4>StackOverflow:</h4>
-<a href="https://stackoverflow.com/users/178236/justin-beckwith" target="_blank">https://stackoverflow.com/users/178236/justin-beckwith</a>
+#### LinkedIn:
+[https://www.linkedin.com/in/beckwith](https://www.linkedin.com/in/beckwith)
 
-<h4>GitHub:</h4>
-<a href="https://github.com/JustinBeckwith/" target="_blank">https://github.com/JustinBeckwith/</a>
+#### StackOverflow
+[https://stackoverflow.com/users/178236/justin-beckwith](https://stackoverflow.com/users/178236/justin-beckwith)
 
-<h3>Speaking</h3>
+#### GitHub
+[https://github.com/JustinBeckwith/](https://github.com/JustinBeckwith/)
+
+### Speaking
+
 <table class="table table-hover">
 	<tr>
 		<td>Node.js Interactive 2017</td>
@@ -106,10 +104,5 @@ Greetings folks!  I'm Justin Beckwith. I work at Google as a Product Manager, wh
 	</tr>
 </table>
 
-
-<h3>Publications</h3>
-<ul>
-<tr><td>Cois, C. A., Beckwith, J., Wrubel, J., Herrman, J., VTE: The Virtual Training Environment - Advanced Virtual Lab Authoring and Delivery. Proceedings of the 2nd International Conference on Computer Supported Education (CSEDU), Valencia, Spain, April 2010, Volume 1 pp. 208-214.</td></tr>
-</ul>
-
-
+### Publications
+- Cois, C. A., Beckwith, J., Wrubel, J., Herrman, J., VTE: The Virtual Training Environment - Advanced Virtual Lab Authoring and Delivery. Proceedings of the 2nd International Conference on Computer Supported Education (CSEDU), Valencia, Spain, April 2010, Volume 1 pp. 208-214.
