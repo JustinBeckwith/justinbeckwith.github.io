@@ -7,6 +7,10 @@ status: publish
 category: node.js
 type: post
 published: true
+excerpt: >
+    The package-lock.json file is useful in some cases, but a problem in others.  This blog
+    post examines how package-lock.json works, the situations where it creates problems,
+    and reccomendations on when to use them and when not to use them.
 ---
 
 ![Package Lock Files](/images/2019/lock.png)

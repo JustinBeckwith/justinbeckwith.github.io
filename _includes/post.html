@@ -4,30 +4,31 @@
 	<div class="hrbar">&nbsp;</div>
 	<div class="post">{{ post.content }}</div>
 	<div class="hrbar">&nbsp;</div>
-	<div id="social">
+	<div class="social">
 		<ul>
 			<li>
-				<a href="https://twitter.com/intent/tweet?url={{site.url}}{{post.url}}&text={{post.title | url_encode }}&via=JustinBeckwith" target="_blank">
+				<a href="https://twitter.com/intent/tweet?url={{site.url}}{{post.url}}&text={{post.title | url_encode }}&via=JustinBeckwith" target="_blank" rel="noopener">
 					<svg style="background-color: #1DA1F2" fill="#FFF" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter icon</title><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
 				</a>
 			</li>
 			<li>
-				<a href="https://www.reddit.com/submit?url={{site.url}}{{post.url}}&title={{post.title}}" target="_blank" title="Share on Reddit">
+				<a href="https://www.reddit.com/submit?url={{site.url}}{{post.url}}&title={{post.title}}" target="_blank" title="Share on Reddit" rel="noopener">
 					<svg style="background-color: #FF4500" fill="#FFF" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-reddit-3" class="at-icon at-icon-reddit" style="width: 32px; height: 32px;"><title id="at-svg-reddit-3">Share on Reddit</title><g><path d="M27 15.5a2.452 2.452 0 0 1-1.338 2.21c.098.38.147.777.147 1.19 0 1.283-.437 2.47-1.308 3.563-.872 1.092-2.06 1.955-3.567 2.588-1.506.634-3.143.95-4.91.95-1.768 0-3.403-.316-4.905-.95-1.502-.632-2.69-1.495-3.56-2.587-.872-1.092-1.308-2.28-1.308-3.562 0-.388.045-.777.135-1.166a2.47 2.47 0 0 1-1.006-.912c-.253-.4-.38-.842-.38-1.322 0-.678.237-1.26.712-1.744a2.334 2.334 0 0 1 1.73-.726c.697 0 1.29.26 1.78.782 1.785-1.258 3.893-1.928 6.324-2.01l1.424-6.467a.42.42 0 0 1 .184-.26.4.4 0 0 1 .32-.063l4.53 1.006c.147-.306.368-.553.662-.74a1.78 1.78 0 0 1 .97-.278c.508 0 .94.18 1.302.54.36.36.54.796.54 1.31 0 .512-.18.95-.54 1.315-.36.364-.794.546-1.302.546-.507 0-.94-.18-1.295-.54a1.793 1.793 0 0 1-.533-1.308l-4.1-.92-1.277 5.86c2.455.074 4.58.736 6.37 1.985a2.315 2.315 0 0 1 1.757-.757c.68 0 1.256.242 1.73.726.476.484.713 1.066.713 1.744zm-16.868 2.47c0 .513.178.95.534 1.315.356.365.787.547 1.295.547.508 0 .942-.182 1.302-.547.36-.364.54-.802.54-1.315 0-.513-.18-.95-.54-1.31-.36-.36-.794-.54-1.3-.54-.5 0-.93.183-1.29.547a1.79 1.79 0 0 0-.54 1.303zm9.944 4.406c.09-.09.135-.2.135-.323a.444.444 0 0 0-.44-.447c-.124 0-.23.042-.32.124-.336.348-.83.605-1.486.77a7.99 7.99 0 0 1-1.964.248 7.99 7.99 0 0 1-1.964-.248c-.655-.165-1.15-.422-1.486-.77a.456.456 0 0 0-.32-.124.414.414 0 0 0-.306.124.41.41 0 0 0-.135.317.45.45 0 0 0 .134.33c.352.355.837.636 1.455.843.617.207 1.118.33 1.503.366a11.6 11.6 0 0 0 1.117.056c.36 0 .733-.02 1.117-.056.385-.037.886-.16 1.504-.366.62-.207 1.104-.488 1.456-.844zm-.037-2.544c.507 0 .938-.182 1.294-.547.356-.364.534-.802.534-1.315 0-.505-.18-.94-.54-1.303a1.75 1.75 0 0 0-1.29-.546c-.506 0-.94.18-1.3.54-.36.36-.54.797-.54 1.31s.18.95.54 1.315c.36.365.794.547 1.3.547z" fill-rule="evenodd"></path></g></svg>
 				</a>
 
 			</li>
 			<li>
-				<a href="https://news.ycombinator.com/submitlink?u={{site.url}}{{post.url}}&t={{post.title}}" target="_blank" title="Share on Hacker News">
+				<a href="https://news.ycombinator.com/submitlink?u={{site.url}}{{post.url}}&t={{post.title}}" target="_blank" title="Share on Hacker News" rel="noopener">
 					<svg style="background-color: #F0652F" fill="#FFF" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-hackernews-2" class="at-icon at-icon-hackernews" style="width: 32px; height: 32px;"><title id="at-svg-hackernews-2">Share on Hacker News</title><g><path d="M17.322 18.437V27h-2.725v-8.725L7.5 5h3.238l4.183 8.4s.62 1.24 1.134 2.48c.54-1.186 1.187-2.48 1.187-2.48L21.48 5H24.5l-7.178 13.437z" fill-rule="evenodd"></path></g></svg>
 				</a>
 			</li>
 			<li>
-				<a href="https://www.linkedin.com/shareArticle?mini=true&url={{site.url}}{{post.url}}&title={{post.title}}" target="_blank" title="Share on LinkedIn">
+				<a href="https://www.linkedin.com/shareArticle?mini=true&url={{site.url}}{{post.url}}&title={{post.title}}" target="_blank" title="Share on LinkedIn" rel="noopener">
 					<svg style="background-color: #0077B5" fill="#FFF" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-linkedin-4" class="at-icon at-icon-linkedin" style="width: 32px; height: 32px;"><title id="at-svg-linkedin-4">LinkedIn</title><g><path d="M26 25.963h-4.185v-6.55c0-1.56-.027-3.57-2.175-3.57-2.18 0-2.51 1.7-2.51 3.46v6.66h-4.182V12.495h4.012v1.84h.058c.558-1.058 1.924-2.174 3.96-2.174 4.24 0 5.022 2.79 5.022 6.417v7.386zM8.23 10.655a2.426 2.426 0 0 1 0-4.855 2.427 2.427 0 0 1 0 4.855zm-2.098 1.84h4.19v13.468h-4.19V12.495z" fill-rule="evenodd"></path></g></svg>
 				</a>
 			</li>
-			<div class="comment-count"><a href="{{post.url}}#disqus_thread">[0] comments</a></div>
+		</ul>
+		<div class="comment-count"><a href="{{post.url}}#disqus_thread">[0] comments</a></div>
 	</div>
 	<div class="hrbar">&nbsp;</div>
 </article>
