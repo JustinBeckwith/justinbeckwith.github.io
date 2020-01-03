@@ -19,7 +19,7 @@ excerpt: >
 
 ** note:  I recently updated this post to make sure all of the commands still work. **
 
-I've spent some time recently using [go](http://jbeckwith.com/2015/01/04/comparing-go-and-dotnet/) for my side web projects. The Go standard libraries are minimal by design - meaning it doesn't come with a prescriptive web framework out of the box. The good news is that there are a ton of options:
+I've spent some time recently using [the Go programming language](http://jbeckwith.com/2015/01/04/comparing-go-and-dotnet/) for my side web projects. The Go standard libraries are minimal by design - meaning it doesn't come with a prescriptive web framework out of the box. The good news is that there are a ton of options:
 
 - [Revel](https://revel.github.io/)
 - [Gin](https://github.com/gin-gonic/gin)

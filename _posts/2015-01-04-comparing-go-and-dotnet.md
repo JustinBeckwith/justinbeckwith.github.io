@@ -6,7 +6,7 @@ tags:
 - ASP.NET
 - Go
 status: publish
-category: Go
+category: Golang
 type: post
 published: true
 featuredImage: "/images/2015/comparing-go-and-dotnet/gopher.png"
