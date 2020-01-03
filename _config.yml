@@ -1,6 +1,6 @@
 name: Justin Beckwith
 description: Just a guy singing the gospel of JavaScript on the server.
-url: http://jbeckwith.com
+url: https://jbeckwith.com
 paginate: 5
 permalink: /:year/:month/:day/:title/
 excerpt_separator: "\r\n\r\n\r\n"
