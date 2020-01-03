@@ -17,7 +17,7 @@ excerpt: >
 
 <img src="/images/2016/nodejs-gcp-next/nodejs-gcp-next-featured.jpg" alt="Node.js is for hats and cats" />
 
-In March I had the chance to talk at <a href="https://cloudplatformonline.com/" target="_blank">GCP Next</a> on <a href="https://cloud.google.com/nodejs" target="_blank">Node.js @ Google</a>. This is a fun little tour of what Google Cloud has to offer Node.js developers.
+In March I had the chance to talk at <a href="https://cloudplatformonline.com/" target="_blank" rel="noopener">GCP Next</a> on <a href="https://cloud.google.com/nodejs" target="_blank" rel="noopener">Node.js @ Google</a>. This is a fun little tour of what Google Cloud has to offer Node.js developers.
 
 ### Timeline
 

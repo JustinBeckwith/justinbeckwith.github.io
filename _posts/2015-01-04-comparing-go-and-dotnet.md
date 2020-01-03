@@ -11,7 +11,7 @@ type: post
 published: true
 featuredImage: "/images/2015/comparing-go-and-dotnet/gopher.png"
 excerpt: >
-    I like to use the holiday break as a time to hang out with the family, disconnect from work, and learn about something new. I've been writing a lot of JavaScript lately, so I wanted to try something different. I decided to check out <a href="https://golang.org/" target="_blank">golang</a>. I found myself wanting to understand Go in terms of what I already know about .NET and nodejs, and wishing there was a guide to bridge those gaps. My goal is to make it easier for those coming from a .NET background to understand Go, and get a feel for how it relates to similar concepts in the .NET world.
+    I like to use the holiday break as a time to hang out with the family, disconnect from work, and learn about something new. I've been writing a lot of JavaScript lately, so I wanted to try something different. I decided to check out <a href="https://golang.org/" target="_blank" rel="noopener">golang</a>. I found myself wanting to understand Go in terms of what I already know about .NET and nodejs, and wishing there was a guide to bridge those gaps. My goal is to make it easier for those coming from a .NET background to understand Go, and get a feel for how it relates to similar concepts in the .NET world.
 ---
 
 !["The gopher image is Creative Commons Attributions 3.0 licensed. Credit Renee French."](/images/2015/comparing-go-and-dotnet/gopher.png "The gopher image is Creative Commons Attributions 3.0 licensed. Credit Renee French.")
