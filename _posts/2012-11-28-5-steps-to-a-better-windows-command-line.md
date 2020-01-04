@@ -12,10 +12,9 @@ status: publish
 type: post
 published: true
 featuredImage: "/images/2012/11/choc-ruby.png"
-excerpt: I spend a lot of time at the command line.  As someone who likes to code on OSX and Windows, I've always been annoyed by the Windows command line experience.  Do I use cmd, or PowerShell?  Where are my tabs?  What about package management?  What about little frivolous things like <em>being able to resize the window</em>.  I've finally got my Windows command line experience running smoothly, and wanted to share my setup.  Here are my 5 steps to a Windows command line that doesn't suck.
+excerpt: >
+  I spend a lot of time at the command line.  As someone who likes to code on OSX and Windows, I've always been annoyed by the Windows command line experience.  Do I use cmd, or PowerShell?  Where are my tabs?  What about package management?  What about little frivolous things like being able to resize the window.  I've finally got my Windows command line experience running smoothly, and wanted to share my setup.  Here are my 5 steps to a Windows command line that doesn't suck.
 ---
-
-
 
 <a href="/images/2012/11/header.png">
 <img src="/images/2012/11/header.png">
@@ -23,49 +22,36 @@ excerpt: I spend a lot of time at the command line.  As someone who likes to cod
 
 I spend a lot of time at the command line.  As someone who likes to code on OSX and Windows, I've always been annoyed by the Windows command line experience.  Do I use cmd, or PowerShell?  Where are my tabs?  What about package management?  What about little frivolous things like <em>being able to resize the window</em>.  I've finally got my Windows command line experience running smoothly, and wanted to share my setup.  Here are my 5 steps to a Windows command line that doesn't suck.
 
+### 1. Use Console2 or ConEmu
+The first place to start is the actual console application.  Scott Hanselman wrote an [excellent blog post](http://www.hanselman.com/blog/Console2ABetterWindowsCommandPrompt.aspx) on setting up <a href="http://sourceforge.net/projects/console/" target="_blank">Console2</a>, and I've been using it ever since.  It adds tabs, a resizable window, transparency, and the ability to run multiple shells.  I choose to run PowerShell (you should too, keep listening).  There are <a href="http://www.hanselman.com/blog/ConEmuTheWindowsTerminalConsolePromptWeveBeenWaitingFor.aspx" target="_blank">other options</a> out there, but I've really grown to love Console2.
 
+![Console2](/images/2012/11/console2.png)
 
-<h3>1. Use Console2 or ConEmu</h3>
-The first place to start is the actual console application.  Scott Hanselman wrote an <a href="http://www.hanselman.com/blog/Console2ABetterWindowsCommandPrompt.aspx" target="_blank">excellent blog post</a> on setting up <a href="http://sourceforge.net/projects/console/" target="_blank">Console2</a>, and I've been using it ever since.  It adds tabs, a resizable window, transparency, and the ability to run multiple shells.  I choose to run PowerShell (you should too, keep listening).  There are <a href="http://www.hanselman.com/blog/ConEmuTheWindowsTerminalConsolePromptWeveBeenWaitingFor.aspx" target="_blank">other options</a> out there, but I've really grown to love Console2.
-<a href="/images/2012/11/console2.png">
-<img src="/images/2012/11/console2.png" alt="Console2">
-</a>
-
-
-<h3>2. Use PowerShell</h3>
+### 2. Use PowerShell
 I won't spend a ton of time evangelizing PowerShell.  There are a few good reasons to dump cmd.exe and move over:
-<ul>
-<li><b>Most of the things you do in cmd will just work.</b>  There are obviously some exceptions, but for the better part all of the things I want to do in cmd are easily done in PowerShell. </li>
-<li><b><a href="http://blogs.msdn.com/b/powershell/archive/2008/01/31/tab-completion.aspx" target="_blank">Tab Completion</a> and <a href="http://technet.microsoft.com/en-us/library/ee176848.aspx" target="_blank">Get-Help</a> is awesome.</b>  PowerShell does a great job of making things discoverable as you learn.
-<li><b>It's a sane scripting tool.</b>  If you've ever tried to do anything significant in a batch script, I'm sorry.  You can even create your <a href="http://community.bartdesmet.net/blogs/bart/archive/2008/02/03/easy-windows-powershell-cmdlet-development-and-debugging.aspx" target="_blank">own modules and cmdlets</a> using managed code, if that's your thing.</li>
-<li><b>Microsoft is releasing a lot of stuff built on PowerShell.</b>  Most of the new stuff we release is going to have great PowerShell support, including <a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj156055.aspx" target="_blank">Windows Azure</a>.  </li>
-<li><b>It's a growing community.</b>  Sites like <a href="http://powershell.org/" target="_blank">PowerShell.org</a> and <a href="http://psget.net/" target="_blank">PsGet</a> provide a great place to ask questions and look at work others have done.
-</ul>
+- **Most of the things you do in cmd will just work.** There are obviously some exceptions, but for the better part all of the things I want to do in cmd are easily done in PowerShell.
+- **[Tab Completion](http://blogs.msdn.com/b/powershell/archive/2008/01/31/tab-completion.aspx) and [Get-Help](http://technet.microsoft.com/en-us/library/ee176848.aspx) is awesome.** PowerShell does a great job of making things discoverable as you learn.
+- **It's a sane scripting tool.**  If you've ever tried to do anything significant in a batch script, I'm sorry.  You can even create your <a href="http://community.bartdesmet.net/blogs/bart/archive/2008/02/03/easy-windows-powershell-cmdlet-development-and-debugging.aspx" target="_blank">own modules and cmdlets</a> using managed code, if that's your thing.
+- **Microsoft is releasing a lot of stuff built on PowerShell.**  Most of the new stuff we release is going to have great PowerShell support, including <a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj156055.aspx" target="_blank">Windows Azure</a>.
+- **It's a growing community.**  Sites like <a href="http://powershell.org/" target="_blank">PowerShell.org</a> and <a href="http://psget.net/" target="_blank">PsGet</a> provide a great place to ask questions and look at work others have done.
 
 Now that I've sold you, there are a few things you'll find through here that make using PowerShell a bit easier.  To use this stuff, you're going to want to set an execution policy in PowerShell that lets you run custom scripts.  By default, the execution of PS scripts is disabled, but it's kind of necessary to do anything interesting.  I lead a wild and dangerous life, so I use an unrestricted policy.  To set your policy, first run Console2 (or PowerShell) as an administrator:
 
-<a href="/images/2012/11/console2-as-administrator.png">
-<img src="/images/2012/11/console2-as-administrator.png">
-</a>
+![Run as administrator](/images/2012/11/console2-as-administrator.png)
 
 Next, use the Set-ExecutionPolicy command.  Note, this means any un-signed script can be run on your system, if you run it, and many people choose to use RemoteSigned.  Here is the <a href="" target="_blank">official doc on Set-ExecutionPolicy</a>.
 {% highlight powershell %}
 Set-ExecutionPolicy Unrestricted
 {% endhighlight %}
 
-<a href="/images/2012/11/set-executionpolicy.png">
-<img src="/images/2012/11/set-executionpolicy.png">
-</a>
+![Set execution policy](/images/2012/11/set-executionpolicy.png)
 
 Now you're ready to start doing something interesting.
 
-
-<h3>3. Use the Chocolatey package manager</h3>
+### 3. Use the Chocolatey package manager
 Spending a lot of time in Ubuntu and OSX, I got really used to `sudo apt-get install <package>` and `<a href="http://mxcl.github.com/homebrew/" target="_blank">brew</a> install <package>`.  The closest I've found to that experience on Windows is the <a href="http://chocolatey.org/" target="_blank">Chocolatey package manager</a>.  Chocolatey has all of the packages you would expect to find on a developer's machine:
 
-<a href="/images/2012/11/choc-list.png">
-<img src="/images/2012/11/choc-list.png" alt="list packages">
-</a>
+![list packages](/images/2012/11/choc-list.png)
 
 To install Chocolatey, just run cmd.exe and run the following command (minus the c:\> part):
 {% highlight powershell %}
@@ -77,17 +63,12 @@ And you're ready to rock.  If you want to install something like 7zip, you can u
 cinst 7zip
 {% endhighlight %}
 
-<a href="/images/2012/11/7zip-install.png">
-<img src="/images/2012/11/7zip-install.png" alt="install 7zip">
-</a>
+![install 7zip](/images/2012/11/7zip-install.png)
 
-
-<h3>4. Use an alias for SublimeText</h3>
+### 4. Use an alias for SublimeText
 This seems kind of trivial, but one of the things I've really missed on Windows is the default shortcut to launch <a href="http://www.sublimetext.com/" target="_blank">SublimeText</a>, <a href="http://www.sublimetext.com/docs/2/osx_command_line.html" target="_blank">subl</a>.  I use my PowerShell profile to create an alias to SublimeText.exe, which allows me to `subl file.txt` or `subl .` just like I would from OSX.  <a href="http://www.howtogeek.com/50236/customizing-your-powershell-profile/" target="_blank">This article</a> gives a basic overview on how to customize your PowerShell Profile; it's really easy to follow, so I won't go into re-creating the steps.
 
-<a href="/images/2012/11/create-profile.png">
-<img src="/images/2012/11/create-profile.png">
-</a>
+![edit profile](/images/2012/11/create-profile.png)
 
 After you've got your PowerShell profile created, edit the script, and add this line:
 
@@ -102,33 +83,24 @@ subl .
 
 This will load the current directory as a project in SublimeText from the command line.  Small thing, but a nice thing.
 
-
-<h3>5. Use PsGet and Posh-Git</h3>
+### 5. Use PsGet and Posh-Git
 One of the nice things about using PowerShell over cmd is the community that's starting to emerge.  There are a ton of really useful tools and cmdlets that others have already written, and the easiest way to get at most of these is to use <a href="http://psget.net/" target="_blank">PsGet</a>.  PsGet provides a super easy way to install PowerShell modules that extend the basic functionality of the shell, and provide other useful libraries.  To install PsGet, run the following command from a PowerShell console:
 
 {% highlight powershell %}
 (new-object Net.WebClient).DownloadString(&quot;http://psget.net/GetPsGet.ps1&quot;) | iex
 {% endhighlight %}
 
-If you get an error complaining about executing scripts, you need to go back to #2.   Immediately, we can start using the `Install-Module` command to start adding functionality to our console.
+If you get an error complaining about executing scripts, you need to go back to #2. Immediately, we can start using the `Install-Module` command to start adding functionality to our console.
 
-<a href="/images/2012/11/psget.png">
-<img src="/images/2012/11/psget.png" alt="Install PsGet">
-</a>
+![Install PsGet](/images/2012/11/psget.png)
 
 The first module that led me to PsGet is a package that adds status and tab completion to git.  Phil Haack did a <a href="http://haacked.com/archive/2011/12/13/better-git-with-powershell.aspx" target="_blank">great write up</a> on setting up <a href="https://github.com/dahlbyk/posh-git/" target="_blank">posh-git</a>, and I've since discovered a few other <a href="http://pscx.codeplex.com" target="_blank">cool things</a> in the PsGet gallery.  Installing Posh-Git is pretty straight forward:
 
-<a href="/images/2012/11/install-posh-git.png">
-<img src="/images/2012/11/install-posh-git.png" alt="Install Posh-Git">
-</a>
+![Install Posh-Git](/images/2012/11/install-posh-git.png)
 
 The first nice thing here is that I now have command completion.  As I type `git sta` and hit <tab>, it will be completed to `git status`.  Some tools like <a href="https://github.com/MSOpenTech/posh-npm" target="_blank">posh-npm</a> will even search the npm registry for packages using tab completion.   The other cool thing you get with this module is the status of your repository right in the prompt:
 
-<a href="/images/2012/11/posh-git-status.png">
-<img src="/images/2012/11/posh-git-status.png" alt="posh git">
-</a>
+![posh git](/images/2012/11/posh-git-status.png)
 
-
-
-<h4>Wrapping up</h4>
+### Wrapping up
 These are just the ways I know how to make the command line experience better.  If any one else has some tips, I'd love to hear them!

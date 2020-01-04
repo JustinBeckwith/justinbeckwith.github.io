@@ -9,7 +9,8 @@ tags:
 status: publish
 type: post
 published: true
-excerpt: The Virtual Training Environment (VTE) is a Learning Management System designed at the Software Engineering Institute of Carnegie Mellon University.  This system is designed to provide students and instructors with a self managed ecosystem, including user generated content and aspects of social networking.  It may be used for independent learners, synchronous instruction, or semi-synchronous instruction.  Courses may be built using SCORM content, RECast presentations, podcasts, demos, quizzes, surveys, assignments, or virtual labs.
+excerpt: >
+  The Virtual Training Environment (VTE) is a Learning Management System designed at the Software Engineering Institute of Carnegie Mellon University.  This system is designed to provide students and instructors with a self managed ecosystem, including user generated content and aspects of social networking.  It may be used for independent learners, synchronous instruction, or semi-synchronous instruction.  Courses may be built using SCORM content, RECast presentations, podcasts, demos, quizzes, surveys, assignments, or virtual labs.
 ---
 The Virtual Training Environment (VTE) is a Learning Management System designed at the Software Engineering Institute of Carnegie Mellon University.  This system is designed to provide students and instructors with a self managed ecosystem, including user generated content and aspects of social networking.  It may be used for independent learners, synchronous instruction, or semi-synchronous instruction.  Courses may be built using SCORM content, RECast presentations, podcasts, demos, quizzes, surveys, assignments, or virtual labs.
 

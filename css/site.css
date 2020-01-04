@@ -498,6 +498,7 @@ figure pre {
 	border-radius: 5px;
 	overflow: auto;
 	font-size: 14px;
+	tab-size: 2;
 }
 
 .highlighter-rouge {

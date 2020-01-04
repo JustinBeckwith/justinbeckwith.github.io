@@ -12,13 +12,9 @@ tags:
 status: publish
 type: post
 published: true
-excerpt: After releasing WebMatrix 2 RC this week, I'm excited to head out to NYC for WordCamp 2012.  While I get ready to present tomorrow,  I figured I would share some of the amazing work the WebMatrix team has done to create a great experience for WordPress developers.  For a more complete overview of the WebMatrix 2 RC, check out <a href="http://vishaljoshi.blogspot.com/2012/06/announcing-webmatrix-2-rc.html" target="_blank">Vishal Joshi's blog post</a>.
-
-If you want to skip all of this and just download the bits, here you go:
-<p><a href="http://bit.ly/L77V6w" target="_blank"><img style="display: inline" title="image" alt="image" src="http://lh5.ggpht.com/-lm1GuUL20p8/T9HReoCZk7I/AAAAAAAABU4/uO7oVvNCGPQ/image%25255B4%25255D.png?imgmax=800" width="170" height="45"></a></p>
+excerpt: >
+  After releasing WebMatrix 2 RC this week, I'm excited to head out to NYC for WordCamp 2012.  While I get ready to present tomorrow,  I figured I would share some of the amazing work the WebMatrix team has done to create a great experience for WordPress developers.
 ---
-
-
 
 <img src="/images/2012/06/wp_title_header.png" alt="WordPress and WebMatrix"  />
 
@@ -26,8 +22,6 @@ After releasing WebMatrix 2 RC this week, I'm excited to head out to NYC for Wor
 
 If you want to skip all of this and just download the bits, here you go:
 <p><a href="http://bit.ly/L77V6w" target="_blank"><img style="display: inline" title="image" alt="image" src="http://lh5.ggpht.com/-lm1GuUL20p8/T9HReoCZk7I/AAAAAAAABU4/uO7oVvNCGPQ/image%25255B4%25255D.png?imgmax=800" width="170" height="45"></a></p>
-
-
 
 <h3>Welcome to WebMatrix</h3>
 
@@ -73,7 +67,7 @@ We won't stop you from editing the file, but hopefully this prevents people from
 </a>
 
 <h3>HTML5 & CSS3 Tools</h3>
-The HTML editor in WebMatrix has code completion, validation, and formatting for HTML5.  The editor is really, really good.  The CSS editor includes code completion, validation, and formatting for CSS3, including the latest and greatest CSS3 modules.  We also include support for CSS preprocessors like LESS and Sass.  
+The HTML editor in WebMatrix has code completion, validation, and formatting for HTML5.  The editor is really, really good.  The CSS editor includes code completion, validation, and formatting for CSS3, including the latest and greatest CSS3 modules.  We also include support for CSS preprocessors like LESS and Sass.
 
 I think my favorite part about the CSS editor is the way it makes dealing with color easier.  If you start off a color property, WebMatrix will look at the current CSS file, and provide a palette built from the other colors used throughout your site.  This prevents you from having 17 shades of the mostly same color blue:
 

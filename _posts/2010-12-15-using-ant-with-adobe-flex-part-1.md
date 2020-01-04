@@ -13,7 +13,8 @@ tags:
 status: publish
 type: post
 published: true
-excerpt: So why would we want to use ant to build our flex projects?  Flash Builder does a great job of building our actionscript and mxml.  But it does not do a great job of integrating into our existing automated build frameworks.  For those of us who have been writing Java in an enterprise environment, Ant is common knowledge.  If you've spent any time working with the Microsoft .NET platform, you may have been exposed to <a title="NAnt" href="http://nant.sourceforge.net/" target="_blank" rel="noopener">NAnt</a> or <a title="MSBuild" href="http://msdn.microsoft.com/en-us/library/0k6kkbsd.aspx" target="_blank" rel="noopener">MSBuild</a>.  The idea is that we need to have a reliable, repeatable build process that can execute outside of the context of our development environment.  For my team, this means an independent build server (in my case, a virtual machine).  An independent build server means nightly builds, and software that can run without the user at the keys.
+excerpt: >
+  So why would we want to use ant to build our flex projects?  Flash Builder does a great job of building our actionscript and mxml.  But it does not do a great job of integrating into our existing automated build frameworks.  For those of us who have been writing Java in an enterprise environment, Ant is common knowledge.  If you've spent any time working with the Microsoft .NET platform, you may have been exposed to NAnt or MSBuild. The idea is that we need to have a reliable, repeatable build process that can execute outside of the context of our development environment.  For my team, this means an independent build server (in my case, a virtual machine).  An independent build server means nightly builds, and software that can run without the user at the keys.
 ---
 
 

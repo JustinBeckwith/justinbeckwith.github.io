@@ -15,9 +15,8 @@ type: post
 published: true
 featuredImage: "/images/2013/01/waz-blog3.png"
 excerpt: >
-    <a href="http://wazstagram.azurewebsites.net/">Wazstagram</a> is a fun experiment with node.js on <a href="http://www.windowsazure.com/en-us/develop/nodejs/">Windows Azure</a> and the <a href="http://instagram.com/developer/realtime/">Instagram Realtime API</a>.  The project uses various services in Windows Azure to create a scalable window into Instagram traffic across multiple cities.  The application is written in node.js, using cloud services in Windows Azure.  A scalable set of backend nodes receive messages from the Instagram Realtime API.  Those messages are sent to the front end nodes using <a href="http://msdn.microsoft.com/en-us/library/hh690929.aspx">Windows Azure Service Bus</a>.  The front end nodes are running node.js with <a href="http://expressjs.com/">express</a> and <a href="http://socket.io/">socket.io</a>.
+    Wazstagram is a fun experiment with node.js on Windows Azure and the Instagram Realtime API. The project uses various services in Windows Azure to create a scalable window into Instagram traffic across multiple cities.  The application is written in node.js, using cloud services in Windows Azure.  A scalable set of backend nodes receive messages from the Instagram Realtime API.  Those messages are sent to the front end nodes using Windows Azure Service Bus. The front end nodes are running node.js with express and socket.io.
 ---
-
 
 <p><a href="http://wazstagram.azurewebsites.net/"><img alt="WAZSTAGRAM" src="/images/2013/01/waz-screenshot.png" title="View the Demo"/></a>
 </p>
@@ -98,13 +97,9 @@ The code I used to build <a href="https://github.com/JustinBeckwith/wazstagram/"
 <p>The <a href="https://npmjs.org/package/azure">azure npm module</a> provides the basis for all of the Windows Azure stuff we&#39;re going to do with node.js.  It includes all of the support for using blobs, tables, service bus, and service management.  It&#39;s even <a href="https://github.com/WindowsAzure/azure-sdk-for-node/">open source</a>.  To get it, you just need to cd into the directory you&#39;re using and run this command:
 </p>
 
-<p><code>npm install azure</code>
-</p>
+<p><code>npm install azure</code></p>
 
-<p>After you have the azure module, you&#39;re ready to rock.
-</p>
-</li>
-</ol>
+After you have the azure module, you're ready to rock.
 
 <h3>The Backend</h3>
 

@@ -10,14 +10,12 @@ status: publish
 type: post
 published: true
 excerpt: >
-    A few months ago, we introduced the new <a href="http://jbeckwith.com/2012/06/07/node-js-meet-webmatrix-2/" target="_blank">node.js features we've added to WebMatrix 2</a>.  One of the missing pieces from that experience was a way to manage <a href="https://npmjs.org/" target="_blank">NPM</a> (Node Package Manager) from within the IDE.  <p>This week we shipped the final release of WebMatrix 2, and one of the fun things that comes with it is a new extension for managing NPM.  For a more complete overview of the WebMatrix 2, check out <a href="http://vishaljoshi.blogspot.com/2012/06/announcing-webmatrix-2-rc.html" target="_blank">Vishal Joshi's blog post</a>.</p>
+    A few months ago, we introduced the new node.js features we've added to WebMatrix 2. One of the missing pieces from that experience was a way to manage npm (Node Package Manager) from within the IDE. This week we shipped the final release of WebMatrix 2, and one of the fun things that comes with it is a new extension for managing npm.
 ---
-
-
 
 <img src="/images/2012/09/node_128.png" alt="NPM and WebMatrix"  />
 
-A few months ago, we introduced the new <a href="http://jbeckwith.com/2012/06/07/node-js-meet-webmatrix-2/" target="_blank">node.js features we've added to WebMatrix 2</a>.  One of the missing pieces from that experience was a way to manage <a href="https://npmjs.org/" target="_blank">NPM</a> (Node Package Manager) from within the IDE.  
+A few months ago, we introduced the new <a href="http://jbeckwith.com/2012/06/07/node-js-meet-webmatrix-2/" target="_blank">node.js features we've added to WebMatrix 2</a>.  One of the missing pieces from that experience was a way to manage <a href="https://npmjs.org/" target="_blank">NPM</a> (Node Package Manager) from within the IDE.
 
 This week we shipped the final release of WebMatrix 2, and one of the fun things that comes with it is a new extension for managing NPM.  For a more complete overview of the WebMatrix 2, check out <a href="http://vishaljoshi.blogspot.com/2012/06/announcing-webmatrix-2-rc.html" target="_blank">Vishal Joshi's blog post</a>.
 
@@ -56,7 +54,7 @@ While you're working with node.js sites, the icon should always show up.  To get
 <img src="/images/2012/09/npm-icon.png" alt="NPM Icon in the ribbon"  />
 </a>
 
-This will load a window very similar to the other galleries in WebMatrix.  From here you can search for packages, install, uninstall, update, any of the basic tasks you're likely to do day to day with npm.  
+This will load a window very similar to the other galleries in WebMatrix.  From here you can search for packages, install, uninstall, update, any of the basic tasks you're likely to do day to day with npm.
 
 <a href="/images/2012/09/npm-dialog.png">
 <img src="/images/2012/09/npm-dialog.png" alt="NPM Gallery" class="alignnone"  />
@@ -68,7 +66,7 @@ When you open up a new site, we also check your package.json to see if you're mi
 <img src="/images/2012/09/missing-packages.png" alt="Missing NPM packages"  />
 </a>
 
-We're just getting started with the node tools inside of WebMatrix, so if you have anything else you would like to see added please hit us up over at <a href="https://webmatrix.uservoice.com" target="_blank">UserVoice</a>. 
+We're just getting started with the node tools inside of WebMatrix, so if you have anything else you would like to see added please hit us up over at <a href="https://webmatrix.uservoice.com" target="_blank">UserVoice</a>.
 
 <h3>More Information</h3>
 If you would like some more information to help you get started, check out some of these links:
