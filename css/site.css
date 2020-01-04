@@ -493,12 +493,15 @@ figure {
 	margin: 0px;
 }
 
+pre {
+	overflow: auto;
+	tab-size: 2;
+}
+
 figure pre {
 	padding: 10px;
 	border-radius: 5px;
-	overflow: auto;
 	font-size: 14px;
-	tab-size: 2;
 }
 
 .highlighter-rouge {
