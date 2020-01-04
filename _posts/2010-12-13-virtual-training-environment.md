@@ -12,22 +12,19 @@ published: true
 excerpt: >
   The Virtual Training Environment (VTE) is a Learning Management System designed at the Software Engineering Institute of Carnegie Mellon University.  This system is designed to provide students and instructors with a self managed ecosystem, including user generated content and aspects of social networking.  It may be used for independent learners, synchronous instruction, or semi-synchronous instruction.  Courses may be built using SCORM content, RECast presentations, podcasts, demos, quizzes, surveys, assignments, or virtual labs.
 ---
+
 The Virtual Training Environment (VTE) is a Learning Management System designed at the Software Engineering Institute of Carnegie Mellon University.  This system is designed to provide students and instructors with a self managed ecosystem, including user generated content and aspects of social networking.  It may be used for independent learners, synchronous instruction, or semi-synchronous instruction.  Courses may be built using SCORM content, RECast presentations, podcasts, demos, quizzes, surveys, assignments, or virtual labs.
-
-
 
 I am going to do a detailed writeup on this system in the future, but until our launch, here is a gallery of screen-shots:
 
-<a href="/images/2010/12/lab-section-details.png"><img src="/images/2010/12/lab-section-details.png" alt="" title="LMS Section Details" /></a>
+![LMS Section Details](/images/2010/12/lab-section-details.png)
 
-<a href="/images/2010/12/lms-recast.png"><img src="/images/2010/12/lms-recast.png" alt="" title="LMS Launch RECast"/></a>
+![LMS Launch RECast](/images/2010/12/lms-recast.png)
 
-<a href="/images/2010/12/lms-notifications.png"><img src="/images/2010/12/lms-notifications.png" alt="" title="LMS Notifications" ></a>
+![LMS Notifications](/images/2010/12/lms-notifications.png)
 
-<a href="/images/2010/12/lms-enroll.png"><img src="/images/2010/12/lms-enroll.png" alt="" title="LMS Course Enrollment" ></a>
+![LMS Course Enrollment](/images/2010/12/lms-enroll.png)
 
-<a href="/images/2010/12/lms-contact-instructors.png"><img src="/images/2010/12/lms-contact-instructors.png" alt="" title="LMS Contact Instructors" ></a>
+![LMS Contact Instructors](/images/2010/12/lms-contact-instructors.png)
 
-
-
-For more information, visit <a title="VTE" href="http://vte.cert.org/lms/" target="_blank" rel="noopener">http://vte.cert.org/lms/</a>
+For more information, visit [https://vte.cert.org/lms/](https://vte.cert.org/lms/)

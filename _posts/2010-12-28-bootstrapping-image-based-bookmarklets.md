@@ -15,12 +15,11 @@ excerpt: >
   Over this holiday break I had the interesting opportunity to write a bookmarklet for a friend who runs a comic based website.   Instead of just manipulating the currently loaded page, the bookmarklet needed to send a list of images to another site.  Often when writing bookmarklets, we tend to only think of loading our code in the context of a HTML content page.  How often do you test your bookmarklets when the browser is viewing an image?  In this article I am going to go through the code I used to bootstrap my bookmarklet script, and discuss some of the interesting challenges I experienced along the way.
 ---
 
-<img src="/images/2010/12/featured.png" alt="" title="featured" width="430" height="290" />
+![Bookmarklets](/images/2010/12/featured.png)
 
-Over this holiday break I had the interesting opportunity to write a bookmarklet for a friend who runs a comic based website.   Instead of just manipulating the currently loaded page, the bookmarklet needed to send a list of images to another site.  Often when writing <a title="Wikipedia - Bookmarklets" href="http://en.wikipedia.org/wiki/Bookmarklet" target="_blank">bookmarklets</a>, we tend to only think of loading our code in the context of a HTML content page.  How often do you test your bookmarklets when the browser is viewing an image?  In this article I am going to go through the code I used to bootstrap my bookmarklet script, and discuss some of the interesting challenges I experienced along the way.
+Over this holiday break I had the interesting opportunity to write a bookmarklet for a friend who runs a comic based website.   Instead of just manipulating the currently loaded page, the bookmarklet needed to send a list of images to another site.  Often when writing [bookmarklets](https://en.wikipedia.org/wiki/Bookmarklet), we tend to only think of loading our code in the context of a HTML content page.  How often do you test your bookmarklets when the browser is viewing an image?  In this article I am going to go through the code I used to bootstrap my bookmarklet script, and discuss some of the interesting challenges I experienced along the way.
 
-To get started with this code, I used a fantastic <a href="http://www.smashingmagazine.com/2010/05/23/make-your-own-bookmarklets-with-jquery/" target="_blank">article</a> by <a href="http://www.smashingmagazine.com/author/tommy-iamnotagoodartist/" target="_blank">Tommy Saylor</a> of <a href="http://www.smashingmagazine.com/" target="_blank">Smashing Magazine</a>.  It gave me a good start, but certainly left a lot of details out, and in my case, caused a lot of bugs.
-
+To get started with this code, I used a fantastic [article](https://www.smashingmagazine.com/2010/05/23/make-your-own-bookmarklets-with-jquery/) by [Tommy Saylor](https://www.smashingmagazine.com/author/tommy-iamnotagoodartist/) of [Smashing Magazine](https://www.smashingmagazine.com/). It gave me a good start, but certainly left a lot of details out, and in my case, caused a lot of bugs.
 
 ### Bookmarklet Architecture
 That's right:  we should talk about architecture before diving right into our JavaScript.  When writing a bookmarklet, it's generally a good idea to keep as much code out of the actual bookmark as possible.  This is where 'bootstrapping' comes into play:  we will simply use our bookmark as a piece of code that actually loads the core bits of our JavaScript.  There are actually two reasons why this is a good idea:
@@ -31,12 +30,10 @@ After our bootstrapper loads the script we created, any external libraries will 
 
 Another thing to keep in mind when you're building your bookmarklet is how the site behaves after the function is disabled.  For example, if your bookmarklet gives all images on the site a red border, what happens when the user no longer wishes to use the bookmarklet?  For this reason, I tend to create a cleanup method that allows our bookmarklet changes to be undone, and leaves the script in a state that can later be used again.
 
-
-
 ### The bootstrap code
 For the purposes of this bookmarklet, I needed to write a piece of code that would interact with a standard HTML page and it's images, or interact with a page that was a single loaded image. For that reason, the first thing we need to do is determine what type of page we're dealing with.  If the page is HTML, we can insert a script.  If the page is an image, we need to behave differently.  While I found that Firefox and WebKit both generated a HTML container to render image pages, their behavior surrounding script events of these pages were too inconsistent to be depended upon.
 
-<img src="/images/2010/12/firebug.png" alt="" title="Image url firebug output" width="501" height="635" />
+![Image url firebug output](/images/2010/12/firebug.png)
 
 Here is a formatted example of what my a href tag JavaScript looks like:
 
@@ -71,7 +68,7 @@ After tidying up our script, and adding the surrounding tag, here is a final ren
 {% endhighlight %}
 
 ### Loading jQuery and jQueryUI
-Now that the bootstrapper is created, I am going to focus the rest of the article on the external JavaScript file that contains the meat of the code.  With the script I wrote, I needed to use a good deal of visual effects.  I am already comfortable with <a href="http://jquery.com/" target="_blank">JQuery</a>, so I chose to use it as my JavaScript framework:
+Now that the bootstrapper is created, I am going to focus the rest of the article on the external JavaScript file that contains the meat of the code.  With the script I wrote, I needed to use a good deal of visual effects.  I am already comfortable with [JQuery](https://jquery.com/), so I chose to use it as my JavaScript framework:
 
 {% highlight javascript %}
 // create javascript libraries required for main
@@ -191,4 +188,4 @@ $("#cancelLink").click(function(e) {
 });
 {% endhighlight %}
 
-And for now, that's it.  For the source to this project, visit my <a href="https://github.com/JustinBeckwith/Chogger-Bookmarklet" target="_blank">GitHub</a>.
+And for now, that's it.  For the source to this project, visit my [GitHub](https://github.com/JustinBeckwith/Chogger-Bookmarklet).

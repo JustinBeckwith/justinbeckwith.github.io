@@ -17,65 +17,57 @@ excerpt: >
   So why would we want to use ant to build our flex projects?  Flash Builder does a great job of building our actionscript and mxml.  But it does not do a great job of integrating into our existing automated build frameworks.  For those of us who have been writing Java in an enterprise environment, Ant is common knowledge.  If you've spent any time working with the Microsoft .NET platform, you may have been exposed to NAnt or MSBuild. The idea is that we need to have a reliable, repeatable build process that can execute outside of the context of our development environment.  For my team, this means an independent build server (in my case, a virtual machine).  An independent build server means nightly builds, and software that can run without the user at the keys.
 ---
 
+![ant build](/images/2010/12/build-screenshot1.png)
 
+Welcome to the first part in a multi-part series on building [Adobe Flex](https://www.adobe.com/devnet/flex.html) projects using [The Apache Ant Project](https://ant.apache.org/).
 
-<a href="/images/2010/12/build-screenshot1.png"><img title="build-screenshot" src="/images/2010/12/build-screenshot1.png" alt="" width="430" height="290" /></a>
-
-Welcome to the first part in a multi-part series on building <a title="Adobe Flex" href="http://www.adobe.com/devnet/flex.html" target="_blank" rel="noopener">Adobe Flex</a> projects using <a title="The Apache Ant Project" href="http://ant.apache.org/" target="_blank" rel="noopener">The Apache Ant Project</a>.
-
-
-
-So why would we want to use ant to build our flex projects?  Flash Builder does a great job of building our actionscript and mxml.  But it does not do a great job of integrating into our existing automated build frameworks.  For those of us who have been writing Java in an enterprise environment, Ant is common knowledge.  If you've spent any time working with the Microsoft .NET platform, you may have been exposed to <a title="NAnt" href="http://nant.sourceforge.net/" target="_blank" rel="noopener">NAnt</a> or <a title="MSBuild" href="http://msdn.microsoft.com/en-us/library/0k6kkbsd.aspx" target="_blank" rel="noopener">MSBuild</a>.  The idea is that we need to have a reliable, repeatable build process that can execute outside of the context of our development environment.  For my team, this means an independent build server (in my case, a virtual machine).  An independent build server means nightly builds, and software that can run without the user at the keys.
+So why would we want to use ant to build our flex projects?  Flash Builder does a great job of building our actionscript and mxml.  But it does not do a great job of integrating into our existing automated build frameworks.  For those of us who have been writing Java in an enterprise environment, Ant is common knowledge.  If you've spent any time working with the Microsoft .NET platform, you may have been exposed to [NAnt](https://nant.sourceforge.net/) or [MSBuild](https://msdn.microsoft.com/en-us/library/0k6kkbsd.aspx) The idea is that we need to have a reliable, repeatable build process that can execute outside of the context of our development environment.  For my team, this means an independent build server (in my case, a virtual machine).  An independent build server means nightly builds, and software that can run without the user at the keys.
 
 Before we get started, I think it's a good idea to run through the list of tools I'm using for this article:
-<ul>
-	<li>Apache Ant - v.1.8.1</li>
-	<li>Flash Builder - v.4.0.1</li>
-	<li>Flex SDK - v.3.5.0, v.4.1.0</li>
-</ul>
+- Apache Ant - v.1.8.1
+- Flash Builder - v.4.0.1
+- Flex SDK - v.3.5.0, v.4.1.0
+
 So lets get started!
 
-
-<h3>Download, Install, and Configure Ant</h3>
+### Download, Install, and Configure Ant
 The first step is to download ant.  At the time of this article, you can download the binaries at http://ant.apache.org/bindownload.cgi.  The binaries are included as a *.zip file, so we need to unpackage our tool in a place that makes sense.  I chose to create a directory structure that was consistent with other installed software on my system:
 
-C:\Program Files (x86)\Apache\apache-ant-1.8.1
+`C:\Program Files (x86)\Apache\apache-ant-1.8.1`
 
-<a href="/images/2010/11/ant-install-folder1.png"><img class="alignnone size-full wp-image-25" title="ant-install-folder" src="/images/2010/11/ant-install-folder1.png" alt="" width="536" height="360" /></a>
+![Ant install folder](/images/2010/11/ant-install-folder1.png)
 
 After Ant is installed in the appropriate location for your system, you need to create/modify a few system variables in order to use it.  Start by right clicking on 'Computer', and navigate to 'Properties'.  Click on the 'Advanced System Settings' option, and then click on the 'Environment Variables' button.
 
 The variable you need to create is ANT_HOME.  Under system variables, click on the 'New...' button.  Enter the name ANT_HOME, and enter the path you used to install Ant.  For me, this is 'C:\Program Files (x86)\Apache\apache-ant-1.8.1':
 
-<a href="/images/2010/11/ANT_HOME1.png"><img class="alignnone size-full wp-image-40" title="Setting Environment Variables" src="/images/2010/11/ANT_HOME1.png" alt="" width="617" height="362" /></a>
+![Setting Environment Variables](/images/2010/11/ANT_HOME1.png)
 
 We also need to modify the PATH variable, which will allow us to invoke Ant from the command line.  Find the PATH variable in your system variables, and choose 'Edit...'.  At the end of the existing property value, add the full path to your Ant installation, with the addition of the bin.  For me, this is 'C:\Program Files (x86)\Apache\apache-ant-1.8.1\bin;'.  We are now ready to use Ant.
 
-
-<h3>Configuring The Flex SDK</h3>
+### Configuring The Flex SDK
 For the purposes of this post, I am going to assume that you've already installed Flash Builder.  In order for Ant to find the Flex SDK, we need to create an environment variable that points to the appropriate location.  Instead of creating an environment variable that points to a specific SDK directory, I like to create a variable that points to the root of all SDKs.  This allows us to choose the appropriate SDK version inside of the build file, and allows for building bits that use various SDK versions easily.  Create a new environment variable named FLEX_HOME.  Set the path to the root of your Flex SDK installations; for me this is: 'C:\Program Files (x86)\Adobe\Adobe Flash Builder 4\sdks'.  In the case of an independent build machine, you can install the Flex SDKs you need to use independent of Flash Builder.
 
-
-<h3>Configuring Flash Builder to Invoke Ant (optional)</h3>
+### Configuring Flash Builder to Invoke Ant (optional)
 Generally, I invoke my Ant scripts from the command line.  If you're working from a development machine, you may choose to configure Flash Builder to invoke your Ant scripts directly from the IDE.  To get this working, I followed the tutorial listed here:
 
-<a href="http://www.zoltanb.co.uk/Flash-Articles/fb4-standalone-how-to-install-ant-in-flash-builder-4-premium.php" target="_blank" rel="noopener">http://www.zoltanb.co.uk/Flash-Articles/fb4-standalone-how-to-install-ant-in-flash-builder-4-premium.php</a>
+[https://www.zoltanb.co.uk/Flash-Articles/fb4-standalone-how-to-install-ant-in-flash-builder-4-premium.php](https://www.zoltanb.co.uk/Flash-Articles/fb4-standalone-how-to-install-ant-in-flash-builder-4-premium.php)
 
 To enable Ant from Flash Builder, use the following steps:
-<ol>
-	<li> Go to Help &gt; Install New Software</li>
-	<li> Click on Available Software Sites</li>
-	<li> Click on 'Add..'</li>
-	<li> Type in: Name: Galileo  -  Location: <a title="http://download.eclipse.org/releases/galileo/" rel="nofollow" href="http://download.eclipse.org/releases/galileo/">http://download.eclipse.org/releases/galileo/</a></li>
-	<li> Go back to Help&gt;Install New Software</li>
-	<li> Select Galileo from the drop down:</li>
-	<li> Wait until the List gets populated. It might take a long time!</li>
-	<li> Type in 'Eclipse Java' in the search box to narrow down the search</li>
-	<li> Select Eclipse Java Development Tools</li>
-	<li> Click on Next</li>
-	<li> Accept the Terms and click on Finish</li>
-	<li> Click on Yes to restart FB4 and apply your changes:</li>
-	<li> Go To Window&gt; Other Views</li>
-	<li> Select Ant and click OK</li>
-</ol>
+- Go to Help &gt; Install New Software
+- Click on Available Software Sites
+- Click on 'Add..'
+- Type in: Name: Galileo
+- Location: [http://download.eclipse.org/releases/galileo/](https://download.eclipse.org/releases/galileo/)
+- Go back to Help > Install New Software
+- Select Galileo from the drop down:
+- Wait until the List gets populated. It might take a long time!
+- Type in 'Eclipse Java' in the search box to narrow down the search
+- Select Eclipse Java Development Tools
+- Click on Next
+- Accept the Terms and click on Finish
+- Click on Yes to restart FB4 and apply your changes:
+- Go To Window&gt; Other Views
+- Select Ant and click OK
+
 These steps will allow you to build your project in Flash Builder using Ant.  Now our environment is set up and configured.  In the next part of this series, I will go over how to write your Ant scripts.
