@@ -229,10 +229,10 @@ While using godep is great - I'd really love to see consensus.  It's way too eas
 
 There have been a lot of great posts by others on this subject, check these out as well:
 
-- [http://dave.cheney.net/2013/10/10/why-i-think-go-package-management-is-important](http://dave.cheney.net/2013/10/10/why-i-think-go-package-management-is-important)
-- [http://dave.cheney.net/2014/03/22/thoughts-on-go-package-management-six-months-on](http://dave.cheney.net/2014/03/22/thoughts-on-go-package-management-six-months-on)
-- [http://nathany.com/go-packages/](http://nathany.com/go-packages/)
-- [http://blog.gopheracademy.com/advent-2014/deps/](http://blog.gopheracademy.com/advent-2014/deps/)
-- [http://blog.gopheracademy.com/advent-2014/case-against-3pl/](http://blog.gopheracademy.com/advent-2014/case-against-3pl/)
-- [http://kylelemons.net/blog/2012/04/22-rx-for-go-headaches.article](http://kylelemons.net/blog/2012/04/22-rx-for-go-headaches.article)
-- [http://dev.af83.com/2013/09/14/a-journey-in-golang-package-manager.html](http://dev.af83.com/2013/09/14/a-journey-in-golang-package-manager.html)
+- [https://dave.cheney.net/2013/10/10/why-i-think-go-package-management-is-important](https://dave.cheney.net/2013/10/10/why-i-think-go-package-management-is-important)
+- [https://dave.cheney.net/2014/03/22/thoughts-on-go-package-management-six-months-on](https://dave.cheney.net/2014/03/22/thoughts-on-go-package-management-six-months-on)
+- [https://nathany.com/go-packages/](https://nathany.com/go-packages/)
+- [https://blog.gopheracademy.com/advent-2014/deps/](https://blog.gopheracademy.com/advent-2014/deps/)
+- [https://blog.gopheracademy.com/advent-2014/case-against-3pl/](https://blog.gopheracademy.com/advent-2014/case-against-3pl/)
+- [https://kylelemons.net/blog/2012/04/22-rx-for-go-headaches.article](https://kylelemons.net/blog/2012/04/22-rx-for-go-headaches.article)
+- [https://dev.af83.com/2013/09/14/a-journey-in-golang-package-manager.html](https://dev.af83.com/2013/09/14/a-journey-in-golang-package-manager.html)

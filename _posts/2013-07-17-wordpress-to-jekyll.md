@@ -98,6 +98,7 @@ One of the pieces that isn't baked into jekyll is the construction of an RSS fee
 One of the pieces I wanted to add was a post archive page.  Building this was relatively straight forward - you create a list of categories used across all of the posts in your site.  Next you render an excerpt for each post:
 
 {% highlight html %}
+{% raw %}
 <div class="container">
 	<div id="home">
 		<h1>The Archive</h1>
@@ -124,6 +125,7 @@ One of the pieces I wanted to add was a post archive page.  Building this was re
 		</div>
 	</div>
 </div>
+{% endraw %}
 {% endhighlight %}
 
 For the full example, <a href="https://github.com/JustinBeckwith/justinbeckwith.github.io/blob/master/archive.html" target="_blank">check it out on GitHub</a>.

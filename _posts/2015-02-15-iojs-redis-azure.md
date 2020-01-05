@@ -19,12 +19,12 @@ excerpt: >
     A few years ago, I put together a fun little app that used node.js, service bus, cloud services, and the Instagram realtime API to build a realtime visualization of images posted to Instagram. In 2 years time, a lot has changed on the Azure platform.  I decided to go back into that code, and retool it to take advantage of some new technology and platform features.  And for fun.
 ---
 
-[!["View the demo"](/images/2013/01/waz-screenshot.png)](http://wazstagram.azurewebsites.net)
+[!["View the demo"](/images/2013/01/waz-screenshot.png)](https://wazstagram.azurewebsites.net)
 
-A few years ago, I put together a [fun little app](http://jbeckwith.com/2013/01/30/building-scalable-realtime-services-with-node-js-socket-io-and-windows-azure/) that used node.js, service bus, cloud services, and the Instagram realtime API to build a realtime visualization of images posted to Instagram. In 2 years time, a lot has changed on the Azure platform.  I decided to go back into that code, and retool it to take advantage of some new technology and platform features.  And for fun.
+A few years ago, I put together a [fun little app](https://jbeckwith.com/2013/01/30/building-scalable-realtime-services-with-node-js-socket-io-and-windows-azure/) that used node.js, service bus, cloud services, and the Instagram realtime API to build a realtime visualization of images posted to Instagram. In 2 years time, a lot has changed on the Azure platform.  I decided to go back into that code, and retool it to take advantage of some new technology and platform features.  And for fun.
 
-- [Original blog post](http://jbeckwith.com/2013/01/30/building-scalable-realtime-services-with-node-js-socket-io-and-windows-azure/)
-- [View the demo on Azure](http://wazstagram.azurewebsites.net/)
+- [Original blog post](https://jbeckwith.com/2013/01/30/building-scalable-realtime-services-with-node-js-socket-io-and-windows-azure/)
+- [View the demo on Azure](https://wazstagram.azurewebsites.net/)
 - [View the code on GitHub](https://github.com/JustinBeckwith/wazstagram)
 
 Let's take a look through the updates!

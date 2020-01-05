@@ -46,11 +46,11 @@ javascript:(function() {
 		||/.jpeg$/.test(location.href)
 		||/.gif$/.test(location.href))
 		{
-			location.href='http://jbeckwith.com/bookmarklet/';
+			location.href='https://jbeckwith.com/bookmarklet/';
 		}
 		else if (!window.main) {
 			document.body.appendChild(document.createElement('script'))
-				.src='http://jbeckwith.com/my-bookmarklet.js';
+				.src='https://jbeckwith.com/my-bookmarklet.js';
 		}
 		else {
 			main();
@@ -64,7 +64,7 @@ After tidying up our script, and adding the surrounding tag, here is a final ren
 <!--
 	<a> tag example
 -->
-<a href="javascript:(function(){if((document.contentType&&document.contentType.indexOf('image/')>-1)||/.png$/.test(location.href)||/.jpg$/.test(location.href)||/.jpeg$/.test(location.href)||/.gif$/.test(location.href)){location.href='http://jbeckwith.com/bookmarklet/';}else if(!window.main){document.body.appendChild(document.createElement('script')).src='http://jbeckwith.com/my-bookmarklet.js';}else{main();}})();">It's a bookmarklet!</a>
+<a href="javascript:(function(){if((document.contentType&&document.contentType.indexOf('image/')>-1)||/.png$/.test(location.href)||/.jpg$/.test(location.href)||/.jpeg$/.test(location.href)||/.gif$/.test(location.href)){location.href='https://jbeckwith.com/bookmarklet/';}else if(!window.main){document.body.appendChild(document.createElement('script')).src='https://jbeckwith.com/my-bookmarklet.js';}else{main();}})();">It's a bookmarklet!</a>
 {% endhighlight %}
 
 ### Loading jQuery and jQueryUI
@@ -82,7 +82,7 @@ if (typeof jQuery == 'undefined') {
 			getDependencies();
 		} // end if
 	};
-	jQ.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
+	jQ.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
 	document.body.appendChild(jQ);
 } // end if
 else {
@@ -103,13 +103,13 @@ function getDependencies() {
 		var jQCSS = document.createElement('link');
 		jQCSS.type = 'text/css';
 		jQCSS.rel= 'stylesheet';
-		jQCSS.href = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css';
+		jQCSS.href = 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css';
 		document.body.appendChild(jQCSS);
 
 		// grab jquery ui
 		var jQUI = document.createElement('script');
 		jQUI.type = 'text/javascript';
-		jQUI.src = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js';
+		jQUI.src = 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js';
 		jQUI.onload=getDependencies;
 		jQUI.onreadystatechange=function() {
 			if(this.readyState=='loaded' || this.readyState=='complete') {

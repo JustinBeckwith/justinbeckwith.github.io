@@ -19,17 +19,17 @@ excerpt: >
 
 ** note:  I recently updated this post to make sure all of the commands still work. **
 
-I've spent some time recently using [the Go programming language](http://jbeckwith.com/2015/01/04/comparing-go-and-dotnet/) for my side web projects. The Go standard libraries are minimal by design - meaning it doesn't come with a prescriptive web framework out of the box. The good news is that there are a ton of options:
+I've spent some time recently using [the Go programming language](https://jbeckwith.com/2015/01/04/comparing-go-and-dotnet/) for my side web projects. The Go standard libraries are minimal by design - meaning it doesn't come with a prescriptive web framework out of the box. The good news is that there are a ton of options:
 
 - [Revel](https://revel.github.io/)
 - [Gin](https://github.com/gin-gonic/gin)
-- [Martini](http://martini.codegangsta.io/)
-- [Beego](http://beego.me/)
-- [Gorilla](http://www.gorillatoolkit.org/)
+- [Martini](https://martini.codegangsta.io/)
+- [Beego](https://beego.me/)
+- [Gorilla](https://www.gorillatoolkit.org/)
 
 Of course, you could decide to just [not use a web framework at all](https://news.ycombinator.com/item?id=8772760). Comparing these is a topic of great debate - but that topic is for another post :)  I decided to try out Revel first, as it was the closest to a full featured rails-esque framework at a glance. I'll likely give all of these a shot at some point.
 
-After building an app on Revel, I wanted to get a feel for deploying my app to see if it posed any unique challenges. I recently started a new gig working on [Google Cloud](http://cloud.google.com), and decided to try out [App Engine](https://cloud.google.com/appengine/docs). The default runtime environment for Go in App Engine is [sandboxed](https://cloud.google.com/appengine/docs/go/#Go_The_sandbox). This comes with some benefits, and a few challenges. You get a lot of stuff for free, but you also are restricted in terms of file system access, network access, and library usage. Given the restrictions, I decided to use the new [App Engine Flexible](https://cloud.google.com/appengine/docs/go/managed-vms/) service. App Engine Flex lets you deploy your application in a docker container, while still having access to the other App Engine features like [datastore](https://cloud.google.com/appengine/features/#datastore), [logging](https://cloud.google.com/appengine/features/#logs), [caching](https://cloud.google.com/appengine/features/#memcache), etc. The advantage of using docker here is that I don't need to write any App Engine specific code. I can write a standard Go/Revel app, and just deploy to docker.
+After building an app on Revel, I wanted to get a feel for deploying my app to see if it posed any unique challenges. I recently started a new gig working on [Google Cloud](https://cloud.google.com), and decided to try out [App Engine](https://cloud.google.com/appengine/docs). The default runtime environment for Go in App Engine is [sandboxed](https://cloud.google.com/appengine/docs/go/#Go_The_sandbox). This comes with some benefits, and a few challenges. You get a lot of stuff for free, but you also are restricted in terms of file system access, network access, and library usage. Given the restrictions, I decided to use the new [App Engine Flexible](https://cloud.google.com/appengine/docs/go/managed-vms/) service. App Engine Flex lets you deploy your application in a docker container, while still having access to the other App Engine features like [datastore](https://cloud.google.com/appengine/features/#datastore), [logging](https://cloud.google.com/appengine/features/#logs), [caching](https://cloud.google.com/appengine/features/#memcache), etc. The advantage of using docker here is that I don't need to write any App Engine specific code. I can write a standard Go/Revel app, and just deploy to docker.
 
 ## Starting with Revel
 
@@ -119,11 +119,11 @@ gcloud app deploy
 {% endhighlight %}
 
 After deploying, you can visit your site here:
-[<code>http://revel-gae.appspot.com</code>](http://revel-gae.appspot.com)
+[<code>https://revel-gae.appspot.com</code>](https://revel-gae.appspot.com)
 
 ![Revel running on App Engine](/images/2015/docker-revel-appengine/appengine.png)
 
 
 ## Wrapping up
 
-So that's it. I decided to use revel for this one, but the whole idea behind using docker for App Engine is that you can bring pretty much any stack. If you have any questions, feel free to [check out the source](http://github.com/JustinBeckwith/revel-appengine), or find me [@JustinBeckwith](https://twitter.com/JustinBeckwith).
+So that's it. I decided to use revel for this one, but the whole idea behind using docker for App Engine is that you can bring pretty much any stack. If you have any questions, feel free to [check out the source](https://github.com/JustinBeckwith/revel-appengine), or find me [@JustinBeckwith](https://twitter.com/JustinBeckwith).
