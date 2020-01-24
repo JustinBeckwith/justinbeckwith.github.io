@@ -12,7 +12,7 @@ type: post
 published: true
 featuredImage: "/images/2014/how-the-azure-portal-works/portalfeature.png"
 excerpt: >
-    For the last year and a half, I've been part of the team that's building the new <a href="http://portal.azure.com" target="_blank">Azure portal</a> - and it's been quite an experience. A lot has been said about the <a href="http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Preview-portal" target="_blank">end to end experience</a>, the <a href="http://blogs.msdn.com/b/bharry/archive/2014/04/03/visual-studio-online-integration-in-the-azure-portal.aspx" target="_blank">integration of Visual Studio Online</a>, and even some of the <a href="http://weblogs.asp.net/scottgu/azure-new-documentdb-nosql-service-new-search-service-new-sql-alwayson-vm-template-and-more" target="_blank">new services that have been released lately</a>.  All of that's awesome, but it's not what I want to talk about today.  As much as those things are great (and I mean, who doesn't like the design), the real interesting piece is the underlying architecture. Let's take a look under the hood of the new Azure portal.
+    For the last year and a half, I've been part of the team that's building the new Azure portal - and it's been quite an experience. A lot has been said about the end to end experience, the integration of Visual Studio Online, and even some of the new services that have been released lately. All of that's awesome, but it's not what I want to talk about today.  As much as those things are great (and I mean, who doesn't like the design), the real interesting piece is the underlying architecture. Let's take a look under the hood of the new Azure portal.
 ---
 
 <img src="/images/2014/how-the-azure-portal-works/portal.png" alt="Damn, we look good." />
