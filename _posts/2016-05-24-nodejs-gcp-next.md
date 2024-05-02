@@ -2,22 +2,22 @@
 layout: post
 title: Building node.js applications on Google Cloud Platform
 tags:
-- featured
-- node.js
-- google
-- app engine
+  - featured
+  - node.js
+  - google
+  - app engine
 status: publish
 category: node.js
 type: post
 published: true
 featuredImage: "/images/2016/nodejs-gcp-next/nodejs-gcp-next-featured.jpg"
 excerpt: >
-    In March I had the chance to talk at <a href="https://cloudplatformonline.com/" target="_blank">GCP Next</a> on <a href="https://cloud.google.com/nodejs" target="_blank">Node.js @ Google</a>. This is a fun little tour of what Google Cloud has to offer Node.js developers.
+  In March I had the chance to talk at <a href="https://cloudplatformonline.com/" target="_blank">GCP Next</a> on <a href="https://cloud.google.com/nodejs" target="_blank">Node.js @ Google</a>. This is a fun little tour of what Google Cloud has to offer Node.js developers.
 ---
 
-<img src="/images/2016/nodejs-gcp-next/nodejs-gcp-next-featured.jpg" alt="Node.js is for hats and cats" />
+![Node.js is for hats and cats](/images/2016/nodejs-gcp-next/nodejs-gcp-next-featured.jpg)
 
-In March I had the chance to talk at <a href="https://cloudplatformonline.com/" target="_blank" rel="noopener">GCP Next</a> on <a href="https://cloud.google.com/nodejs" target="_blank" rel="noopener">Node.js @ Google</a>. This is a fun little tour of what Google Cloud has to offer Node.js developers.
+In March I had the chance to talk at [GCP Next](https://cloudplatformonline.com/) on [Node.js @ Google](https://cloud.google.com/nodejs). This is a fun little tour of what Google Cloud has to offer Node.js developers.
 
 ### Timeline
 
@@ -40,7 +40,7 @@ In March I had the chance to talk at <a href="https://cloudplatformonline.com/" 
 - **42:31** - Closing
 
 ### Watch the video
-
+<!-- markdownlint-disable-next-line -->
 <div class='embed-container'><iframe title="Building node.js applications on GCP" width="560" height="315" src="https://www.youtube.com/embed/jsznS0QxtYI" frameborder="0" allowfullscreen></iframe></div>
 
 Thanks!

@@ -2,16 +2,16 @@
 layout: post
 title: Comparing Go and .NET
 tags:
-- featured
-- ASP.NET
-- Go
+  - featured
+  - ASP.NET
+  - Go
 status: publish
 category: Golang
 type: post
 published: true
 featuredImage: "/images/2015/comparing-go-and-dotnet/gopher.png"
 excerpt: >
-    I like to use the holiday break as a time to hang out with the family, disconnect from work, and learn about something new. I've been writing a lot of JavaScript lately, so I wanted to try something different. I decided to check out golang. I found myself wanting to understand Go in terms of what I already know about .NET and nodejs, and wishing there was a guide to bridge those gaps. My goal is to make it easier for those coming from a .NET background to understand Go, and get a feel for how it relates to similar concepts in the .NET world.
+  I like to use the holiday break as a time to hang out with the family, disconnect from work, and learn about something new. I've been writing a lot of JavaScript lately, so I wanted to try something different. I decided to check out golang. I found myself wanting to understand Go in terms of what I already know about .NET and nodejs, and wishing there was a guide to bridge those gaps. My goal is to make it easier for those coming from a .NET background to understand Go, and get a feel for how it relates to similar concepts in the .NET world.
 ---
 
 !["The gopher image is Creative Commons Attributions 3.0 licensed. Credit Renee French."](/images/2015/comparing-go-and-dotnet/gopher.png "The gopher image is Creative Commons Attributions 3.0 licensed. Credit Renee French.")
@@ -24,18 +24,14 @@ Coming at this from 0 - I used a few resources to get started:
 - [Go by Example](https://gobyexample.com/) - I actually learned more from go by example than the tour. It was great.
 - [The github API wrapper in Go](https://github.com/google/go-github) - I figured I should start with some practical code samples written by folks at Google. When in doubt, I used this to make sure I was doing things 'the go way'.
 
-
-I'm a learn-by-doing kind of guy - so I decided to learn by building something I've built in the past - an API wrapper for the Yelp API. A few years ago, I was working with the ineffable [Howard Dierking](https://twitter.com/howard_dierking) on a side project to compare RoR to ASP.NET. The project we picked needed to work with the Yelp API - and we noticed the lack of a NuGet package that fit the bill (for the record, there was a gem). To get that project kickstarted, I wrote a C# wrapper over the Yelp API - so I figure, why not do the same for Go?  You can see the results of these projects here:
+I'm a learn-by-doing kind of guy - so I decided to learn by building something I've built in the past - an API wrapper for the Yelp API. A few years ago, I was working with the ineffable [Howard Dierking](https://twitter.com/howard_dierking) on a side project to compare RoR to ASP.NET. The project we picked needed to work with the Yelp API - and we noticed the lack of a NuGet package that fit the bill (for the record, there was a gem). To get that project kickstarted, I wrote a C# wrapper over the Yelp API - so I figure, why not do the same for Go? You can see the results of these projects here:
 
 - [YelpSharp](https://github.com/JustinBeckwith/YelpSharp) - C# / .NET Yelp wrapper API
 - [go-yelp](https://github.com/JustinBeckwith/go-yelp) - Go Yelp wrapper API
 
 To get a feel for the differences, it's useful to poke around the two repositories and compare apples to apples. This isn't a "Why I'm rage quitting .NET and moving to Go" post, or a "Why Go sucks and is doing it wrong" post. Each stack has it's strengths and weaknesses. Each is better suited for different teams, projects and development cultures. I found myself wanting to understand Go in terms of what I already know about .NET and nodejs, and wishing there was a guide to bridge those gaps. So I guess my goal is to make it easier for those coming from a .NET background to understand Go, and get a feel for how it relates to similar concepts in the .NET world. Here we go!
 
-
-_**disclaimer:**  I've been writing C# for 14 years, and Go for 14 days. Please take all judgments of Go with a grain of salt._
-
-
+_**disclaimer:** I've been writing C# for 14 years, and Go for 14 days. Please take all judgments of Go with a grain of salt._
 
 ### Environment Setup
 
@@ -51,18 +47,17 @@ All go code you write goes into a single root directory, which has a directory f
 
 For a single $GOPATH, you have one set of dependencies, and you keep a single version of the go toolchain. It felt a little uncomfortable, and at times it made me think of the [GAC](http://msdn.microsoft.com/en-us/library/yf1d93sz%28v=vs.110%29.aspx). It's also pretty similar to Ruby. Ruby has [RVM](https://github.com/wayneeseguin/rvm) to solve this problem, and Go has [GVM](https://github.com/moovweb/gvm). If you're working on different Go projects that have different requirements for runtime version / dependencies - I'd imagine you want to use GVM. Today, I only have one project - so it is less of a concern.
 
-
 ### Build & Runtime
 
 In .NET land we use msbuild for compilation. On my team we use Visual Studio at dev time, and run msbuild via jenkins on our CI server. This is a pretty typical setup. At compile time, C# code is compiled down into IL, which is then just-in-time compiled at runtime to the native assembly language of the system's host.
 
 Go is a little different, as it compiles directly to native code on the current platform. If I compile my yelp library in OSX, it creates an executable that will run on my current machine. This binary is not interpreted, or IL - it is a good ol' native executable. When linking occurs, the full native go runtime is embedded in your binary. It has much more of a c++ / gcc kind of feel. I'm sure this doesn't hurt in the performance department - which is one of the reasons folks move from Python/Ruby/Node to Go.
 
-Compilation of *.go files is done by running the `go build` command from within the directory that contains your go files. I haven't really come across many projects using complex builds - its usually sufficient to just use `go build`. Outside of that - it seems like most folks are using [makefiles to perform build automation](http://blog.snowfrog.net/2013/06/18/golang-building-with-makefile-and-jenkins/). There's really no equivalent of a *.csproj file, or *.sln file in go - so there's no baked in file you would run through an msbuild equivalent. There are just *.go files in a directory, that you run the build tool against. At first I found all of this alarming. After a while - I realized that it mostly "just worked". It feels very similar to the csproj-less build system of [ASP.NET vNext](http://jbeckwith.com/2014/11/09/aspnet-vnext-oredev/).
+Compilation of _.go files is done by running the `go build` command from within the directory that contains your go files. I haven't really come across many projects using complex builds - its usually sufficient to just use `go build`. Outside of that - it seems like most folks are using [makefiles to perform build automation](http://blog.snowfrog.net/2013/06/18/golang-building-with-makefile-and-jenkins/). There's really no equivalent of a_.csproj file, or _.sln file in go - so there's no baked in file you would run through an msbuild equivalent. There are just_.go files in a directory, that you run the build tool against. At first I found all of this alarming. After a while - I realized that it mostly "just worked". It feels very similar to the csproj-less build system of [ASP.NET vNext](http://jbeckwith.com/2014/11/09/aspnet-vnext-oredev/).
 
 ### Package management
 
-In the .NET world, package management is pretty well known:  it's all about [NuGet](http://nuget.org). You create a project it, add a nuspec, compile a nupkg with binaries, and publish them to [nuget.org](http://nuget.org). There are a lot of NuGet packages that fall under the "must have" category - things like [JSON.NET](http://www.nuget.org/packages/Newtonsoft.Json/), [ELMAH](http://www.nuget.org/packages/elmah/) and even [ASP.NET MVC](http://www.nuget.org/packages/Microsoft.AspNet.Mvc/6.0.0-beta1). It's not uncommon to have 30+ packages referenced in your project.
+In the .NET world, package management is pretty well known: it's all about [NuGet](http://nuget.org). You create a project it, add a nuspec, compile a nupkg with binaries, and publish them to [nuget.org](http://nuget.org). There are a lot of NuGet packages that fall under the "must have" category - things like [JSON.NET](http://www.nuget.org/packages/Newtonsoft.Json/), [ELMAH](http://www.nuget.org/packages/elmah/) and even [ASP.NET MVC](http://www.nuget.org/packages/Microsoft.AspNet.Mvc/6.0.0-beta1). It's not uncommon to have 30+ packages referenced in your project.
 
 In .NET, we have a `packages.config` that contains a list of dependencies. This is nice, because it explicitly lays out what we depend upon, and the specific version we want to use:
 
@@ -74,13 +69,13 @@ In .NET, we have a `packages.config` that contains a list of dependencies. This 
 ```
 
 Go takes a bit of a different approach. The general philosophy of Go seems to trend towards avoiding external dependencies. I've found Blake Mizerany's talk to be pretty standard for sentiment from the community:
-
+<!-- markdownlint-disable-next-line -->
 <div class='embed-container'><iframe title="Three fallacies of dependencies" src='http://www.youtube.com/embed/yi5A3cK1LNA' frameborder='0' allowfullscreen></iframe></div>
 
 In Go - there's no equivalent of `packages.config`. It just doesn't exist. Instead - dependency installation is driven from Git/Hg repositories or local paths. The dependency is installed into your go path with the `go get` command:
 
 ```sh
-$ go get github.com/JustinBeckwith/go-yelp/yelp
+go get github.com/JustinBeckwith/go-yelp/yelp
 ```
 
 This command pulls down the relevant sources from the Git/Hg repository, and builds the binaries specific to your OS. To use the dependency, you don't reference a namespace or dll - you just import the library using the same url used to acquire the library:
@@ -92,14 +87,13 @@ client := yelp.New(options)
 result, err := client.DoSimpleSearch("coffee", "seattle")
 ```
 
-When you `go compile`, the compiler walks through each *.go file, finds the list of external (non BCL) libraries, and implicitly does a `go get` if needed. This is both awesome and frightening at the same time. It's great that go doesn't require explicit dependencies. It's great that I don't need to think of the package and the namespace as different entities. It's **not** cool that I cannot choose a specific version of a package. No wonder the go community is skeptical of external dependencies - I wouldn't reference the tip of the master branch of any project and expect it to keep working for the long haul.
+When you `go compile`, the compiler walks through each \*.go file, finds the list of external (non BCL) libraries, and implicitly does a `go get` if needed. This is both awesome and frightening at the same time. It's great that go doesn't require explicit dependencies. It's great that I don't need to think of the package and the namespace as different entities. It's **not** cool that I cannot choose a specific version of a package. No wonder the go community is skeptical of external dependencies - I wouldn't reference the tip of the master branch of any project and expect it to keep working for the long haul.
 
-To get get around this limitation, a few package managers started to pop up in the community. [There are a lot of them.](https://code.google.com/p/go-wiki/wiki/PackageManagementTools)  Given the lack of a single winner in this space, I chose to write my package 'the go way' and not attempt using a package manager.
-
+To get get around this limitation, a few package managers started to pop up in the community. [There are a lot of them.](https://code.google.com/p/go-wiki/wiki/PackageManagementTools) Given the lack of a single winner in this space, I chose to write my package 'the go way' and not attempt using a package manager.
 
 ### Tooling
 
-In the .NET world - [Visual Studio](http://msdn.microsoft.com/en-us/vstudio/aa718325.aspx) is king. I know a lot of folks that use things like JetBrains or SublimeText for code editing (I'm one of those SublimeText folks), but really it's all about VS. Visual Studio gives us project templates, IntelliSense, builds, tests, refactoring, code outlines - you get it. It's all in the box.  A giant box.
+In the .NET world - [Visual Studio](http://msdn.microsoft.com/en-us/vstudio/aa718325.aspx) is king. I know a lot of folks that use things like JetBrains or SublimeText for code editing (I'm one of those SublimeText folks), but really it's all about VS. Visual Studio gives us project templates, IntelliSense, builds, tests, refactoring, code outlines - you get it. It's all in the box. A giant box.
 
 With Go, most developers tend to use a more stripped down code editor. There are a lot of folks using vim, sublimetext, or notepad++. Here are some of the more popular options:
 
@@ -111,13 +105,13 @@ You can find a good conversation about the topic [on this reddit thread](http://
 
 ![LiteIDE](/images/2015/comparing-go-and-dotnet/liteide.png)
 
-There are a lot of options out there - which is a good thing :)  Go comes with a variety of other command line tools that make working with the framework easier:
+There are a lot of options out there - which is a good thing :) Go comes with a variety of other command line tools that make working with the framework easier:
 
-- *go build* - builds your code
-- *go install* - builds the code, and installs it in the $GOPATH
-- *go test* - runs all tests in the project
-- *gofmt* - formats your source code matching go coding standards
-- *gocov* - perform code coverage analysis
+- _go build_ - builds your code
+- _go install_ - builds the code, and installs it in the $GOPATH
+- _go test_ - runs all tests in the project
+- _gofmt_ - formats your source code matching go coding standards
+- _gocov_ - perform code coverage analysis
 
 I used all of these while working on my library.
 
@@ -153,18 +147,18 @@ The accepted pattern in Go for tests is to write a corresponding `<filename>_tes
 ```go
 // TestGeneralOptions will verify search with location and search term.
 func TestGeneralOptions(t *testing.T) {
-	client := getClient(t)
-	options := SearchOptions{
-		GeneralOptions: &GeneralOptions{
-			Term: "coffee",
-		},
-		LocationOptions: &LocationOptions{
-			Location: "seattle",
-		},
-	}
-	result, err := client.DoSearch(options)
-	check(t, err)
-	assert(t, len(result.Businesses) > 0, containsResults)
+ client := getClient(t)
+ options := SearchOptions{
+  GeneralOptions: &GeneralOptions{
+   Term: "coffee",
+  },
+  LocationOptions: &LocationOptions{
+   Location: "seattle",
+  },
+ }
+ result, err := client.DoSearch(options)
+ check(t, err)
+ assert(t, len(result.Businesses) > 0, containsResults)
 }
 ```
 
@@ -253,25 +247,25 @@ package yelp
 // LocaleOptions provide additional search options that enable returning results
 // based on a given country or locale.
 type LocaleOptions struct {
-	// ISO 3166-1 alpha-2 country code. Default country to use when parsing the location field.
-	// United States = US, Canada = CA, United Kingdom = GB (not UK).
-	cc   string
+ // ISO 3166-1 alpha-2 country code. Default country to use when parsing the location field.
+ // United States = US, Canada = CA, United Kingdom = GB (not UK).
+ cc   string
 
-	// ISO 639 language code (default=en). Reviews written in the specified language will be shown.
-	lang string
+ // ISO 639 language code (default=en). Reviews written in the specified language will be shown.
+ lang string
 }
 
 // getParameters will reflect over the values of the given struct, and provide a type appropriate
 // set of querystring parameters that match the defined values.
 func (o *LocaleOptions) getParameters() (params map[string]string, err error) {
-	params = make(map[string]string)
-	if o.cc != "" {
-		params["cc"] = o.cc
-	}
-	if o.lang != "" {
-		params["lang"] = o.lang
-	}
-	return params, nil
+ params = make(map[string]string)
+ if o.cc != "" {
+  params["cc"] = o.cc
+ }
+ if o.lang != "" {
+  params["lang"] = o.lang
+ }
+ return params, nil
 }
 ```
 
@@ -282,7 +276,7 @@ There are a few interesting things to call out from these two samples:
 - In my C# sample, this structure implements an interface. In Go, you write an interface, and then structures implement them ambiently - there is no `implements` keyword.
 - Pointers are an important concept in Go. I haven't had to think about pointers since 2001 (the last time I wrote C++). It's not a big deal, but not something I expected to run into.
 - Notice that the `getParameters()` function returns multiple results - that's new (and kind of cool).
-- The `getParameters()` method returns an error as one of the potential return values. You need to do that since *there is no concept of an exception in Go*.
+- The `getParameters()` method returns an error as one of the potential return values. You need to do that since _there is no concept of an exception in Go_.
 
 #### Error handling
 
@@ -292,24 +286,24 @@ Let that one sink for a moment. Go takes a strange (but effective) approach to e
 // DoSearch performs a complex search with full search options.
 func (client *Client) DoSearch(options SearchOptions) (result SearchResult, err error) {
 
-	// get the options from the search provider
-	params, err := options.getParameters()
-	if err != nil {
-		return SearchResult{}, err
-	}
+ // get the options from the search provider
+ params, err := options.getParameters()
+ if err != nil {
+  return SearchResult{}, err
+ }
 
-	// perform the search request
-	rawResult, _, err := client.makeRequest(searchArea, &quot;&quot;, params)
-	if err != nil {
-		return SearchResult{}, err
-	}
+ // perform the search request
+ rawResult, _, err := client.makeRequest(searchArea, &quot;&quot;, params)
+ if err != nil {
+  return SearchResult{}, err
+ }
 
-	// convert the result from json
-	err = json.Unmarshal(rawResult, &amp;result)
-	if err != nil {
-		return SearchResult{}, err
-	}
-	return result, nil
+ // convert the result from json
+ err = json.Unmarshal(rawResult, &amp;result)
+ if err != nil {
+  return SearchResult{}, err
+ }
+ return result, nil
 }
 ```
 
@@ -322,12 +316,12 @@ In the previous sample, you may have noticed something fishy. On the following l
 ```go
 rawResult, _, err := client.makeRequest(searchArea, &quot;&quot;, params)
 if err != nil {
-	return SearchResult{}, err
+ return SearchResult{}, err
 }
 ...
 ```
 
-That code is *synchronous*. When I first wrote this code - I was fairly certain I was making a mistake. Years of callbacks or promises in node, and years of tasks and async/await in C# had taught me something really clear - synchronous methods that block the thread are bad. But here's Go - just doing it's thing. I thought I was making a mistake, until I started poking around and found a [few people with the same misunderstanding](http://stackoverflow.com/questions/23709118/does-golang-have-callback-concept). To make a call asynchronously in Go, it's largely up to the caller, using a [goroutine](https://gobyexample.com/goroutines). Goroutines are kind of cool. You essentially point at a function and say 'run this asynchronously':
+That code is _synchronous_. When I first wrote this code - I was fairly certain I was making a mistake. Years of callbacks or promises in node, and years of tasks and async/await in C# had taught me something really clear - synchronous methods that block the thread are bad. But here's Go - just doing it's thing. I thought I was making a mistake, until I started poking around and found a [few people with the same misunderstanding](http://stackoverflow.com/questions/23709118/does-golang-have-callback-concept). To make a call asynchronously in Go, it's largely up to the caller, using a [goroutine](https://gobyexample.com/goroutines). Goroutines are kind of cool. You essentially point at a function and say 'run this asynchronously':
 
 ```go
 func Announce(message string, delay time.Duration) {
@@ -342,11 +336,8 @@ Running `go <func>` in this manner will run the function concurrently in the sam
 
 ### What's next
 
-My experience so far with Go has been at times frustrating, but certainty not boring. The best advice I can give for those new to the language is to let go of your preconceived notion of how [insert concept or task] works - it's almost like the designers of Go tried to do things differently for the sake of doing it differently at times.  And that's ok :) I was cursing far less at the end of the project than the beginning, and I've now started to move towards understanding why it's different (except for the lack of generics - that's just weird). It's helping me question some of the design decisions I've made on my own APIs at work, and helped me better appreciate the niceties of C#.
+My experience so far with Go has been at times frustrating, but certainty not boring. The best advice I can give for those new to the language is to let go of your preconceived notion of how [insert concept or task] works - it's almost like the designers of Go tried to do things differently for the sake of doing it differently at times. And that's ok :) I was cursing far less at the end of the project than the beginning, and I've now started to move towards understanding why it's different (except for the lack of generics - that's just weird). It's helping me question some of the design decisions I've made on my own APIs at work, and helped me better appreciate the niceties of C#.
 
 I've really only scratched the surface of what's out there for Go. Now that I've put together a library, I'm going to take the next step and start playing around with [revel](http://revel.github.io/), which provides an ASP.NET style web framework on top of Go. From there, I'm going to keep on building, and see where this goes. Happy coding!
 
-
-*The gopher image is Creative Commons Attributions 3.0 licensed. Credit Renee French.*
-
-
+_The gopher image is Creative Commons Attributions 3.0 licensed. Credit Renee French._

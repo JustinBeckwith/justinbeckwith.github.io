@@ -2,21 +2,21 @@
 layout: post
 title: Building web applications with ASP.NET vNext
 tags:
-- featured
-- ASP.NET
-- oredev
+  - featured
+  - ASP.NET
+  - oredev
 status: publish
 category: asp.net
 type: post
 published: true
 featuredImage: "/images/2014/aspnet-vnext-oredev/aspnetvnext-featured.png"
 excerpt: >
-    Last week I had the amazing opportunity to give a talk on <a href="http://asp.net/vNext" target="_blank">ASP.NET vNext</a> at the <a href="http://oredev.org" target="_blank">Øredev</a> developer conference.  I had a blast - especially the part where I got to show off the new bits to a few hundred people on the big stage.  It's especially fun showing off the new features that open up ASP.NET development with Mono on OSX.  There's a lot of great stuff in this release - the new request pipeline, bin deployable CLR, command line tools, configuration APIs, SublimeText support, fewer dependencies on Visual Studio - and lots of open source.
+  Last week I had the amazing opportunity to give a talk on <a href="http://asp.net/vNext" target="_blank">ASP.NET vNext</a> at the <a href="http://oredev.org" target="_blank">Øredev</a> developer conference.  I had a blast - especially the part where I got to show off the new bits to a few hundred people on the big stage.  It's especially fun showing off the new features that open up ASP.NET development with Mono on OSX.  There's a lot of great stuff in this release - the new request pipeline, bin deployable CLR, command line tools, configuration APIs, SublimeText support, fewer dependencies on Visual Studio - and lots of open source.
 ---
 
-<img src="/images/2014/aspnet-vnext-oredev/aspnetvnext-featured.png" alt="Rockin' the big stage at Øredev" />
+![Rockin' the big stage at Øredev](/images/2014/aspnet-vnext-oredev/aspnetvnext-featured.png)
 
-Last week I had the amazing opportunity to give a talk on <a href="http://asp.net/vNext" target="_blank">ASP.NET vNext</a> at the <a href="http://oredev.org" target="_blank">Øredev</a> developer conference.  I had a blast - especially the part where I got to show off the new bits to a few hundred people on the big stage. It's especially fun showing off the new features that open up ASP.NET development with Mono on OSX.  There's a lot of great stuff in this release - the new request pipeline, bin deployable CLR, command line tools, configuration APIs, SublimeText support, fewer dependencies on Visual Studio - and lots of open source.
+Last week I had the amazing opportunity to give a talk on [ASP.NET vNext](http://asp.net/vNext) at the [Øredev](http://oredev.org) developer conference. I had a blast - especially the part where I got to show off the new bits to a few hundred people on the big stage. It's especially fun showing off the new features that open up ASP.NET development with Mono on OSX. There's a lot of great stuff in this release - the new request pipeline, bin deployable CLR, command line tools, configuration APIs, SublimeText support, fewer dependencies on Visual Studio - and lots of open source.
 
 ### Timeline
 
@@ -40,8 +40,9 @@ Last week I had the amazing opportunity to give a talk on <a href="http://asp.ne
 - **41:30** - Closing
 
 ### Watch the video
-
+<!-- markdownlint-disable-next-line -->
 <div class='embed-container'><iframe title="Building web applications with ASP.NET" src="//player.vimeo.com/video/111004374?portrait=0&amp;color=c9ff23" width="750" height="450" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
-<p><a href="http://vimeo.com/111004374">Building web applications with ASP.NET</a> from <a href="http://vimeo.com/user4280938">&Oslash;redev Conference</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+<!-- markdownlint-disable-next-line -->
+<a href="http://vimeo.com/111004374">Building web applications with ASP.NET</a> from <a href="http://vimeo.com/user4280938">&Oslash;redev Conference</a> on <a href="https://vimeo.com">Vimeo</a>.
 
 Thanks!
