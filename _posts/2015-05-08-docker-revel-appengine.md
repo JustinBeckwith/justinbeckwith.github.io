@@ -35,11 +35,11 @@ After building an app on Revel, I wanted to get a feel for deploying my app to s
 
 There's a pretty great [getting started tutorial for Revel](https://revel.github.io/tutorial/gettingstarted.html). After getting the libraries installed, scaffold a new app with the [<code>revel new</code>](https://revel.github.io/tutorial/createapp.html) command:
 
-{% highlight console %}
+```sh
 go get github.com/revel/revel
 go get github.com/revel/cmd/revel
 revel new myapp
-{% endhighlight %}
+```
 
 
 ## Using Docker
@@ -48,7 +48,7 @@ Before touching App Engine Flexible, the first step is to get it working with do
 
 Here's the docker file I'm using right now:
 
-{% highlight docker %}
+```dockerfile
 # Use the official go docker image built on debian.
 FROM golang:1.4.2
 
@@ -64,7 +64,7 @@ ENTRYPOINT revel run github.com/JustinBeckwith/revel-appengine dev 8080
 
 # Open up the port where the app is running.
 EXPOSE 8080
-{% endhighlight %}
+```
 
 There are a few things to call out with this Dockerfile:
 
@@ -78,11 +78,11 @@ To start using docker with your existing revel app, you need to [install docker]
 
 After you have docker setup, build your image and try running the app:
 
-{% highlight console %}
+```sh
 # build and run the image
 docker build -t revel-appengine .
 docker run -it -p 8080:8080 revel-appengine
-{% endhighlight %}
+```
 
 This will run docker, build the image locally, and then run it. Try hitting [`http://localhost:8080`](http://localhost:8080) in your browser. You should see the revel startup page:
 
@@ -95,28 +95,28 @@ Now we're running revel inside of docker.
 
 The original version of App Engine had a bit of a funny way of managing application runtimes. There are a limited set of stacks available, and you're left using a locked down version an approved runtime. Flex gets rid of this restriction by letting you run pretty much anything inside of a container. You just need to define a little bit of extra config in a <code>app.yaml</code> file that tells App Engine how to treat your container:
 
-{% highlight yaml %}
+```yaml
 runtime: custom
 vm: true
 api_version: go1
-{% endhighlight %}
+```
 
 This config lets me use App Engine, with a custom docker image as my runtime, running on a managed virtual machine. You can copy my [app.yaml](https://github.com/JustinBeckwith/revel-appengine/blob/master/app.yaml) into your app directory, alongside the [Dockerfile](https://github.com/JustinBeckwith/revel-appengine/blob/master/Dockerfile). Next, make sure you've signed up for a [Google Cloud](https://cloud.google.com/) account, and download the [Google Cloud SDK](https://cloud.google.com/sdk/). After getting all of that setup, you'll need to create a new project in the [developer console](https://console.developers.google.com/).
 
-{% highlight console %}
+```sh
 # Install the Google Cloud SDK
 curl https://sdk.cloud.google.com | bash
 
 # Log into your account
 gcloud init
-{% endhighlight %}
+```
 
 That covers the initial setup. After you have a project created, you can try deploying the app. This is essentially going to startup your app using the Dockerfile we defined earlier on Google Cloud:
 
-{% highlight console %}
+```sh
 # Deploy the application
 gcloud app deploy
-{% endhighlight %}
+```
 
 After deploying, you can visit your site here:
 [<code>https://revel-gae.appspot.com</code>](https://revel-gae.appspot.com)

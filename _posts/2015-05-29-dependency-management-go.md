@@ -41,12 +41,12 @@ Having a package management story is awesome.  What's even better is making sure
 
 Similar to the `go get` command, there is an `npm install` command.  It looks like this:
 
-{% highlight console %}
+```sh
 npm install --save yelp
-{% endhighlight %}
+```
 
 The big difference you'll see is `--save`.  This tells NPM to save the dependency, and the version I'm using into the `package.json` for my project:
-{% highlight json %}
+```json
 {
   "name": "pollster",
   "version": "2.0.0",
@@ -61,7 +61,7 @@ The big difference you'll see is `--save`.  This tells NPM to save the dependenc
     "socket.io": "~0.9.13"
   }
 }
-{% endhighlight %}
+```
 
 `package.json` is stored in the top level directory of my app.  It provides my `isolation`.  If I start another project - that means another project.json, another set of dependencies.  The environments are entirely isolated.  The list of dependencies and their versions provides my `repeatability`.  Every time someone clones my repository and runs `npm install`, they will get the same list of dependencies from a centralized source.  The fact that most people use NPM provides my `consensus`.
 
@@ -77,12 +77,12 @@ It's all pretty awesome.
 
 With the out of the box behavior, Go is less than ideal in repeatability, isolation, and consensus. If you follow the setup guide for golang, you'll find yourself with a single directory where you're supposed to keep all of your code.  Inside of there, you create a /src directory, and a new directory for each project you're going to work on.  When you install a dependency using `go get`, it will essentially drop the source code from that repository into  `$GOPATH/src'.  In your source code, you just tell the compiler where it needs to go to grab the latest sources:
 
-{% highlight go %}
+```go
 import "github.com/JustinBeckwith/go-yelp/yelp"
 ...
 client := yelp.New(options)
 result, err := client.DoSimpleSearch("coffee", "seattle")
-{% endhighlight %}
+```
 
 So this is *really* bad.  The [go-yelp](https://github.com/JustinBeckwith/go-yelp) library I'm importing from github is pulled down at compile time (if not already available from a `go get` command), and built into my project.  That is pointing to the *master* branch of my github repository.  Who's to say I won't change my API tomorrow, breaking everyone who has imported the library in this way?  As a library author, I'm left with 3 options:
 
@@ -110,19 +110,19 @@ After you copy the code into your source tree, you need to change your import pa
 
 After copying a library into your tree, instead of this:
 
-{% highlight go %}
+```go
 import "github.com/JustinBeckwith/go-yelp/yelp"
 ...
 client := yelp.New(options)
-{% endhighlight %}
+```
 
 you would do this:
 
-{% highlight go %}
+```go
 import "yourtree/third_party/github.com/JustinBeckwith/go-yelp/yelp"
 ...
 client := yelp.New(options)
-{% endhighlight %}
+```
 
 
 #### GOPATH rewriting
@@ -171,19 +171,19 @@ Given my big 3 requirements above, I checked out the most popular of the repos a
 
 Run `go get` to install a dependency (nothing new here):
 
-{% highlight console %}
+```sh
 go get github.com/JustinBeckwith/go-yelp/yelp
-{% endhighlight %}
+```
 
 When you're done installing dependencies, use the `godep save` command.  This will copy all of the referenced code imported into the project from the current $GOPATH into the ./Godeps directory in your project.  Make sure to check this into source control.
 
-{% highlight console %}
+```sh
 godep save
-{% endhighlight %}
+```
 
 It also will walk the graph of dependencies and create a `./Godeps/Godeps.json` file:
 
-{% highlight json %}
+```json
 {
 	"ImportPath": "github.com/JustinBeckwith/coffee",
 	"GoVersion": "go1.4.2",
@@ -197,13 +197,13 @@ It also will walk the graph of dependencies and create a `./Godeps/Godeps.json` 
 			"Rev": "a1577bd3870218dc30725a7cf4655e9917e3751b"
 		},
     ....
-{% endhighlight %}
+```
 
 When it's time to build, use the godep tool instead of the standard go toolchain:
 
-{% highlight console %}
+```sh
 godep go build
-{% endhighlight %}
+```
 
 The `$GOPATH` is automatically rewritten to use the local copy of dependencies, ensuring you have isolation for your project.  This approach is great for a few reasons:
 

@@ -496,6 +496,7 @@ figure {
 pre {
 	overflow: auto;
 	tab-size: 2;
+	padding: 10px;
 }
 
 figure pre {
@@ -504,13 +505,7 @@ figure pre {
 	font-size: 14px;
 }
 
-.highlighter-rouge {
-	padding: 2px 4px;
-	color: #d14;
-	white-space: nowrap;
-	background-color: #f7f7f9;
-	border: 1px solid #e1e1e8;
-}
+.highlighter-rouge {}
 
 .post {
 	line-height: 1.4;

@@ -53,9 +53,9 @@ From here we can choose the dataset, and start taking a look at the schema. Now 
 
 We just need to query over the github_repos.files table, and get a count.
 
-{% highlight sql %}
+```sql
 SELECT COUNT(*) FROM [bigquery-public-data:github_repos.files]
-{% endhighlight %}
+```
 
 <pre>2,122,805,654</pre>
 
@@ -65,9 +65,9 @@ Wow -over 2 billion files.  Next question!
 
 This time we're just going to limit our files to paths ending in `package.json`.  We can just use the `RIGHT` function to grab the end of the full path:
 
-{% highlight sql %}
+```sql
 SELECT COUNT(*) FROM [bigquery-public-data:github_repos.files] WHERE RIGHT(path, 12) = "package.json"
-{% endhighlight %}
+```
 
 <pre>8,128,298</pre>
 
@@ -88,7 +88,7 @@ Up until this point, we've only been looking at the data available to us directl
 
 Let's take a look!
 
-{% highlight sql %}
+```sql
 SELECT
   COUNT(*) as cnt, package
 FROM
@@ -112,7 +112,7 @@ FROM
 GROUP BY package
 ORDER BY cnt DESC
 LIMIT 1000
-{% endhighlight %}
+```
 
 So this is really freaking cool.  We were able to just slam a JavaScript function in the middle of the SQL query to help us process the results.  You may also notice the try/catch floating around in there - turns out that not every package.json on GitHub is valid JSON!
 

@@ -82,7 +82,7 @@ If you're into the whole angle bracket thing, the experience in EJS even better,
 <img src="/images/2012/06/ejs.png" alt="WebMatrix has IntelliSense for EJS"   />
 </a>
 
-<h3>The best {LESS} editor on the planet</h3>
+### The best {LESS} editor on the planet
 <p>So I'll admit it - I'm a bit of a CSS pre-processor geek.  I don't write CSS because I love it, but because I need to get stuff done, and I want to write as little of it as possible.  Tools like <a href="http://lesscss.org/" target="_blank">LESS</a> and <a href="http://sass-lang.com/" target="_blank">Sass</a> provide missing features for programmers in CSS like variables, mixins, nesting, and built in common functions.
 
 <a href="/images/2012/06/less.png">
@@ -95,7 +95,7 @@ The LESS editor in WebMatrix not only provides syntax highlighting, but also pro
 <img src="/images/2012/06/sass.png" alt="WebMatrix provides syntax highlighting for Sass"  />
 </a>
 
-<h3>CoffeeScript Editor</h3>
+### CoffeeScript Editor
 <p>
 In the same way LESS and Sass make it easier to write CSS, <a href="http://coffeescript.org/" target="_blank">CoffeeScript</a> simplifies the way you write JavaScript.  WebMatrix 2 provides syntax highlighting, code outlining, and completion that simplifies the editing experience.  If you want to use CoffeeScript without compiling it on the server, you can use the <a href="http://extensions.webmatrix.com/packages/OrangeBits/" target="_blank">Orange Bits compiler</a> to compile your CoffeeScript into JavaScript at design time.
 </p>
@@ -103,7 +103,7 @@ In the same way LESS and Sass make it easier to write CSS, <a href="http://coffe
 <img src="/images/2012/06/coffeescript.png" alt="WebMatrix and CoffeeScript"   />
 </a>
 
-<h3>Mobile Emulators</h3>
+### Mobile Emulators
 <p>
 Designing applications for mobile can't be an afterthought.  WebMatrix 2 is trying to make this easier in a couple of ways.  First - the visual templates (in this case the Node Starter Template) is designed taking advantage of responsive layouts in the main StyleSheet:
 
@@ -127,7 +127,7 @@ It gets even better.  What if you need to see what your site will look like in v
 <img src="/images/2012/06/iphone.png" alt="Test your websites on the iPhone simulator"   />
 </a>
 
-<h3>Extensions & Open Source</h3>
+### Extensions & Open Source
 <p>
 A code editing tool is only as valuable as the developers that commit to the platform.  We want to achieve success with everyone, and grow together.  As part of that goal, we've opened up an extensibility model that allows developers to build custom extensions and share them with other developers.  The extension gallery is available online (more on this to come) at <a href="http://extensions.webmatrix.com" target="_blank">http://extensions.webmatrix.com</a>.  We're planning to move a bunch of these extensions into GitHub, and the NodePowerTools extension is the first one to go open source:
 
@@ -143,7 +143,7 @@ In the coming months you'll start to see more extensions from Microsoft, and mor
 <img src="/images/2012/06/extension-gallery.png" alt="Build extensions and share them on the extension gallery"   />
 </a>
 
-<h3>Everyone worked together</h3>
+### Everyone worked together
 I want to make sure I thank everyone who helped make this release happen, including the WebMatrix team, Glenn Block, Claudio Caldato, our Node Advisory board, Isaac Schlueter, and everyone at Joyent.  For more information, please visit:
 
 <ul>
@@ -157,4 +157,4 @@ I want to make sure I thank everyone who helped make this release happen, includ
 </ul>
 <br />
 <br />
-<h4>Enjoy!</h4>
+#### Enjoy!

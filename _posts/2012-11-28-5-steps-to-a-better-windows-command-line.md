@@ -40,9 +40,9 @@ Now that I've sold you, there are a few things you'll find through here that mak
 ![Run as administrator](/images/2012/11/console2-as-administrator.png)
 
 Next, use the Set-ExecutionPolicy command.  Note, this means any un-signed script can be run on your system, if you run it, and many people choose to use RemoteSigned.  Here is the <a href="" target="_blank">official doc on Set-ExecutionPolicy</a>.
-{% highlight powershell %}
+```powershell
 Set-ExecutionPolicy Unrestricted
-{% endhighlight %}
+```
 
 ![Set execution policy](/images/2012/11/set-executionpolicy.png)
 
@@ -54,14 +54,14 @@ Spending a lot of time in Ubuntu and OSX, I got really used to `sudo apt-get ins
 ![list packages](/images/2012/11/choc-list.png)
 
 To install Chocolatey, just run cmd.exe and run the following command (minus the c:\> part):
-{% highlight powershell %}
+```powershell
 C:\> @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('http://bit.ly/psChocInstall'))" && SET PATH=%PATH%;%systemdrive%\chocolatey\bin
-{% endhighlight %}
+```
 
 And you're ready to rock.  If you want to install something like 7zip, you can use the cinst command:
-{% highlight console %}
+```sh
 cinst 7zip
-{% endhighlight %}
+```
 
 ![install 7zip](/images/2012/11/7zip-install.png)
 
@@ -72,23 +72,23 @@ This seems kind of trivial, but one of the things I've really missed on Windows 
 
 After you've got your PowerShell profile created, edit the script, and add this line:
 
-{% highlight powershell %}
+```powershell
 Set-Alias subl 'C:\Program Files\Sublime Text 2\sublime_text.exe'
-{% endhighlight %}
+```
 
 Save your profile, and spin up a new PowerShell tab in Console2 to reload the session.  Go to a directory that contains some code, and try to open it:
-{% highlight powershell %}
+```powershell
 subl .
-{% endhighlight %}
+```
 
 This will load the current directory as a project in SublimeText from the command line.  Small thing, but a nice thing.
 
 ### 5. Use PsGet and Posh-Git
 One of the nice things about using PowerShell over cmd is the community that's starting to emerge.  There are a ton of really useful tools and cmdlets that others have already written, and the easiest way to get at most of these is to use <a href="http://psget.net/" target="_blank">PsGet</a>.  PsGet provides a super easy way to install PowerShell modules that extend the basic functionality of the shell, and provide other useful libraries.  To install PsGet, run the following command from a PowerShell console:
 
-{% highlight powershell %}
+```powershell
 (new-object Net.WebClient).DownloadString(&quot;http://psget.net/GetPsGet.ps1&quot;) | iex
-{% endhighlight %}
+```
 
 If you get an error complaining about executing scripts, you need to go back to #2. Immediately, we can start using the `Install-Module` command to start adding functionality to our console.
 

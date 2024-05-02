@@ -5,3 +5,5 @@ Thumbs.db
 .jekyll-cache
 .jekyll-metadata
 vendor
+node_modules
+

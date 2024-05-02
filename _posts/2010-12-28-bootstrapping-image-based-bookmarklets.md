@@ -37,7 +37,7 @@ For the purposes of this bookmarklet, I needed to write a piece of code that wou
 
 Here is a formatted example of what my a href tag JavaScript looks like:
 
-{% highlight javascript %}
+```js
 // <a> tag href javascript
 javascript:(function() {
 	if( (document.contentType && document.contentType.indexOf('image/') > -1)
@@ -56,21 +56,21 @@ javascript:(function() {
 			main();
 		}
 	})();
-{% endhighlight %}
+```
 
 After tidying up our script, and adding the surrounding tag, here is a final rendered output of our code, I came up with the following:
 
-{% highlight html %}
+```html
 <!--
 	<a> tag example
 -->
 <a href="javascript:(function(){if((document.contentType&&document.contentType.indexOf('image/')>-1)||/.png$/.test(location.href)||/.jpg$/.test(location.href)||/.jpeg$/.test(location.href)||/.gif$/.test(location.href)){location.href='https://jbeckwith.com/bookmarklet/';}else if(!window.main){document.body.appendChild(document.createElement('script')).src='https://jbeckwith.com/my-bookmarklet.js';}else{main();}})();">It's a bookmarklet!</a>
-{% endhighlight %}
+```
 
 ### Loading jQuery and jQueryUI
 Now that the bootstrapper is created, I am going to focus the rest of the article on the external JavaScript file that contains the meat of the code.  With the script I wrote, I needed to use a good deal of visual effects.  I am already comfortable with [JQuery](https://jquery.com/), so I chose to use it as my JavaScript framework:
 
-{% highlight javascript %}
+```js
 // create javascript libraries required for main
 if (typeof jQuery == 'undefined') {
 	// include jquery
@@ -89,13 +89,13 @@ else {
 	getDependencies();
 } // end else
 
-{% endhighlight %}
+```
 
 If you look at the example in the Smashing Magazine article, you will notice a couple of differences.  We need to add an event for onreadystatechange to handle Internet Explorer.  I found that IE inconsistently set the readyState of the script object to 'loaded' or 'complete' in various parts of the DOM, so as a rule I check for both.  If you don't make this change, IE will never notify the script that jQuery is finished loading.
 
 Secondly, I have added the getDependencies() method to manage loading required scripts (in addition to jQuery).  Since I am depending heavily on a few jQuery UI components, I needed to load both an external JavaScript file and an external CSS file:
 
-{% highlight javascript %}
+```js
 function getDependencies() {
 	// make sure jqueryUI is loaded
 	if (!jQuery.ui) {
@@ -122,14 +122,14 @@ function getDependencies() {
 		main();
 	} // end else
 } // end getDependencies function
-{% endhighlight %}
+```
 
 In this case, I'm really only waiting on jQuery and jQuery UI to load.  If there were more dependent scripts, I would likely create an array of scripts that need to be loaded, and check all of their completion every turn through the getDepenencies method.
 
 ### Embedding Styles
 With the supporting code written, we're now ready to work on our main method.  This is where bookmarklets really are different based on your task.  In my case, I'm creating a visual element on the page, complete with styles to match the target site.  This works pretty much as expected, with a single caveat:  any style definitions you create must be at the very bottom of your appended script.  Internet Explorer has a nasty habit of inconsistently handling styles and scripts when appended to the DOM.  For some reason beyond my understanding, appended style definitions, whether via script or ajax calls, only work if they are at the very bottom of the appended code.  This is fantastically fun to figure out on your own, so hopefully I've saved you some trouble.
 
-{% highlight javascript %}
+```js
 function main() {
 	// only do this the first time the bar is loaded on the page
 	if ($("#myBar").length == 0) {
@@ -164,14 +164,14 @@ function main() {
 								.dragHelper {z-index: 99999; border: 1px solid #000000;}\
 							</style>";
 		$("body").append(barHtml);
-{% endhighlight %}
+```
 
 This code simply creates a formatted div and adds it to the top of the page.
 
 ### Cleaning up the mess
 If you look at the generated HTML above, you'll notice that I include a cancel link.  I like to give the user the option to cancel out of using the current bookmarklet, and even relaunch the bookmarklet without issue.  So when you're done, make sure to test closing and re-launching the code.  I suggest keeping all of your elements on the page, and simply hiding them from the user:
 
-{% highlight javascript %}
+```js
 // myBar close evnet
 $("#cancelLink").click(function(e) {
 	// hide the bar
@@ -186,6 +186,6 @@ $("#cancelLink").click(function(e) {
 	// reset the text
 	$("#myBar-text").html("drag images to the mybar");
 });
-{% endhighlight %}
+```
 
 And for now, that's it.  For the source to this project, visit my [GitHub](https://github.com/JustinBeckwith/Chogger-Bookmarklet).

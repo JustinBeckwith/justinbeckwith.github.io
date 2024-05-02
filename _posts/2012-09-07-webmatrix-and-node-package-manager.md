@@ -24,7 +24,7 @@ If you want to skip all of this and just download the bits, here you go:
 
 
 
-<h3>Installing the Extension</h3>
+### Installing the Extension
 
 The NPM extension can be installed using the extension gallery inside of WebMatrix.  To get started, go ahead and create a new node site with express using the built in template:
 
@@ -46,7 +46,7 @@ Search for 'NPM', and click through the wizard to finish installing the extensio
 
 Now when you navigate to the files workspace, you should see the new NPM icon in the ribbon.
 
-<h3>Managing Packages</h3>
+### Managing Packages
 
 While you're working with node.js sites, the icon should always show up.  To get started, click on the new icon in the ribbon:
 
@@ -68,7 +68,7 @@ When you open up a new site, we also check your package.json to see if you're mi
 
 We're just getting started with the node tools inside of WebMatrix, so if you have anything else you would like to see added please hit us up over at <a href="https://webmatrix.uservoice.com" target="_blank">UserVoice</a>.
 
-<h3>More Information</h3>
+### More Information
 If you would like some more information to help you get started, check out some of these links:
 
 <ul>
@@ -81,4 +81,4 @@ If you would like some more information to help you get started, check out some 
 </ul>
 <br />
 <br />
-<h4>Happy Coding!</h4>
+#### Happy Coding!

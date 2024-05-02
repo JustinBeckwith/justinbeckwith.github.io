@@ -66,12 +66,12 @@ In the .NET world, package management is pretty well known:  it's all about [NuG
 
 In .NET, we have a `packages.config` that contains a list of dependencies. This is nice, because it explicitly lays out what we depend upon, and the specific version we want to use:
 
-{% highlight xml %}
+```xml
 <packages>
   <package id="Newtonsoft.Json" version="4.5.11" targetFramework="net40" />
   <package id="RestSharp" version="104.1" targetFramework="net40" />
 </packages>
-{% endhighlight %}
+```
 
 Go takes a bit of a different approach. The general philosophy of Go seems to trend towards avoiding external dependencies. I've found Blake Mizerany's talk to be pretty standard for sentiment from the community:
 
@@ -79,18 +79,18 @@ Go takes a bit of a different approach. The general philosophy of Go seems to tr
 
 In Go - there's no equivalent of `packages.config`. It just doesn't exist. Instead - dependency installation is driven from Git/Hg repositories or local paths. The dependency is installed into your go path with the `go get` command:
 
-{% highlight shell %}
+```sh
 $ go get github.com/JustinBeckwith/go-yelp/yelp
-{% endhighlight %}
+```
 
 This command pulls down the relevant sources from the Git/Hg repository, and builds the binaries specific to your OS. To use the dependency, you don't reference a namespace or dll - you just import the library using the same url used to acquire the library:
 
-{% highlight go %}
+```go
 import "github.com/JustinBeckwith/go-yelp/yelp"
 ...
 client := yelp.New(options)
 result, err := client.DoSimpleSearch("coffee", "seattle")
-{% endhighlight %}
+```
 
 When you `go compile`, the compiler walks through each *.go file, finds the list of external (non BCL) libraries, and implicitly does a `go get` if needed. This is both awesome and frightening at the same time. It's great that go doesn't require explicit dependencies. It's great that I don't need to think of the package and the namespace as different entities. It's **not** cool that I cannot choose a specific version of a package. No wonder the go community is skeptical of external dependencies - I wouldn't reference the tip of the master branch of any project and expect it to keep working for the long haul.
 
@@ -125,7 +125,7 @@ I used all of these while working on my library.
 
 In [YelpSharp](https://github.com/JustinBeckwith/YelpSharp), I have the typical unit test project included with my package. I have several test files created, each of which has several test functions. I can then run my test through Visual Studio or the test runner. A typical test would look like this:
 
-{% highlight csharp %}
+```cs
 [TestMethod]
 public void VerifyGeneralOptions()
 {
@@ -146,11 +146,11 @@ public void VerifyGeneralOptions()
     Assert.IsTrue(results.businesses != null);
     Assert.IsTrue(results.businesses.Count > 0);
 }
-{% endhighlight %}
+```
 
 The accepted pattern in Go for tests is to write a corresponding `<filename>_test.go` for each Go file. Every method that starts with `Test<RestOfFunctionName>` in the name, is executed as part of the test suite. By running `go test`, you run every test in the current project. It's pretty convenient, though I found myself wishing for something that auto-compiled my code and auto-ran tests (similar to the grunt/mocha/concurrent setup I like to use in node). A typical test function in go would look like this:
 
-{% highlight go %}
+```go
 // TestGeneralOptions will verify search with location and search term.
 func TestGeneralOptions(t *testing.T) {
 	client := getClient(t)
@@ -166,7 +166,7 @@ func TestGeneralOptions(t *testing.T) {
 	check(t, err)
 	assert(t, len(result.Businesses) > 0, containsResults)
 }
-{% endhighlight %}
+```
 
 The assert I used here is not baked in - there are [no asserts in Go](http://golang.org/doc/faq#assertions). For code coverage reports, the `gocov` tool does a nice job. To automatically run test against my GitHub repository, and auto-generate code coverage reports - I've using [Travis CI](https://travis-ci.org/) and [Coveralls.io](https://coveralls.io/). I'm planning on writing up another post on the tools you can use to build an effective open source Go library - so more on that later :)
 
@@ -174,7 +174,7 @@ The assert I used here is not baked in - there are [no asserts in Go](http://gol
 
 Finally, let's take a look at some code. C# is amazing. It's been around now for 15 years or so, and it's grown methodically (in a good way). In terms of basic syntax, it's your standard C derivative language:
 
-{% highlight csharp %}
+```cs
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -212,7 +212,7 @@ namespace YelpSharp.Data.Options
         }
     }
 }
-{% endhighlight %}
+```
 
 C# supports both static and dynamic typing, but generally trends towards a static type style. I've always appreciated the way C# can appeal to both new and experienced developers. The best part about the language in my opinion has been the steady, thoughtful introduction of new features. Some of the things that happened between C# 1.0 and C# 5.0 (the current version) include:
 
@@ -247,7 +247,7 @@ Having written a lot of C# - I got used to having all of these features at my di
 
 To see how this plays out - lets look at the same structure written in Go:
 
-{% highlight go %}
+```go
 package yelp
 
 // LocaleOptions provide additional search options that enable returning results
@@ -273,7 +273,7 @@ func (o *LocaleOptions) getParameters() (params map[string]string, err error) {
 	}
 	return params, nil
 }
-{% endhighlight %}
+```
 
 There are a few interesting things to call out from these two samples:
 
@@ -288,7 +288,7 @@ There are a few interesting things to call out from these two samples:
 
 Let that one sink for a moment. Go takes a strange (but effective) approach to error handling. Instead of tossing an exception and expecting the caller to catch and react, many (if not most) functions will return an error. It's on the caller to check the value of that error, and choose how to react. You can learn more about [error handling in Go here](http://blog.golang.org/error-handling-and-go). The net result, is that I wrote a lot of code like this:
 
-{% highlight go %}
+```go
 // DoSearch performs a complex search with full search options.
 func (client *Client) DoSearch(options SearchOptions) (result SearchResult, err error) {
 
@@ -311,7 +311,7 @@ func (client *Client) DoSearch(options SearchOptions) (result SearchResult, err 
 	}
 	return result, nil
 }
-{% endhighlight %}
+```
 
 In this example, the `DoSearch` method returns multiple values (get used to this), one of which is an error. There are 3 different method calls made in this function - all of which may return an error. For each of them, you need to check the err value, and choose how to react - oftentimes, just bubbling the error back up through the callstack by hand. I haven't quite learned to love this aspect of the language yet.
 
@@ -319,24 +319,24 @@ In this example, the `DoSearch` method returns multiple values (get used to this
 
 In the previous sample, you may have noticed something fishy. On the following line, I'm making an HTTP request, checking for an error, and them moving forward:
 
-{% highlight go %}
+```go
 rawResult, _, err := client.makeRequest(searchArea, &quot;&quot;, params)
 if err != nil {
 	return SearchResult{}, err
 }
 ...
-{% endhighlight %}
+```
 
 That code is *synchronous*. When I first wrote this code - I was fairly certain I was making a mistake. Years of callbacks or promises in node, and years of tasks and async/await in C# had taught me something really clear - synchronous methods that block the thread are bad. But here's Go - just doing it's thing. I thought I was making a mistake, until I started poking around and found a [few people with the same misunderstanding](http://stackoverflow.com/questions/23709118/does-golang-have-callback-concept). To make a call asynchronously in Go, it's largely up to the caller, using a [goroutine](https://gobyexample.com/goroutines). Goroutines are kind of cool. You essentially point at a function and say 'run this asynchronously':
 
-{% highlight go %}
+```go
 func Announce(message string, delay time.Duration) {
     go func() {
         time.Sleep(delay)
         fmt.Println(message)
     }()  // Note the parentheses - must call the function.
 }
-{% endhighlight %}
+```
 
 Running `go <func>` in this manner will run the function concurrently in the same process. This does not create a system thread or fork the process - it's completely internal to the go runtime. Like most things with Go - I was confused and scared at first, as I tried to apply what I know about C# and JavaScript to their model. I haven't written enough of this style of asynchronous code to have a great feel for the subject, but I plan to spend a lot of time here in the coming weeks.
 

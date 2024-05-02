@@ -31,16 +31,13 @@ To understand how the new portal works, you need to know a little about the <a h
 
 Out of the gate - this was pretty easy to manage.  Most of those teams were all in the same organization at Microsoft, so coordinating releases was feasible.  The portal team was a single group that was responsible for delivering the majority of the UI.  There was little need to hand off responsibility to the individual experiences to the teams which wrote the services, as it was easier to keep everything in house.  There is a single ASP.NET MVC application, which contains all of the CSS, JavaScript, and shared widgets used throughout the app.
 
-
 ![The current Azure portal, in all of it's blue glory](/images/2014/how-the-azure-portal-works/vcurrent.png)
-
 
 The team shipped every 3 weeks, tightly coordinating the schedule with each service team.  It works ... pretty much as one would expect a web application to work.
 
 ***And then everything went crazy.***
 
 As we started ramping up the number of services in Azure, it became infeasible for one team to write all of the UI.  The teams which owned the service were now responsible (mostly) for writing their own UI, inside of the portal source repository. This had the benefit of allowing individual teams to control their own destiny.  However - it now mean that we had hundreds of developers all writing code in the same repository.  A change made to the SQL Server management experience could break the Azure Web Sites experience.  A change to a CSS file by a developer working on virtual machines could break the experience in storage.  Coordinating the 3 week ship schedule became really hard.  The team was tracking dependencies across multiple organizations, the underlying REST APIs that powered the experiences, and the release cadence of ~40 teams across the company that were delivering cloud services.
-
 
 
 ### Scaling to &infin; services

@@ -54,9 +54,9 @@ When you create your site, make sure to turn on websockets:
 
 [io.js](https://iojs.org/) is a fork of [node.js](http://nodejs.org/) that provides a faster release cycle and es6 support.  It's pretty easy to get it running on Azure, thanks to [iojs-azure](https://github.com/felixrieseberg/iojs-azure).  Just to prove I'm running io.js instead of node.js, I added this little bit in my server.js:
 
-{% highlight javascript %}
+```js
 logger.info(`Started wazstagram running on ${process.title} ${process.version}`);
-{% endhighlight %}
+```
 
 The results:
 
@@ -84,7 +84,7 @@ Note the password I'm using is actually one of the management keys provided in t
 
 I used [node-redis](https://github.com/mranney/node_redis) to talk to the database, both for pub/sub and cache.  First, create a new redis client:
 
-{% highlight javascript %}
+```js
 function createRedisClient() {
     return redis.createClient(
         6379,
@@ -101,13 +101,13 @@ function createRedisClient() {
 // create redis clients for the publisher and the subscriber
 var redisSubClient = createRedisClient();
 var redisPubClient = createRedisClient();
-{% endhighlight %}
+```
 
 **PROTIP**:  Use [nconf](https://github.com/flatiron/nconf) to store secrets in json locally, and read from [app settings](http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/) in Azure.
 
 When the Instagram API sends a new image, it's published to a channel, and centrally cached:
 
-{% highlight javascript %}
+```js
 logger.verbose('new pic published from: ' + message.city);
 logger.verbose(message.pic);
 redisPubClient.publish('pics', JSON.stringify(message));
@@ -117,11 +117,11 @@ redisPubClient.lpush(message.city, message.pic);
 redisPubClient.ltrim(message.city, 0, 100);
 redisPubClient.lpush(universe, message.pic);
 redisPubClient.ltrim(universe, 0, 100);
-{% endhighlight %}
+```
 
 The centralized cache is great, since I don't need to use up memory in each io.js process used in my site (keep scale out in mind).  Each client also connects to the pub/sub channel, ensuring every instance gets new messages:
 
-{% highlight javascript %}
+```js
 // listen to new images from redis pub/sub
 redisSubClient.on('message', function(channel, message) {
     logger.verbose('channel: ' + channel + " ; message: " + message);
@@ -129,7 +129,7 @@ redisSubClient.on('message', function(channel, message) {
     io.sockets.in (m.city).emit('newPic', m.pic);
     io.sockets.in (universe).emit('newPic', m.pic);
 }).subscribe('pics');
-{% endhighlight %}
+```
 
 After setting up the service, I was using the redis-cli to do a lot of debugging.  There's also some great monitoring/metrics/alerts available in the portal:
 
