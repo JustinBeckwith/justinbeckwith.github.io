@@ -6,4 +6,6 @@ Thumbs.db
 .jekyll-metadata
 vendor
 node_modules
+.docusaurus/
+build/
 
