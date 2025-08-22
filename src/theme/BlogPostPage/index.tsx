@@ -11,7 +11,13 @@ export default function BlogPostPageWrapper(props: Props): JSX.Element {
   return (
     <>
       <BlogPostPage {...props} />
-      <BlogPostDisqus />
+      <div className="container">
+        <div className="row">
+          <div className="col col--8 col--offset-2">
+            <BlogPostDisqus />
+          </div>
+        </div>
+      </div>
     </>
   );
 }

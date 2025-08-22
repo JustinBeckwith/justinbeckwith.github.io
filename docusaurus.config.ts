@@ -74,7 +74,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/cartoon_me.png',
     colorMode: {
       defaultMode: 'light',
       disableSwitch: true,
