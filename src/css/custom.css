@@ -1,0 +1,99 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #5865f2;
+  --ifm-color-primary-dark: #4752c4;
+  --ifm-color-primary-darker: #404bb8;
+  --ifm-color-primary-darkest: #353e96;
+  --ifm-color-primary-light: #6975f4;
+  --ifm-color-primary-lighter: #7983f5;
+  --ifm-color-primary-lightest: #99a1f7;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #7289da;
+  --ifm-color-primary-dark: #5b73d1;
+  --ifm-color-primary-darker: #526bc9;
+  --ifm-color-primary-darkest: #3c57b3;
+  --ifm-color-primary-light: #899fe3;
+  --ifm-color-primary-lighter: #98a7e7;
+  --ifm-color-primary-lightest: #b5c3ef;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Align social icons with theme switcher */
+.navbar__item svg {
+  vertical-align: middle;
+  margin: 0;
+}
+
+/* Ensure navbar items are consistently aligned */
+.navbar__item {
+  display: flex;
+  align-items: center;
+}
+
+/* Specifically target navbar links with SVG icons */
+.navbar__item > a[href*="github.com"],
+.navbar__item > a[href*="bsky.app"],
+.navbar__item > a[href*="linkedin.com"] {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem 0.25rem;
+  border-radius: var(--ifm-button-border-radius);
+  transition: background-color var(--ifm-transition-fast);
+}
+
+/* Hover effect for social icons */
+.navbar__item > a[href*="github.com"]:hover,
+.navbar__item > a[href*="bsky.app"]:hover,
+.navbar__item > a[href*="linkedin.com"]:hover {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+/* Hide external link icon for Code navbar item */
+.navbar__item:has(a[href="https://github.com/JustinBeckwith"]) a::after,
+.navbar__item a[href="https://github.com/JustinBeckwith"]:not([aria-label])::after,
+.navbar__item a[href="https://github.com/JustinBeckwith"]:not([aria-label]) svg:not([aria-label]),
+.navbar__link[href="https://github.com/JustinBeckwith"] svg:not([aria-label]),
+.navbar__link[href="https://github.com/JustinBeckwith"]::after {
+  display: none !important;
+}
+
+/* Alternative approach - hide all external link icons in navbar */
+.navbar__item .navbar__link[target="_blank"]::after,
+.navbar__item .navbar__link[target="_blank"] [class*="external"],
+.navbar__item .navbar__link[target="_blank"] [class*="External"] {
+  display: none !important;
+}
+
+/* Hero blog button styles */
+.hero-blog-button {
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  color: #5865f2;
+  border: 2px solid #5865f2;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.hero-blog-button:hover {
+  background-color: #404bb8 !important;
+  color: #ffffff !important;
+  border-color: #404bb8 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(64, 75, 184, 0.4);
+  text-decoration: none;
+}
