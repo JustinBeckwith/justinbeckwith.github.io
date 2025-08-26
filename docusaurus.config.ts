@@ -84,6 +84,7 @@ const config: Config = {
       title: 'Home',
       items: [
         {to: '/blog', label: 'Blog', position: 'left'},
+        {to: '/talks', label: 'Talks', position: 'left'},
         {to: '/about', label: 'About', position: 'left'},
         {href: 'https://github.com/JustinBeckwith', label: 'Code', position: 'left'},
         {

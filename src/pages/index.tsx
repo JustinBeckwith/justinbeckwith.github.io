@@ -26,7 +26,7 @@ function HomepageHeader() {
               <li>🍝 Free hugs and baked ziti</li>
             </ul>
             <Link
-              className="button button--lg hero-blog-button"
+              className={`button button--lg hero-blog-button ${styles.heroButton}`}
               to="/blog">
               To the blog →
             </Link>
