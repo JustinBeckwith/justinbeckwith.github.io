@@ -20,7 +20,7 @@ function HomepageHeader() {
           </div>
           <div className={styles.heroText}>
             <header className={styles.heroTitle}>Justin Beckwith</header>
-            <ul>
+            <ul className={styles.heroList}>
               <li>🛠️ Leader of builders</li>
               <li>🤖 Developer of bots</li>
               <li>🍝 Free hugs and baked ziti</li>

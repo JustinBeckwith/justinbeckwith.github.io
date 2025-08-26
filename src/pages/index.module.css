@@ -75,8 +75,32 @@
     align-items: center;
     text-align: center;
   }
+  
+  .heroText {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .heroButton {
   margin-bottom: 10px;
+}
+
+.heroTitle {
+  line-height: normal;
+  margin-bottom: 20px;
+}
+
+.heroList {
+  text-align: left;
+}
+
+.heroList li {
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: calc(1.2rem + 1vw);
 }
