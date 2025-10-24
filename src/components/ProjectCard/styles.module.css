@@ -1,0 +1,106 @@
+.projectCard {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background: var(--ifm-background-color);
+}
+
+.projectCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.projectCardLink {
+  text-decoration: none;
+  color: inherit;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.projectCardLink:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.projectImageContainer {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: var(--ifm-color-emphasis-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.projectContent {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.projectTitle {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  color: var(--ifm-heading-color);
+}
+
+.projectDescription {
+  margin: 0;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.6;
+}
+
+.projectFooter {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.projectButton {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--ifm-color-primary);
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  flex: 1;
+  text-align: center;
+}
+
+.projectButton:hover {
+  background: var(--ifm-color-primary-dark);
+  color: white;
+  text-decoration: none;
+}
+
+.githubLink {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-800);
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: border-color 0.2s, background-color 0.2s;
+  flex: 1;
+  text-align: center;
+}
+
+.githubLink:hover {
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-800);
+  text-decoration: none;
+}

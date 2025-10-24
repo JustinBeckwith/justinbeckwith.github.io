@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
+import {ProjectCard, projects} from '@site/src/components/ProjectCard';
 
 import styles from './index.module.css';
 
@@ -38,6 +39,26 @@ function HomepageHeader() {
 }
 
 
+function ProjectsSection() {
+  return (
+    <section className={styles.projectsSection}>
+      <div className="container">
+        <div className={styles.projectsSectionHeader}>
+          <h2>Things I've Built</h2>
+          <Link to="/projects" className={styles.viewAllLink}>
+            View all projects →
+          </Link>
+        </div>
+        <div className={styles.projectsGrid}>
+          {projects.map((project) => (
+            <ProjectCard key={project.title} {...project} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
@@ -45,6 +66,7 @@ export default function Home(): ReactNode {
       title={siteConfig.title}
       description="Justin Beckwith - Director of Engineering @ Discord">
       <HomepageHeader />
+      <ProjectsSection />
     </Layout>
   );
 }

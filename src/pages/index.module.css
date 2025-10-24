@@ -104,3 +104,53 @@
   overflow: hidden;
   font-size: calc(1.2rem + 1vw);
 }
+
+.projectsSection {
+  padding: 4rem 0;
+  background: var(--ifm-background-surface-color);
+}
+
+.projectsSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.projectsSectionHeader h2 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.viewAllLink {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ifm-color-primary);
+}
+
+.viewAllLink:hover {
+  text-decoration: underline;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .projectsSection {
+    padding: 2rem 0;
+  }
+
+  .projectsSectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+}
