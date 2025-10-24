@@ -1,0 +1,32 @@
+.projectsPage {
+  padding: 2rem 0;
+  min-height: 60vh;
+}
+
+.projectsHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.projectsHeader h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.projectsHeader p {
+  font-size: 1.25rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+}
