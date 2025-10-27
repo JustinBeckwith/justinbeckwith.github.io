@@ -1,4 +1,27 @@
 ---
+title: Linkinator - Broken Link Checker & Website Crawler
+description: A powerful broken link checker and website crawler for Node.js. Scan websites and local files for dead links, validate URLs, check markdown files, and detect 404 errors. Available as CLI tool, library, and GitHub Action.
+keywords:
+  - broken link checker
+  - link scanner
+  - dead link checker
+  - website crawler
+  - link validator
+  - 404 checker
+  - url validator
+  - link checking tool
+  - markdown link checker
+  - site crawler
+  - hyperlink validator
+  - link rot detector
+  - broken url finder
+  - website link tester
+  - link validation
+  - find broken links
+  - check dead links
+  - scan website links
+  - validate urls
+  - detect 404 errors
 image: /img/linkinator.webp
 ---
 
@@ -13,13 +36,31 @@ image: /img/linkinator.webp
 [![Checked with Biome](https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079)](https://github.com/semantic-release/semantic-release)
 
-Behold my latest inator! The `linkinator` provides an API and CLI for crawling websites and validating links.  It's got a ton of sweet features:
+**Linkinator** is a powerful broken link checker and website crawler designed to find dead links, validate URLs, and detect 404 errors across websites and local files. Whether you need a link scanner for your documentation, a tool to check for broken hyperlinks in markdown files, or a comprehensive site crawler to validate all links on your website, linkinator provides the tools you need.
 
-- 🔥 Easily perform scans on remote sites or local files
-- 🔥 Scan any element that includes links, not just `<a href>`
-- 🔥 Supports redirects, absolute links, relative links, all the things
-- 🔥 Configure specific regex patterns to skip
-- 🔥 Scan markdown files without transpilation
+This link validation tool works as a command-line interface (CLI), a Node.js library for programmatic use, and integrates seamlessly into CI/CD pipelines via GitHub Actions. It's the ultimate solution for detecting link rot, checking anchor links, and ensuring your website's URLs remain valid over time.
+
+## Key Features
+
+- 🔥 **Comprehensive Link Scanning** - Check broken links on websites, local files, and documentation sites
+- 🔥 **Dead Link Detection** - Find and report 404 errors, broken URLs, and invalid hyperlinks
+- 🔥 **Markdown Link Checker** - Validate links in README.md, documentation, and markdown files without transpilation
+- 🔥 **Website Crawler** - Recursively scan entire websites to detect link rot and broken pages
+- 🔥 **URL Validation** - Test all link types: `<a href>`, CSS URLs, redirects, absolute links, relative links
+- 🔥 **Fragment Checker** - Validate anchor links and fragment identifiers like `#section-name`
+- 🔥 **Flexible Configuration** - Skip specific URLs with regex patterns, customize retry logic, set timeouts
+- 🔥 **Multiple Output Formats** - Export results as JSON or CSV for integration with other tools
+
+## Why Use Linkinator?
+
+Perfect for developers, technical writers, and site maintainers who need to:
+
+- **Find Broken Links Fast** - Quickly scan documentation sites, blogs, and web applications for dead links
+- **Prevent Link Rot** - Catch broken URLs before they impact users by integrating link checking into your CI/CD pipeline
+- **Validate Documentation** - Ensure README files, wiki pages, and markdown documentation remain error-free
+- **Test Static Sites** - Check generated static sites for broken internal links and missing pages
+- **Monitor Website Health** - Regularly scan production websites to detect and fix broken hyperlinks
+- **Quality Assurance** - Automate link validation as part of your testing and deployment workflow
 
 ## Installation
 
@@ -34,6 +75,38 @@ npm install linkinator
 Don't have Node.js installed? No problem! Browse all releases at [github.com/JustinBeckwith/linkinator/releases](https://github.com/JustinBeckwith/linkinator/releases).
 
 These binaries are completely standalone - no runtime dependencies needed. Just download, make executable (Linux/macOS), and run!
+
+## Quick Start - Common Link Checking Tasks
+
+### Check a Website for Broken Links
+Scan any website to find dead links and 404 errors:
+```sh
+npx linkinator https://example.com
+```
+
+### Validate Links in README or Markdown Files
+Check your documentation for broken hyperlinks:
+```sh
+npx linkinator README.md --markdown
+```
+
+### Scan All Markdown Files in a Project
+Find broken links across all your documentation:
+```sh
+npx linkinator "**/*.md" --markdown
+```
+
+### Recursively Crawl an Entire Website
+Perform a deep scan to detect link rot throughout your site:
+```sh
+npx linkinator https://example.com --recurse
+```
+
+### Check Local Files and Static Sites
+Validate links in your built static site before deployment:
+```sh
+npx linkinator ./dist --recurse
+```
 
 ## Command Usage
 
@@ -564,4 +637,4 @@ LinkedIn and some other sites return a non-standard `999` status code to block a
 
 ## License
 
-[MIT](LICENSE.md)
+[MIT](https://github.com/JustinBeckwith/linkinator/blob/main/LICENSE.md)

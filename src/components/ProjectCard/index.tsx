@@ -18,6 +18,20 @@ export const projects: Project[] = [
     github: 'https://github.com/JustinBeckwith/linkinator',
   },
   {
+    title: 'linkinator-mcp',
+    description: 'A Model Context Protocol (MCP) server that enables AI assistants like Claude to perform link validation. Scan websites and local files for broken links with comprehensive crawling and reporting.',
+    image: '/img/linkinator-mcp.webp',
+    link: '/projects/linkinator-mcp',
+    github: 'https://github.com/JustinBeckwith/linkinator-mcp',
+  },
+  {
+    title: 'linkinator-action',
+    description: 'A GitHub Action that checks your markdown files for broken links. Automatically validate links in CI/CD with support for fragments, CSS, HTTPS enforcement, and comprehensive retry logic.',
+    image: '/img/linkinator-action.webp',
+    link: '/projects/linkinator-action',
+    github: 'https://github.com/JustinBeckwith/linkinator-action',
+  },
+  {
     title: 'retry-axios',
     description: 'Use Axios interceptors to automatically retry failed requests. Super flexible with built-in exponential backoff.',
     image: '/img/retry-axios.webp',
@@ -30,6 +44,13 @@ export const projects: Project[] = [
     image: '/img/twinkly.webp',
     link: '/projects/twinklyjs',
     github: 'https://github.com/twinklyjs/twinklyjs',
+  },
+  {
+    title: 'fileinator',
+    description: 'Generate files full of random bytes for testing purposes. Available as both a CLI tool and library with support for human-readable sizes, progress tracking, and event-based callbacks.',
+    image: '/img/fileinator.webp',
+    link: '/projects/fileinator',
+    github: 'https://github.com/JustinBeckwith/fileinator',
   },
 ];
 
