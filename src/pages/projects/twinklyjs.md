@@ -1,4 +1,27 @@
 ---
+title: TwinklyJS - Twinkly Lights JavaScript & TypeScript Library
+description: Control Twinkly smart lights with Node.js and JavaScript. TwinklyJS is an unofficial TypeScript/JavaScript library and CLI for Twinkly Lights API, supporting device discovery, color control, modes, realtime updates, and automation.
+keywords:
+  - twinkly javascript
+  - twinkly node
+  - twinklyjs
+  - twinkly typescript
+  - twinkly node.js
+  - twinkly api
+  - twinkly lights javascript
+  - control twinkly lights
+  - twinkly smart lights
+  - twinkly automation
+  - twinkly library
+  - twinkly sdk
+  - twinkly api wrapper
+  - twinkly lights api
+  - twinkly nodejs
+  - twinkly lights control
+  - twinkly lights node
+  - twinkly js library
+  - twinkly typescript library
+  - smart lights javascript
 image: /img/twinkly.webp
 ---
 
@@ -6,7 +29,33 @@ image: /img/twinkly.webp
 
 ![Twinkly](/img/twinkly.webp)
 
+**TwinklyJS** is a powerful JavaScript and TypeScript library for controlling Twinkly smart lights with Node.js. This unofficial Twinkly API implementation enables developers to automate Twinkly lights, control colors and effects, discover devices on your network, and integrate Twinkly lights into JavaScript applications. Whether you need a Twinkly Node.js library, a Twinkly CLI tool, or want to build custom Twinkly light automations, twinklyjs provides a complete TypeScript SDK for the Twinkly Lights API.
+
+Perfect for home automation, smart lighting projects, and creative light displays, this Twinkly JavaScript library offers both command-line and programmatic control over your Twinkly smart lights.
+
 This is an unofficial TypeScript implementation for [Twinkly Lights](https://twinkly.com/).  Everything here is based on the excellent work at [https://xled-docs.readthedocs.io/en/latest/](https://xled-docs.readthedocs.io/en/latest/).
+
+## Key Features
+
+- 🎄 **Complete Twinkly API Support** - Full JavaScript implementation of the Twinkly Lights API
+- 🔍 **Device Discovery** - Automatically find Twinkly lights on your network using UDP broadcast
+- 🎨 **Color Control** - Set colors, brightness, and effects on Twinkly smart lights programmatically
+- ⚡ **Realtime Mode** - Send custom light frames via UDP for dynamic animations and effects
+- 🖥️ **CLI Tool** - Command-line interface for quick Twinkly lights control from terminal
+- 📚 **TypeScript SDK** - Fully typed library for Node.js and TypeScript projects
+- 🌐 **Browser Compatible** - Use in web applications (with proxy for CORS)
+- 🏠 **Home Automation Ready** - Perfect for integrating Twinkly lights into smart home systems
+
+## Why Use TwinklyJS?
+
+Ideal for developers building:
+
+- **Home Automation Systems** - Integrate Twinkly lights with Node-RED, Home Assistant, or custom automation
+- **Smart Lighting Control** - Build custom Twinkly light controllers with JavaScript
+- **Creative Light Displays** - Program custom animations and effects for Twinkly lights
+- **Holiday Automation** - Automate Twinkly Christmas lights with schedules and triggers
+- **IoT Projects** - Connect Twinkly lights to sensors, APIs, and other devices
+- **JavaScript Applications** - Add Twinkly light control to any Node.js or web application
 
 ## CLI usage
 
@@ -102,16 +151,16 @@ There are a few examples of API usage available in `/examples`.
 
 | Example | Description |
 |--|---|
-| [realtime](./examples/realtime.js) | Use the realtime UPD API to send light frames |
+| [realtime](https://github.com/twinklyjs/twinklyjs/blob/main/examples/realtime.js) | Use the realtime UPD API to send light frames |
 |-|-|
 
 ## Contributing
 
-This module currently only implements a subset of the available API.  We love contributions!  Feel free to open a PR, and reference the underlying part of the API you're trying to support. See [CONTRIBUTING](CONTRIBUTING.md) to learn more.
+This module currently only implements a subset of the available API.  We love contributions!  Feel free to open a PR, and reference the underlying part of the API you're trying to support. See [CONTRIBUTING](https://github.com/twinklyjs/twinklyjs/blob/main/CONTRIBUTING.md) to learn more.
 
 Want to join in on the discussion?
 visit our discord: [https://discord.gg/AtA98tr2ab](https://discord.gg/AtA98tr2ab)
 
 ## License
 
-[MIT](LICENSE.md)
+[MIT](https://github.com/twinklyjs/twinklyjs/blob/main/LICENSE.md)

@@ -1,4 +1,27 @@
 ---
+title: retry-axios - Axios Retry Interceptor with Exponential Backoff
+description: Automatically retry failed Axios requests with exponential backoff. Add retry logic to axios using interceptors, with support for custom retry strategies, backoff types, jitter, and flexible error handling.
+keywords:
+  - axios retry
+  - retry axios
+  - axios interceptor retry
+  - axios retry failed requests
+  - axios exponential backoff
+  - axios automatic retry
+  - axios retry plugin
+  - retry axios requests
+  - axios retry library
+  - axios retry interceptor
+  - axios backoff
+  - axios request retry
+  - retry failed axios
+  - axios retry strategy
+  - axios error retry
+  - retry http requests axios
+  - axios retry middleware
+  - axios retry mechanism
+  - axios network error retry
+  - axios 500 error retry
 image: /img/retry-axios.webp
 ---
 
@@ -8,11 +31,40 @@ image: /img/retry-axios.webp
 
 ![retry-axios](/img/retry-axios.webp)
 
+**retry-axios** is a powerful Axios interceptor library that automatically retries failed HTTP requests with intelligent backoff strategies. Whether you're dealing with network errors, rate limiting (429), server errors (5xx), or temporary failures, retry-axios provides flexible retry logic for Axios with built-in exponential backoff, jitter support, and customizable retry strategies.
+
+Perfect for building resilient Node.js applications, this Axios retry plugin helps you handle transient failures gracefully without writing complex retry logic. Add automatic retry capabilities to any Axios instance with just a few lines of code.
+
 [![NPM Version][npm-image]][npm-url]
 [![GitHub Actions][github-image]][github-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 [![codecov][codecov-image]][codecov-url]
 [![Biome][biome-image]][biome-url]
+
+## Key Features
+
+- 🔄 **Automatic Retry Logic** - Retry failed Axios requests automatically using interceptors
+- 📈 **Exponential Backoff** - Built-in exponential backoff prevents overwhelming servers
+- ⚡ **Multiple Backoff Strategies** - Choose from exponential, linear, or static retry delays
+- 🎲 **Jitter Support** - Add randomization to prevent thundering herd in distributed systems
+- 🎯 **Smart Retry Detection** - Automatically retry 5xx errors, network failures, and rate limits (429)
+- ⚙️ **Highly Configurable** - Customize retry count, delays, HTTP methods, status codes, and more
+- 🔌 **Easy Integration** - Works as an Axios interceptor with any Axios instance
+- 🪝 **Lifecycle Hooks** - Track retry progress with `onError` and `onRetryAttempt` callbacks
+- 📊 **Retry Tracking** - Monitor retry attempts and access error history for debugging
+- 🛡️ **Type Safe** - Full TypeScript support with type definitions included
+
+## Why Use retry-axios?
+
+Essential for building reliable HTTP clients in:
+
+- **Production APIs** - Handle transient network failures and temporary server issues gracefully
+- **Microservices** - Build resilient service-to-service communication with automatic retry
+- **Rate Limited APIs** - Automatically retry requests when hitting rate limits (HTTP 429)
+- **Unstable Networks** - Retry network errors (ETIMEDOUT, ECONNRESET) without manual logic
+- **Third-party Integrations** - Improve reliability when calling external APIs
+- **Distributed Systems** - Use jitter to prevent retry storms and thundering herd problems
+- **High-availability Applications** - Ensure requests succeed despite temporary failures
 
 ## Installation
 
@@ -421,7 +473,7 @@ This library attaches an `interceptor` to an axios instance you pass to the API.
 
 ## License
 
-[Apache-2.0](LICENSE)
+[Apache-2.0](https://github.com/JustinBeckwith/retry-axios/blob/main/LICENSE)
 
 [github-image]: https://github.com/JustinBeckwith/retry-axios/workflows/ci/badge.svg
 [github-url]: https://github.com/JustinBeckwith/retry-axios/actions/
