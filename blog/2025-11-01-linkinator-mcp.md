@@ -101,7 +101,7 @@ Here's where things get fun. Once you've got linkinator-mcp set up, you can just
 
 ### Example 1: Quick website scan
 
-```
+```text
 You: Can you check all the links on https://jbeckwith.com?
 
 Claude: I'll scan your website for broken links.
@@ -112,7 +112,7 @@ Good news! All 47 links on your site are working correctly.
 
 ### Example 2: Deep recursive scan
 
-```
+```text
 You: I just refactored my documentation site. Can you do a deep scan
      to make sure I didn't break anything?
 
@@ -129,7 +129,7 @@ Would you like me to help fix these?
 
 ### Example 3: Local development
 
-```
+```text
 You: I'm working on this documentation in ./docs. Before I commit,
      can you check if there are any broken links?
 
@@ -147,7 +147,7 @@ The file ../assets/screenshot.png doesn't exist. Did you mean
 
 If you want to be _really_ thorough (and I respect that), you can ask Claude to go full squirrel mode:
 
-```
+```text
 You: Can you do a really strict scan of my site? I want to catch
      everything - broken fragments, redirects, HTTP links, all of it.
 
