@@ -16,11 +16,11 @@ description: 'The Model Context Protocol (MCP) lets you give AI assistants super
 
 You know that feeling when you publish a website, and three months later someone tells you half the links are broken? Or worse - when you're in the middle of a deployment and you _know_ there are busted links somewhere, but you have no idea where?
 
-When working on API reference documentation for Google's APIs, our team ran into this a little too frequently.  Enough times that I built [linkinator](https://github.com/JustinBeckwith/linkinator) - a tool that crawls websites and checks for broken links. It's worked well enough for me for years, but here's the thing: **running a link checker from the command line is kind of a chore**.
+When working on API reference documentation for Google's APIs, our team ran into this a little too frequently. Enough times that I built [linkinator](https://github.com/JustinBeckwith/linkinator) - a tool that crawls websites and checks for broken links. It's worked well enough for me for years, but here's the thing: **running a link checker from the command line is kind of a chore**.
 
 <!--truncate-->
 
-When running linkinator as part of CI, especially with the [GitHub Action](https://github.com/JustinBeckwith/linkinator-action), it works great.  It's a little less fun when you're doing the initial analysis - instead of a single broken link you've introduced, you're often presented with a seemingly insurmountable list of failures.  
+When running linkinator as part of CI, especially with the [GitHub Action](https://github.com/JustinBeckwith/linkinator-action), it works great. It's a little less fun when you're doing the initial analysis - instead of a single broken link you've introduced, you're often presented with a seemingly insurmountable list of failures.
 
 You have to remember all the flags. You have to parse the output. You have to decide what to do about the results. It's all very... manual. And as someone who's been building developer tools for a while now, I can tell you that manual processes are where good intentions go to die.
 
