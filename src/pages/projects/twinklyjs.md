@@ -29,6 +29,14 @@ image: /img/twinkly.webp
 
 ![Twinkly](/img/twinkly.webp)
 
+:::info GitHub Repository
+
+📦 **Source Code**: [github.com/twinklyjs/twinklyjs](https://github.com/twinklyjs/twinklyjs)
+
+View the source code, report issues, and contribute to the project.
+
+:::
+
 **TwinklyJS** is a powerful JavaScript and TypeScript library for controlling Twinkly smart lights with Node.js. This unofficial Twinkly API implementation enables developers to automate Twinkly lights, control colors and effects, discover devices on your network, and integrate Twinkly lights into JavaScript applications. Whether you need a Twinkly Node.js library, a Twinkly CLI tool, or want to build custom Twinkly light automations, twinklyjs provides a complete TypeScript SDK for the Twinkly Lights API.
 
 Perfect for home automation, smart lighting projects, and creative light displays, this Twinkly JavaScript library offers both command-line and programmatic control over your Twinkly smart lights.

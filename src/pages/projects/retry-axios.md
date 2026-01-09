@@ -31,6 +31,14 @@ image: /img/retry-axios.webp
 
 ![retry-axios](/img/retry-axios.webp)
 
+:::info GitHub Repository
+
+📦 **Source Code**: [github.com/JustinBeckwith/retry-axios](https://github.com/JustinBeckwith/retry-axios)
+
+View the source code, report issues, and contribute to the project.
+
+:::
+
 **retry-axios** is a powerful Axios interceptor library that automatically retries failed HTTP requests with intelligent backoff strategies. Whether you're dealing with network errors, rate limiting (429), server errors (5xx), or temporary failures, retry-axios provides flexible retry logic for Axios with built-in exponential backoff, jitter support, and customizable retry strategies.
 
 Perfect for building resilient Node.js applications, this Axios retry plugin helps you handle transient failures gracefully without writing complex retry logic. Add automatic retry capabilities to any Axios instance with just a few lines of code.

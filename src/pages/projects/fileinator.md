@@ -8,6 +8,14 @@ image: /img/fileinator.webp
 
 ![fileinator](/img/fileinator.webp)
 
+:::info GitHub Repository
+
+📦 **Source Code**: [github.com/JustinBeckwith/fileinator](https://github.com/JustinBeckwith/fileinator)
+
+View the source code, report issues, and contribute to the project.
+
+:::
+
 [![npm version](https://img.shields.io/npm/v/fileinator.svg)](https://www.npmjs.org/package/fileinator)
 [![codecov](https://codecov.io/gh/JustinBeckwith/fileinator/branch/main/graph/badge.svg)](https://codecov.io/gh/JustinBeckwith/fileinator)
 [![Checked with Biome](https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev)

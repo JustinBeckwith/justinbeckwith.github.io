@@ -31,6 +31,14 @@ image: /img/linkinator.webp
 
 ![linkinator](/img/linkinator.webp)
 
+:::info GitHub Repository
+
+📦 **Source Code**: [github.com/JustinBeckwith/linkinator](https://github.com/JustinBeckwith/linkinator)
+
+View the source code, report issues, and contribute to the project.
+
+:::
+
 [![npm version](https://img.shields.io/npm/v/linkinator)](https://www.npmjs.com/package/linkinator)
 [![codecov](https://img.shields.io/codecov/c/github/JustinBeckwith/linkinator/main)](https://app.codecov.io/gh/JustinBeckwith/linkinator)
 [![Checked with Biome](https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev)
