@@ -33,7 +33,7 @@ To get a feel for the differences, it's useful to poke around the two repositori
 
 _**disclaimer:** I've been writing C# for 14 years, and Go for 14 days. Please take all judgments of Go with a grain of salt._
 
-### Environment Setup
+## Environment Setup
 
 In the .NET world, after you install Visual Studio - you're really free to set up a project wherever you like. By default, projects are created in ~/Documents, but that's just a default. When we need to reference another project - you create a project reference in Visual Studio, or you can install a NuGet package. Either way - there really aren't any restrictions on where the project lives.
 

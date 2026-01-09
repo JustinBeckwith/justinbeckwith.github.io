@@ -20,15 +20,15 @@ In a lot of ways, golang is a little [quirky](https://golang.org/doc/faq#Why_doe
 
 When dealing with dependency management, I expect a few things:
 
-#### 1. Repeatable builds
+## 1. Repeatable builds
 
 Given the same source code, I expect to be able to reproduce the same set of binaries. Every. Time. Every bit of information needed to complete a build, whether it be on my local dev box or on a build server, should be explicitly called out in my source code. No surprises.
 
-#### 2. Isolated environments
+## 2. Isolated environments
 
 I am likely to be working on multiple projects at a time. Each project may have a requirement on different compilers, and different versions of the same dependency. At no point should changing a dependency in one project have an effect on the dependencies on a completely separate project.
 
-#### 3. Consensus
+## 3. Consensus
 
 Having a package management story is awesome. What's even better is making sure everyone uses the same one :) As long as developers are inventive and curious, there will always be alternatives. But there needs to be consensus on the community accepted standard on how a package manager will work. If 5 projects use 5 different models of dependency management, we're all out of luck.
 

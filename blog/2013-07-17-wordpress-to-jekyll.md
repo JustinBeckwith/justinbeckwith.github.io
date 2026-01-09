@@ -15,7 +15,7 @@ description: "Over the last few weeks, I've been slowly moving my blog from Word
 
 Over the last few weeks, I've been slowly moving my blog from Wordpress to [Jekyll](http://jekyllrb.com/). The change has been a long time coming, and so far I couldn't be happier with the results. I thought it may be interesting to make the ultimate meta post, and write a blog post about my blog. You can take a look at the [source code on GitHub](https://github.com/JustinBeckwith/justinbeckwith.github.io).
 
-### What's wrong with Wordpress?
+## What's wrong with Wordpress?
 
 <!--truncate-->
 

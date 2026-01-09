@@ -23,7 +23,7 @@ If you want to skip all of this and just download the bits, here you go:
 
 [![image](http://lh5.ggpht.com/-lm1GuUL20p8/T9HReoCZk7I/AAAAAAAABU4/uO7oVvNCGPQ/image%25255B4%25255D.png?imgmax=800 'image')](http://go.microsoft.com/?linkid=9809776)
 
-### Installing the Extension
+## Installing the Extension
 
 The NPM extension can be installed using the extension gallery inside of WebMatrix. To get started, go ahead and create a new node site with express using the built in template:
 

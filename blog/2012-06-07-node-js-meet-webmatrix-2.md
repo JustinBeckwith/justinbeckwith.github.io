@@ -24,7 +24,7 @@ If you want to skip all of this and just get a download link (it's free!), [here
 
 <!--truncate-->
 
-### How far we have come
+## How far we have come
 
 Less than a year ago, I was working at Carnegie Mellon University, trying to use Node.js with ASP.NET for real time components of our online learning environment. Running Linux inside of our customers' data centers was a non-starter, and running a production system in cygwin was even less ideal. Developing node on Windows wasn't exactly easy either - if you managed to get node running, getting NPM to work was near impossible. Using node in an environment favorable to Windows was more than an up hill battle.
 

@@ -45,7 +45,7 @@ To get started - first, you're going to need to visit the [BigQuery console](htt
 
 From here we can choose the dataset, and start taking a look at the schema. Now lets start asking some interesting questions!
 
-### How many files are out there on GitHub
+## How many files are out there on GitHub
 
 We just need to query over the github_repos.files table, and get a count.
 

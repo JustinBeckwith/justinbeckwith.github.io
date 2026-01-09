@@ -32,7 +32,7 @@ Before we get started, I think it's a good idea to run through the list of tools
 
 So lets get started!
 
-### Download, Install, and Configure Ant
+## Download, Install, and Configure Ant
 
 The first step is to download ant.  At the time of this article, you can download the binaries at [ant.apache.org/bindownload.cgi](https://ant.apache.org/bindownload.cgi).  The binaries are included as a \*.zip file, so we need to unpackage our tool in a place that makes sense.  I chose to create a directory structure that was consistent with other installed software on my system:
 
