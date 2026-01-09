@@ -22,7 +22,7 @@ To get started with this code, I used a fantastic [article](https://www.smashing
 
 <!--truncate-->
 
-### Bookmarklet Architecture
+## Bookmarklet Architecture
 
 That's right:  we should talk about architecture before diving right into our JavaScript.  When writing a bookmarklet, it's generally a good idea to keep as much code out of the actual bookmark as possible.  This is where 'bootstrapping' comes into play:  we will simply use our bookmark as a piece of code that actually loads the core bits of our JavaScript.  There are actually two reasons why this is a good idea:
 

@@ -16,7 +16,7 @@ description: 'Last week I had the amazing opportunity to give a talk on <a href=
 
 Last week I had the amazing opportunity to give a talk on [ASP.NET vNext](http://asp.net/vNext) at the [Øredev](http://oredev.org) developer conference. I had a blast - especially the part where I got to show off the new bits to a few hundred people on the big stage. It's especially fun showing off the new features that open up ASP.NET development with Mono on OSX. There's a lot of great stuff in this release - the new request pipeline, bin deployable CLR, command line tools, configuration APIs, SublimeText support, fewer dependencies on Visual Studio - and lots of open source.
 
-### Timeline
+## Timeline
 
 <!--truncate-->
 

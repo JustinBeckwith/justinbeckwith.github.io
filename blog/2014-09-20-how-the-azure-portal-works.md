@@ -17,7 +17,7 @@ image: '/img/2014/how-the-azure-portal-works/portalfeature.png'
 
 So - I haven't been doing much blogging or speaking on WebMatrix or node recently. For the last year and a half, I've been part of the team that's building the new [Azure portal](http://portal.azure.com) - and it's been quite an experience. A lot has been said about the [end to end experience](http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Preview-portal), the [integration of Visual Studio Online](http://blogs.msdn.com/b/bharry/archive/2014/04/03/visual-studio-online-integration-in-the-azure-portal.aspx), and even some of the [new services that have been released lately](http://weblogs.asp.net/scottgu/azure-new-documentdb-nosql-service-new-search-service-new-sql-alwayson-vm-template-and-more). All of that's awesome, but it's not what I want to talk about today. As much as those things are great (and I mean, who doesn't like the design), the real interesting piece is the underlying architecture. Let's take a look under the hood of the new Azure portal.
 
-### A little history
+## A little history
 
 <!--truncate-->
 

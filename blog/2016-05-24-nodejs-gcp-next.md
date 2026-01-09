@@ -16,7 +16,7 @@ description: 'In March I had the chance to talk at <a href="https://cloudplatfor
 
 In March I had the chance to talk at [GCP Next](https://cloudplatformonline.com/) on [Node.js @ Google](https://cloud.google.com/nodejs). This is a fun little tour of what Google Cloud has to offer Node.js developers.
 
-### Timeline
+## Timeline
 
 <!--truncate-->
 

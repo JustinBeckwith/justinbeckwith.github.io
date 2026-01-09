@@ -23,7 +23,7 @@ Various tools across multiple stacks have been release to solve this problem, bu
 
 <!--truncate-->
 
-### This sounds familiar: socket.io with node.js
+## This sounds familiar: socket.io with node.js
 
 Over the last year or so, [node.js](http://nodejs.org/) has burst onto the scene as a popular stack for building highly asynchronous applications. The event driven model of JavaScript, paired with a community of inventive developers, led to a platform well suited for these needs. The package [socket.io](http://socket.io/) provides what I have found to be the missing piece in the comet puzzle: a front and back end framework that just makes sockets over the web work. No more building flash applications to attempt opening connections over various ports. No more poorly implemented long polling solutions. Most importantly, socket.io made web sockets just plain easy to use:
 

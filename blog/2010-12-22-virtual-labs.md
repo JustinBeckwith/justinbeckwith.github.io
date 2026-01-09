@@ -23,7 +23,7 @@ Designed at the Software Engineering Institute of Carnegie Mellon University, st
 
 <!--truncate-->
 
-### The Student Perspective
+## The Student Perspective
 
 After watching a presentation on a particular technical topic, the student may be asked to practice their new skill inside of a virtual lab. To prepare for the lab, VTE also provides demos and quizzes. From a course syllabus, the student will select the lab they would like to launch:
 

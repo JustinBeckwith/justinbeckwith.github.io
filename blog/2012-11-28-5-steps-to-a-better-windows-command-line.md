@@ -18,7 +18,7 @@ description: "I spend a lot of time at the command line. As someone who likes to
 
 I spend a lot of time at the command line. As someone who likes to code on OSX and Windows, I've always been annoyed by the Windows command line experience. Do I use cmd, or PowerShell? Where are my tabs? What about package management? What about little frivolous things like _being able to resize the window_. I've finally got my Windows command line experience running smoothly, and wanted to share my setup. Here are my 5 steps to a Windows command line that doesn't suck.
 
-### 1. Use Console2 or ConEmu
+## 1. Use Console2 or ConEmu
 
 <!--truncate-->
 

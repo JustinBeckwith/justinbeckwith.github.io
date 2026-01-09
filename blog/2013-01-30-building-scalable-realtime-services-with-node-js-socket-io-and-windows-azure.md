@@ -27,7 +27,7 @@ image: '/img/2013/01/waz-blog3.png'
 
 The code I used to build [WAZSTAGRAM](https://github.com/JustinBeckwith/wazstagram/) is under an [MIT license](https://github.com/JustinBeckwith/wazstagram/blob/master/LICENSE.md), so feel free to learn and re-use the code.
 
-### How does it work
+## How does it work
 
 The application is written in node.js, using cloud services in Windows Azure. A scalable set of backend nodes receive messages from the Instagram Realtime API. Those messages are sent to the front end nodes using [Windows Azure Service Bus](http://msdn.microsoft.com/en-us/library/hh690929.aspx). The front end nodes are running node.js with [express](http://expressjs.com/) and [socket.io](http://socket.io/).
 

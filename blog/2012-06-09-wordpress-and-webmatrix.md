@@ -24,7 +24,7 @@ If you want to skip all of this and just download the bits, here you go:
 
 [![image](http://lh5.ggpht.com/-lm1GuUL20p8/T9HReoCZk7I/AAAAAAAABU4/uO7oVvNCGPQ/image%25255B4%25255D.png?imgmax=800 'image')](http://bit.ly/L77V6w)
 
-### Welcome to WebMatrix
+## Welcome to WebMatrix
 
 WebMatrix gives you a couple of ways to get started with your application. Anything we do is going to be focused on building web applications, with as few steps as possible. WebMatrix supports opening remote sites, opening local sites, creating new sites with PHP, or creating an application by starting with the Application Gallery.
 
