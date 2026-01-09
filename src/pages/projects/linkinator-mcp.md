@@ -8,6 +8,14 @@ image: /img/linkinator-mcp.webp
 
 ![linkinator-mcp](/img/linkinator-mcp.webp)
 
+:::info GitHub Repository
+
+📦 **Source Code**: [github.com/JustinBeckwith/linkinator-mcp](https://github.com/JustinBeckwith/linkinator-mcp)
+
+View the source code, report issues, and contribute to the project.
+
+:::
+
 [![npm version](https://img.shields.io/npm/v/linkinator-mcp)](https://www.npmjs.com/package/linkinator-mcp)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/JustinBeckwith/linkinator-mcp/blob/main/LICENSE)
 

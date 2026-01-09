@@ -8,6 +8,14 @@ image: /img/linkinator-action.webp
 
 ![linkinator-action](/img/linkinator-action.webp)
 
+:::info GitHub Repository
+
+📦 **Source Code**: [github.com/JustinBeckwith/linkinator-action](https://github.com/JustinBeckwith/linkinator-action)
+
+View the source code, report issues, and contribute to the project.
+
+:::
+
 Linkinator Action brings powerful link validation to your GitHub workflows. Automatically scan markdown files, documentation, and entire websites for broken links during CI/CD, ensuring your links stay healthy across pull requests and deployments.
 
 ## Features
