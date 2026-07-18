@@ -20,9 +20,10 @@ causes clean builds to fail. Standard Docusaurus 3 mode builds successfully.
 
 ## Hosting migration: Render to Cloudflare Pages
 
-Cloudflare Pages is the intended production host. Render should remain in
-place only until the Pages deployment and custom domains have been verified.
-Do not remove the Render service or its DNS records before that verification.
+Cloudflare Pages is the production host. The Pages deployment, custom domains,
+HTTPS, redirects, and DNSSEC have been verified. Render is no longer in the
+request path and its former service can be removed after confirming the exact
+service in the Render dashboard.
 
 Cloudflare Pages settings:
 
@@ -48,20 +49,23 @@ and had no individual file over the limit.
 - Cloudflare Pages project `justinbeckwith-github-io` is connected to GitHub.
 - Production deployment of commit `da65dde` succeeded with Node.js 24.13.1;
   all 1,082 assets were published.
-- Temporary production URL: `https://justinbeckwith-github-io.pages.dev`.
+- Pages URL: `https://justinbeckwith-github-io.pages.dev`.
 - The homepage, `/blog`, and a representative historical blog URL were
   verified with HTTP 200 responses on the Pages deployment.
-- The `jbeckwith.com` Cloudflare zone was created on the Free plan and the four
-  existing DNS records were imported. The Render records remain in place to
-  avoid downtime until the custom-domain cutover.
+- The `jbeckwith.com` Cloudflare zone is active on the Free plan. All four
+  pre-existing DNS records were imported before cutover.
 - Assigned Cloudflare nameservers: `alberto.ns.cloudflare.com` and
   `dahlia.ns.cloudflare.com`.
-- The next manual step is to sign in to Squarespace Domains, disable DNSSEC,
-  and replace the four Google Domains nameservers with the two Cloudflare
-  nameservers above.
-- After Cloudflare reports the zone active, attach `jbeckwith.com` and
-  `www.jbeckwith.com` to Pages, verify HTTPS and redirects, re-enable DNSSEC,
-  and only then remove Render.
+- Squarespace now delegates the domain to the two Cloudflare nameservers above.
+- `jbeckwith.com` and `www.jbeckwith.com` are attached to Pages. The apex serves
+  HTTPS with HTTP 200, and a representative old blog URL serves HTTP 200.
+- `static/_redirects` defines the permanent `www`-to-apex redirect. Keep it in
+  place so Cloudflare Pages enforces the canonical hostname.
+- DNSSEC was re-enabled after cutover. Cloudflare reports the zone protected,
+  and the corresponding DS record is registered at Squarespace.
+- Remaining cleanup: remove the obsolete Render service after identifying it
+  in Render. A registrar transfer is optional and still requires approval of
+  the displayed fee.
 
 ## Domain and DNS
 
@@ -70,11 +74,11 @@ As checked on 2026-07-18:
 - Registrar: Squarespace Domains II LLC
 - Registration expires: 2027-06-30
 - Registrar transfer lock: enabled (`client transfer prohibited`)
-- Authoritative nameservers: `ns-cloud-d1.googledomains.com` through
-  `ns-cloud-d4.googledomains.com`
-- Apex `jbeckwith.com` A record: `216.24.57.1` (Render)
-- `www.jbeckwith.com` CNAME: `justinbeckwith-github-io.onrender.com`
-- DNSSEC: enabled
+- Authoritative nameservers: `alberto.ns.cloudflare.com` and
+  `dahlia.ns.cloudflare.com`
+- Apex `jbeckwith.com` CNAME: `justinbeckwith-github-io.pages.dev` (proxied)
+- `www.jbeckwith.com` CNAME: `justinbeckwith-github-io.pages.dev` (proxied)
+- DNSSEC: enabled and confirmed by Cloudflare
 
 Safe cutover sequence:
 
