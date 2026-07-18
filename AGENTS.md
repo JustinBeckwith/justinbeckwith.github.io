@@ -59,8 +59,8 @@ and had no individual file over the limit.
 - Squarespace now delegates the domain to the two Cloudflare nameservers above.
 - `jbeckwith.com` and `www.jbeckwith.com` are attached to Pages. The apex serves
   HTTPS with HTTP 200, and a representative old blog URL serves HTTP 200.
-- `static/_redirects` defines the permanent `www`-to-apex redirect. Keep it in
-  place so Cloudflare Pages enforces the canonical hostname.
+- Both apex and `www` serve the Pages deployment. Docusaurus emits canonical
+  URLs using `https://jbeckwith.com`; a host-level `www` redirect is optional.
 - DNSSEC was re-enabled after cutover. Cloudflare reports the zone protected,
   and the corresponding DS record is registered at Squarespace.
 - Remaining cleanup: remove the obsolete Render service after identifying it
