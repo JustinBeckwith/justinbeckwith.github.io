@@ -11,6 +11,13 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: '🦨 zorilla',
+    description: 'A fork of the popular puppeteer-extra project by berstend and its contributors, exploring a modular plugin framework for Puppeteer and Playwright.',
+    image: '/img/zorilla.webp',
+    link: '/projects/zorilla',
+    github: 'https://github.com/zorillajs/zorilla',
+  },
+  {
     title: '🐿 linkinator',
     description: 'A super simple site crawler and broken link checker. Easily perform scans on remote sites or local files, with support for recursion, redirects, and tons of configuration options.',
     image: '/img/linkinator.webp',
