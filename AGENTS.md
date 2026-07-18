@@ -21,9 +21,8 @@ causes clean builds to fail. Standard Docusaurus 3 mode builds successfully.
 ## Hosting migration: Render to Cloudflare Pages
 
 Cloudflare Pages is the production host. The Pages deployment, custom domains,
-HTTPS, redirects, and DNSSEC have been verified. Render is no longer in the
-request path and its former service can be removed after confirming the exact
-service in the Render dashboard.
+HTTPS, and DNSSEC have been verified. The former Render static site was deleted
+on 2026-07-18 and Render is no longer part of this site's infrastructure.
 
 Cloudflare Pages settings:
 
@@ -63,9 +62,10 @@ and had no individual file over the limit.
   URLs using `https://jbeckwith.com`; a host-level `www` redirect is optional.
 - DNSSEC was re-enabled after cutover. Cloudflare reports the zone protected,
   and the corresponding DS record is registered at Squarespace.
-- Remaining cleanup: remove the obsolete Render service after identifying it
-  in Render. A registrar transfer is optional and still requires approval of
-  the displayed fee.
+- The obsolete Render static service `justinbeckwith.github.io` was permanently
+  deleted after cutover verification.
+- Registration remains at Squarespace by choice. A future registrar transfer
+  is optional and requires approval of the displayed fee.
 
 ## Domain and DNS
 
