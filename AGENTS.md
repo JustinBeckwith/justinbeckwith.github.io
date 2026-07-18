@@ -45,14 +45,23 @@ and had no individual file over the limit.
 
 ### Migration status (2026-07-18)
 
-- The Cloudflare account is available and Cloudflare Pages setup was started.
-- The Cloudflare Pages GitHub app did not yet have access to this repository.
-- The next manual step is to sign in to GitHub and grant the Cloudflare Pages
-  app access to `JustinBeckwith/justinbeckwith.github.io`.
-- After access is granted, create the Pages project with the settings above,
-  let the first deployment succeed, and test its `*.pages.dev` URL.
-- Only after the Pages URL works should the Cloudflare zone, nameservers, and
-  custom domains be cut over.
+- Cloudflare Pages project `justinbeckwith-github-io` is connected to GitHub.
+- Production deployment of commit `da65dde` succeeded with Node.js 24.13.1;
+  all 1,082 assets were published.
+- Temporary production URL: `https://justinbeckwith-github-io.pages.dev`.
+- The homepage, `/blog`, and a representative historical blog URL were
+  verified with HTTP 200 responses on the Pages deployment.
+- The `jbeckwith.com` Cloudflare zone was created on the Free plan and the four
+  existing DNS records were imported. The Render records remain in place to
+  avoid downtime until the custom-domain cutover.
+- Assigned Cloudflare nameservers: `alberto.ns.cloudflare.com` and
+  `dahlia.ns.cloudflare.com`.
+- The next manual step is to sign in to Squarespace Domains, disable DNSSEC,
+  and replace the four Google Domains nameservers with the two Cloudflare
+  nameservers above.
+- After Cloudflare reports the zone active, attach `jbeckwith.com` and
+  `www.jbeckwith.com` to Pages, verify HTTPS and redirects, re-enable DNSSEC,
+  and only then remove Render.
 
 ## Domain and DNS
 
