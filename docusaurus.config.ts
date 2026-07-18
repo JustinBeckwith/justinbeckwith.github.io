@@ -110,7 +110,7 @@ const config: Config = {
     },
     footer: {
       style: 'dark',
-      copyright: `Opinions expressed are solely my own and do not express the views or opinions of my current or past employers. Copyright © ${new Date().getFullYear()} Justin Beckwith.`,
+      copyright: `Opinions expressed are solely my own and do not express the views or opinions of my current or past employers. Copyright © ${new Date().getFullYear()} Justin Beckwith. Hosted on Cloudflare Pages.`,
     },
     prism: {
       theme: prismThemes.github,
