@@ -7,7 +7,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 type Props = WrapperProps<typeof BlogPostPageType>;
 
-export default function BlogPostPageWrapper(props: Props): JSX.Element {
+export default function BlogPostPageWrapper(props: Props): React.JSX.Element {
   return (
     <>
       <BlogPostPage {...props} />
@@ -22,7 +22,7 @@ export default function BlogPostPageWrapper(props: Props): JSX.Element {
   );
 }
 
-function BlogPostDisqus(): JSX.Element {
+function BlogPostDisqus(): React.JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   
   // Try to get blog post info from the current location
